@@ -1,5 +1,3 @@
-const { stylesOptions, notStyle } = require('./constantes');
-
 const plantillaJsx = ({ componentName, structComponent, style }) => {
 	let structStyle = '';
 
@@ -23,12 +21,4 @@ const plantillaJsx = ({ componentName, structComponent, style }) => {
 	return `import React from 'react';\n${structStyle}\n\nconst ${componentName} = () => {\n\treturn <div>${componentName}</div>;\n};\n\nexport default ${componentName};\n`;
 };
 
-const plantillaStyles = ({ componentName }) => {
-	return `.${componentName} {\n\n}`;
-};
-
-const plantillaBarrer = ({ componentName }) => {
-	return `export { default as ${componentName} } from './${componentName}';`;
-};
-
-module.exports = { plantillaJsx, plantillaStyles, plantillaBarrer };
+module.exports = { plantillaJsx };

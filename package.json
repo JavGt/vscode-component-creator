@@ -12,7 +12,7 @@
 	"activationEvents": [
 		"onCommand:Create-component"
 	],
-	"main": "./extension.js",
+	"main": "./src/index.js",
 	"contributes": {
 		"commands": [
 			{
