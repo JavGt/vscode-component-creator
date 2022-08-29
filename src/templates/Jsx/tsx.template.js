@@ -1,24 +1,19 @@
-const plantillaTsx = ({ componentName, structComponent, style }) => {
-	let structStyle = '';
+const { contentTemplate, importReact } = require('./sharedTemplate');
 
-	if (style !== notStyle) {
-		switch (structComponent) {
-			case stylesOptions.styleModule:
-				structStyle = `import styles from './styles/${componentName}.module.${style}';`;
-				break;
-			case stylesOptions.styleTradicional:
-				structStyle = `import './styles/${componentName}.${style}';`;
-				break;
-
-			default:
-				structStyle = '';
-				break;
-		}
-	} else {
-		structStyle = `import styled from 'styled-components';`;
-	}
-
-	return `import React from 'react';\n${structStyle}\n\nconst ${componentName} = () => {\n\treturn <div>${componentName}</div>;\n};\n\nexport default ${componentName};\n`;
+const templateInterface = COMPONENT_NAME => {
+	return `export interface ${COMPONENT_NAME}Interface {}\n`;
 };
 
-module.exports = { plantillaTsx };
+const templateTsx = (COMPONENT_NAME, templateStyle) => {
+	return `${importReact()}${templateStyle.import}\n\n${templateInterface(
+		COMPONENT_NAME
+	)}\nconst ${COMPONENT_NAME}: React.FC<${COMPONENT_NAME}Interface> = () => {${contentTemplate(
+		templateStyle.etiqueta,
+		COMPONENT_NAME,
+		templateStyle.className
+	)}\n${templateStyle.plus}`;
+};
+
+module.exports = {
+	templateTsx,
+};

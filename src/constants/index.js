@@ -1,11 +1,33 @@
-const stylesOptions = {
-	styleTradicional: 'style tradicional',
-	styleComponent: 'style component',
-	styleModule: 'style module',
+const messageCancel = 'Component creation aborted. 😢';
+
+const STRUCTURE_OPTIONS = {
+	ts: 'TypeScript',
 };
 
-const extensionStyles = { css: 'css', sass: 'sass', scss: 'scss' };
+const EXTENSION_OPTIONS = {
+	ts: '.tsx',
+	js: '.jsx',
+};
 
-const notStyle = 'nothing';
+const STYLE_OPTIONS = {
+	STYLE_TRADITIONAL: 'Style Traditional',
+	STYLE_MODULE: 'Style Module',
+	STYLE_COMPONENT: 'Style Component',
+};
 
-module.exports = { stylesOptions, extensionStyles, notStyle };
+const STYLE_EXTENSIONS = {
+	CSS: 'css',
+	SASS: 'sass',
+	SCSS: 'scss',
+};
+
+const NOT_STYLE = 'nothing';
+
+module.exports = {
+	STYLE_OPTIONS,
+	STYLE_EXTENSIONS,
+	NOT_STYLE,
+	STRUCTURE_OPTIONS,
+	EXTENSION_OPTIONS,
+	messageCancel,
+};

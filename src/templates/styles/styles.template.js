@@ -1,5 +1,7 @@
-const plantillaStyles = ({ componentName }) => {
-	return `.${componentName} {\n\n}`;
+const templateStyle = COMPONENT_NAME => {
+	return `.${COMPONENT_NAME} {\n\n}`;
 };
 
-module.exports = { plantillaJsx, plantillaStyles, plantillaBarrer };
+module.exports = {
+	templateStyle,
+};
