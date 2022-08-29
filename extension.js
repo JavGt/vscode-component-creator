@@ -9,52 +9,49 @@ const { stylesOptions, notStyle, extensionStyles } = require('./constantes');
  */
 
 const activate = context => {
-	let disposable = vscode.commands.registerCommand(
-		'create-component-creation',
-		async () => {
-			// // question a ts  and storybook
-			// const selectOption = await vscode.window.showQuickPick(['TypeScript'], {
-			// 	placeHolder: 'Select the type of component you want to create',
-			// 	canPickMany: true,
-			// 	ignoreFocusOut: true,
-			// });
+	let disposable = vscode.commands.registerCommand('Create-component', async () => {
+		// // question a ts  and storybook
+		// const selectOption = await vscode.window.showQuickPick(['TypeScript'], {
+		// 	placeHolder: 'Select the type of component you want to create',
+		// 	canPickMany: true,
+		// 	ignoreFocusOut: true,
+		// });
 
-			const structComponent = await vscode.window.showQuickPick(
-				Object.values(stylesOptions),
-				{
-					placeHolder: 'Select the type of component you want to create',
-					ignoreFocusOut: true,
-				}
-			);
-
-			const style = await selectStyle(structComponent);
-
-			// Pregunta por el nombre del componente
-			const componentName = await vscode.window.showInputBox({
-				placeHolder: 'Component Name',
+		const structComponent = await vscode.window.showQuickPick(
+			Object.values(stylesOptions),
+			{
+				placeHolder: 'Select the type of component you want to create',
 				ignoreFocusOut: true,
-				validateInput: value => value.length === 0 && 'Component Name is required',
-			});
+			}
+		);
 
-			// Crear una carpeta con el nombre del componente
-			const folderName = path.join(
-				vscode.workspace.workspaceFolders[0].uri.fsPath,
-				componentName
-			);
+		const style = await selectStyle(structComponent);
 
-			fs.mkdirSync(folderName);
+		// Pregunta por el nombre del componente
+		const componentName = await vscode.window.showInputBox({
+			placeHolder: 'Component Name',
+			ignoreFocusOut: true,
+			validateInput: value => value.length === 0 && 'Component Name is required',
+		});
 
-			// Se crea el componente
-			createComponent({ componentName, folderName, structComponent, style });
+		// Crear una carpeta con el nombre del componente
+		const folderName = path.join(
+			vscode.workspace.workspaceFolders[0].uri.fsPath,
+			componentName
+		);
 
-			// Se crea el styles
-			if (style !== notStyle)
-				createStyles({ componentName, folderName, style, structComponent });
+		fs.mkdirSync(folderName);
 
-			// Se crea el barrer
-			createBarrer(componentName, folderName);
-		}
-	);
+		// Se crea el componente
+		createComponent({ componentName, folderName, structComponent, style });
+
+		// Se crea el styles
+		if (style !== notStyle)
+			createStyles({ componentName, folderName, style, structComponent });
+
+		// Se crea el barrer
+		createBarrer(componentName, folderName);
+	});
 
 	context.subscriptions.push(disposable);
 };

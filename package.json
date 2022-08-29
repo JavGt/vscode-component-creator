@@ -1,6 +1,6 @@
 {
-	"name": "create-component-creation",
-	"displayName": "Create Component Creation",
+	"name": "Create-component",
+	"displayName": "Create Component",
 	"description": "This extension is used for the creation of components in a more optimal and faster way",
 	"version": "0.0.1",
 	"engines": {
@@ -10,13 +10,13 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:create-component-creation"
+		"onCommand:Create-component"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "create-component-creation",
+				"command": "Create-component",
 				"title": "Create Component",
 				"category": "RCC"
 			}
