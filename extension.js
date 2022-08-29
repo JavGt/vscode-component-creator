@@ -8,8 +8,6 @@ const { stylesOptions, notStyle, extensionStyles } = require('./constantes');
  * @param {vscode.ExtensionContext} context
  */
 
-
-
 const activate = context => {
 	let disposable = vscode.commands.registerCommand(
 		'create-component-creation',
@@ -23,17 +21,19 @@ const activate = context => {
 
 			const structComponent = await vscode.window.showQuickPick(
 				Object.values(stylesOptions),
-				{ placeHolder: 'Select the type of component you want to create', ignoreFocusOut: true }
+				{
+					placeHolder: 'Select the type of component you want to create',
+					ignoreFocusOut: true,
+				}
 			);
 
-			const style = selectStyle(structComponent)
+			const style = await selectStyle(structComponent);
 
 			// Pregunta por el nombre del componente
 			const componentName = await vscode.window.showInputBox({
 				placeHolder: 'Component Name',
 				ignoreFocusOut: true,
-				validateInput: value =>
-					value.length === 0 && 'Component Name is required',
+				validateInput: value => value.length === 0 && 'Component Name is required',
 			});
 
 			// Crear una carpeta con el nombre del componente
@@ -45,11 +45,12 @@ const activate = context => {
 			fs.mkdirSync(folderName);
 
 			// Se crea el componente
-			createComponent({componentName, folderName,structComponent,style});
-			
+			createComponent({ componentName, folderName, structComponent, style });
+
 			// Se crea el styles
-			if(style !== notStyle) createStyles({componentName, folderName, style});
-			
+			if (style !== notStyle)
+				createStyles({ componentName, folderName, style, structComponent });
+
 			// Se crea el barrer
 			createBarrer(componentName, folderName);
 		}
@@ -58,19 +59,25 @@ const activate = context => {
 	context.subscriptions.push(disposable);
 };
 
-const createComponent = ({componentName, folderName,structComponent,style}) => {
+const createComponent = ({ componentName, folderName, structComponent, style }) => {
 	const componentPath = path.join(folderName, componentName + '.jsx');
-	fs.writeFileSync(componentPath, plantillaJsx({ componentName,structComponent ,style}));
+	fs.writeFileSync(
+		componentPath,
+		plantillaJsx({ componentName, structComponent, style })
+	);
 };
 
-
-const createStyles = ({componentName, folderName, style}) => {
+const createStyles = ({ componentName, folderName, style, structComponent }) => {
 	const folderSylesName = path.join(folderName, 'styles');
 
 	fs.mkdirSync(folderSylesName);
 
 	fs.writeFileSync(
-		path.join(folderSylesName, componentName + `.module.${style}`),
+		path.join(
+			folderSylesName,
+			componentName +
+				`${structComponent === stylesOptions.styleModule ? '.module' : ''}.${style}`
+		),
 		plantillaStyles({ componentName })
 	);
 };
@@ -79,10 +86,8 @@ const createBarrer = (componentName, folderName) => {
 	fs.writeFileSync(path.join(folderName, 'index.js'), plantillaBarrer({ componentName }));
 };
 
-
-
-const selectStyle=(structComponent)=>{
-	if(structComponent !== stylesOptions.styleComponent ){
+const selectStyle = async structComponent => {
+	if (structComponent !== stylesOptions.styleComponent) {
 		const SelectOptionStyles = await vscode.window.showQuickPick(
 			Object.values(extensionStyles),
 			{
@@ -93,10 +98,7 @@ const selectStyle=(structComponent)=>{
 		return SelectOptionStyles;
 	}
 	return notStyle;
-}
-
-
-
+};
 
 const deactivate = () => {};
 

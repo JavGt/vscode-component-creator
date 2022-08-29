@@ -1,26 +1,26 @@
 const { stylesOptions, notStyle } = require('./constantes');
 
 const plantillaJsx = ({ componentName, structComponent, style }) => {
-	let style = '';
+	let structStyle = '';
 
 	if (style !== notStyle) {
 		switch (structComponent) {
 			case stylesOptions.styleModule:
-				style = `import styles from './styles/${componentName}.module.css';`;
+				structStyle = `import styles from './styles/${componentName}.module.${style}';`;
 				break;
 			case stylesOptions.styleTradicional:
-				style = `import './styles/${componentName}.css';`;
+				structStyle = `import './styles/${componentName}.${style}';`;
 				break;
 			case stylesOptions.styleComponent:
-				style = `import styled from 'styled-components';`;
+				structStyle = `import styled from 'styled-components';`;
 				break;
 			default:
-				style = '';
+				structStyle = '';
 				break;
 		}
 	}
 
-	return `import React from 'react';\n${style}\nconst ${componentName} = () => {\n\treturn <div>${componentName}</div>;\n};\n\nexport default ${componentName};\n`;
+	return `import React from 'react';\n${structStyle}\nconst ${componentName} = () => {\n\treturn <div>${componentName}</div>;\n};\n\nexport default ${componentName};\n`;
 };
 
 const plantillaStyles = ({ componentName }) => {

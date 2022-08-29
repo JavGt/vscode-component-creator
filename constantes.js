@@ -4,7 +4,7 @@ const stylesOptions = {
 	styleModule: 'style module',
 };
 
-const extensionStyles = { css, sass, scss };
+const extensionStyles = { css: 'css', sass: 'sass', scss: 'scss' };
 
 const notStyle = 'nothing';
 
