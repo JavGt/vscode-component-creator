@@ -84,3 +84,7 @@ export default ComponentName;
 ```javascript
 export { default as ComponentName } from './ComponentName';
 ```
+
+### License
+
+React is [MIT licensed](./LICENSE).
