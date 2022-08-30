@@ -87,4 +87,4 @@ export { default as ComponentName } from './ComponentName';
 
 ### License
 
-React is [MIT licensed](./LICENSE).
+React Create Component is [MIT licensed](./LICENSE).
