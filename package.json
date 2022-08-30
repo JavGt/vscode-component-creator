@@ -8,25 +8,31 @@
 	},
 	"publisher": "JavierGutierrez",
 	"description": "Create your React Js components (Currently) in a fast way, with multiple variety in less than 5 seconds.",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"icon": "src/assets/icon/icon.png",
 	"engines": {
 		"vscode": "^1.70.0"
 	},
 	"main": "./src/index.js",
 	"keywords": [
-		"react",
-		"javascript",
-		"typescript",
-		"jsx"
+		"React Js",
+		"Javascript",
+		"Typescript",
+		"Jsx"
 	],
 	"categories": [
-		"Snippets"
+		"Other"
 	],
 	"activationEvents": [
 		"onCommand:Create-component"
 	],
 	"contributes": {
+		"keybindings": [
+			{
+				"command": "Create-component",
+				"key": "ctrl+shift+l"
+			}
+		],
 		"commands": [
 			{
 				"command": "Create-component",

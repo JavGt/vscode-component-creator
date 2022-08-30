@@ -40,7 +40,7 @@ You can use it by clicking on the folder where you want your component to be and
 
 ![Working](https://firebasestorage.googleapis.com/v0/b/recursos-ae4c5.appspot.com/o/sample2.gif?alt=media&token=a3c742f1-8ad2-49d9-a66d-a182ca1f2228)
 You can also use it by giving it by executing the "Create Component" command from the command palette
-to enter the command palette execute (ctrl + shift + p)
+To create a component it can also be executed with the following keys (ctrl + shift + l)
 
 ## Settings
 
