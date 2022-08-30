@@ -13,11 +13,12 @@ Create your React Js components (Currently) in a fast way, with multiple variety
 
 ## Integrations
 
-| Integrations            | Technologies                 |
-| ----------------------- | ---------------------------- | 
-| Framework or library    | [React]                      | 
-| Language                | [Javascript], [Typescript]   | 
-| Styles                  | [css], [sass], [scss]        | 
+| Integrations            | Technologies                                      |
+| ----------------------- | ------------------------------------------------- | 
+| Framework or library    | [React]                                           | 
+| Language                | [Javascript], [Typescript]                        |          
+| Styles                  | [css], [sass], [scss]                             | 
+| Styles options          | [module], [Style-Component], tradicional          | 
 
 [React]: https://github.com/facebook/react
 [css]: https://developer.mozilla.org/es/docs/Web/CSS
@@ -25,6 +26,8 @@ Create your React Js components (Currently) in a fast way, with multiple variety
 [scss]: https://github.com/sass/sass
 [Typescript]: https://github.com/microsoft/TypeScript
 [Javascript]: https://developer.mozilla.org/es/docs/Web/JavaScript
+[Style-Component]: https://github.com/styled-components/styled-components
+[module]: https://github.com/css-modules/css-modules
 
 
 
@@ -44,11 +47,11 @@ ComponentFolder
 
 ```javascript
 import React from "react"
-import styles from "./styles/ComponentName.module.css"
+import "./styles/ComponentName.css"
 
 const ComponentName = () =>{
     return (
-        <div className={styles.ComponentName}>
+        <div className="ComponentName">
             ComponentName
         </div>
     )
@@ -56,7 +59,7 @@ const ComponentName = () =>{
 
 export default ComponentName;
 ```
-### Css module
+### Css 
 
 ```css
 .ComponentName { }
