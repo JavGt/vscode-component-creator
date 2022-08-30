@@ -11,6 +11,17 @@ Create your React Js components (Currently) in a fast way, with multiple variety
 - You can create a style component with the integrated import.
 
 
+## Structure Results
+
+```
+ComponentFolder
+│── Component.tsx        // The component can have the extension ".tsx" or ".jsx"
+|── Styles               // Folder where you store the styles
+│    └── Component.css   // The extension will depend on the selected option
+└── index.tsx            // Index file to export the component
+```
+
+
 ## How does it work?
 
 ### Use from a specific path
@@ -22,8 +33,6 @@ You can use it by clicking on the folder where you want your component to be and
 You can also use it by giving it by executing the "Create Component" command from the command palette
 
 to enter the command palette execute (ctrl + shift + p)
-
-
 
 
 ## Integrations
@@ -44,17 +53,6 @@ to enter the command palette execute (ctrl + shift + p)
 [Style-Component]: https://github.com/styled-components/styled-components
 [module]: https://github.com/css-modules/css-modules
 
-
-
-## Structure Results
-
-```
-ComponentFolder
-│── Component.tsx        // The component can have the extension ".tsx" or ".jsx"
-|── Styles               // Folder where you store the styles
-│    └── Component.css   // The extension will depend on the selected option
-└── index.tsx            // Index file to export the component
-```
 
 ## Component result example
 
@@ -84,6 +82,3 @@ export default ComponentName;
 ```javascript
 export { default as ComponentName } from "./ComponentName";
 ```
-
-
-
