@@ -5,11 +5,12 @@ Create your React Js components (Currently) in a fast way, with multiple variety
 
 ## Features
 
-- Create the component depending on the extension.
-- Create a folder with the selected style extension.
+- Create a component depending on the selected language.
+- Create a style file depending on the type of style or extension selected.
 - You can create styles per module.
-- You can create a style component with the integrated import.
-
+- You can create a component with built-in style import.
+- It generates a barrel in your folder.
+- In the tsx files, integrate the interface
 
 
 ## Integrations
@@ -18,7 +19,7 @@ Create your React Js components (Currently) in a fast way, with multiple variety
 | ----------------------- | ------------------------------------------------- | 
 | Framework or library    | [React]                                           | 
 | Language                | [Javascript], [Typescript]                        |          
-| Styles                  | [css], [sass], [scss]                             | 
+| Style extensions        | [css], [sass], [scss]                             | 
 | Styles options          | [module], [Style-Component], tradicional          | 
 
 [React]: https://github.com/facebook/react
@@ -34,11 +35,11 @@ Create your React Js components (Currently) in a fast way, with multiple variety
 ## How does it work?
 
 ### Use from a specific path
-![Working](https://github.com/JavGt/Create-component/blob/JavGttz/src/assets/gif/sample1.gif)
+![Working](https://firebasestorage.googleapis.com/v0/b/recursos-ae4c5.appspot.com/o/sample1.gif?alt=media&token=79c7993d-1e0d-4e04-a7f2-1d7d00afb71f)
 You can use it by clicking on the folder where you want your component to be and clicking on the "Create Component" option.
 
 ### Use by entering the path
-![Working](https://github.com/JavGt/Create-component/blob/JavGttz/src/assets/gif/sample2.gif)
+![Working](https://firebasestorage.googleapis.com/v0/b/recursos-ae4c5.appspot.com/o/sample2.gif?alt=media&token=a3c742f1-8ad2-49d9-a66d-a182ca1f2228)
 You can also use it by giving it by executing the "Create Component" command from the command palette
 
 to enter the command palette execute (ctrl + shift + p)
