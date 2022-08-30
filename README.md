@@ -15,9 +15,15 @@ Create your React Js components (Currently) in a fast way, with multiple variety
 
 ### Use from a specific path
 ![Working](https://github.com/JavGt/Create-component/blob/JavGttz/src/assets/gif/sample1.gif)
+You can use it by clicking on the folder where you want your component to be and clicking on the "Create Component" option.
 
 ### Use by entering the path
-![Working](https://github.com/JavGt/Create-component/blob/JavGttz/src/assets/gif/sample1.gif)
+![Working](https://github.com/JavGt/Create-component/blob/JavGttz/src/assets/gif/sample2.gif)
+You can also use it by giving it by executing the "Create Component" command from the command palette
+
+to enter the command palette execute (ctrl + shift + p)
+
+
 
 
 ## Integrations
