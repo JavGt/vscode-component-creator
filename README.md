@@ -10,7 +10,7 @@ Create your React Js components (Currently) in a fast way, with multiple variety
 - You can create styles per module.
 - You can create a component with built-in style import.
 - It generates a barrel in your folder.
-- In the tsx files, integrate the interface
+- In the tsx files, integrate the interface.
 
 
 ## Integrations
