@@ -13,7 +13,7 @@ Create your React Js components (Currently) in a fast way, with multiple variety
 
 ## Integrations
 
-| Integrations                                           |
+| Integrations            | Technologies                 |
 | ----------------------- | ---------------------------- | 
 | Framework or library    | [react]                      | 
 | Language                | [javascript], [typescript]   | 
