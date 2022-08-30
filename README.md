@@ -15,16 +15,16 @@ Create your React Js components (Currently) in a fast way, with multiple variety
 
 | Integrations            | Technologies                 |
 | ----------------------- | ---------------------------- | 
-| Framework or library    | [react]                      | 
-| Language                | [javascript], [typescript]   | 
+| Framework or library    | [React]                      | 
+| Language                | [Javascript], [Typescript]   | 
 | Styles                  | [css], [sass], [scss]        | 
 
-[react]: https://github.com/facebook/react
+[React]: https://github.com/facebook/react
 [css]: https://developer.mozilla.org/es/docs/Web/CSS
 [sass]: https://github.com/sass/sass
 [scss]: https://github.com/sass/sass
-[typescript]: https://github.com/microsoft/TypeScript
-[javascript]: https://developer.mozilla.org/es/docs/Web/JavaScript
+[Typescript]: https://github.com/microsoft/TypeScript
+[Javascript]: https://developer.mozilla.org/es/docs/Web/JavaScript
 
 
 
