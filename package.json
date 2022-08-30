@@ -1,13 +1,20 @@
 {
-	"name": "Create-component",
-	"displayName": "Create Component",
-	"description": "This extension is used for the creation of components in a more optimal and faster way",
+	"name": "create-component-React",
+	"displayName": "React Create Component",
+	"author": {
+		"name": "Javier Gutierrez",
+		"email": "javier.bz.gt@gmail.com",
+		"url": "https://jav-gt.netlify.app"
+	},
+	"publisher": "JavierGutierrez",
+	"description": "Create your React Js components (Currently) in a fast way, with multiple variety in less than 5 seconds.",
 	"version": "0.0.1",
+	"icon": "src/icon/icon.png",
 	"engines": {
 		"vscode": "^1.70.0"
 	},
 	"categories": [
-		"Other"
+		"Snippets"
 	],
 	"activationEvents": [
 		"onCommand:Create-component"
@@ -34,7 +41,8 @@
 	"scripts": {
 		"lint": "eslint .",
 		"pretest": "yarn run lint",
-		"test": "node ./test/runTest.js"
+		"test": "node ./test/runTest.js",
+		"deploy": "vsce publish"
 	},
 	"devDependencies": {
 		"@types/vscode": "^1.70.0",
@@ -46,5 +54,11 @@
 		"mocha": "^10.0.0",
 		"typescript": "^4.7.4",
 		"@vscode/test-electron": "^2.1.5"
-	}
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/JavGt/Create-component"
+	},
+	"homepage": "https://github.com/JavGt/Create-component/blob/main/README.md",
+	"license": "MIT"
 }

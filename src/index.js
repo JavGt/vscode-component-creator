@@ -22,9 +22,24 @@ const { showMessageCancel } = require('./helpers/showMessageCancel/showMessageCa
  */
 
 const activate = context => {
+	// Create workspace folder
+	const createWorkspaceFolder = async () => {
+		const workspaceFolder = vscode.workspace.getConfiguration('create-component');
+		const workspaceFolderPath = workspaceFolder.get('workspaceFolderPath');
+		const workspaceFolderName = workspaceFolder.get('workspaceFolderName');
+		const workspaceFolderPathFull = path.join(workspaceFolderPath, workspaceFolderName);
+		const workspaceFolderPathFullExists = await fsP.access(workspaceFolderPathFull);
+		if (workspaceFolderPathFullExists) {
+			vscode.window.showErrorMessage('Workspace folder already exists');
+		}
+		await fsP.mkdir(workspaceFolderPathFull, { recursive: true });
+	};
+	createWorkspaceFolder();
+
 	let disposable = vscode.commands.registerCommand('Create-component', async args => {
 		// Verifica si le dio click al menu o fue por comando
 		const fsPath = await checkPath(args);
+
 		if (!fsPath) return showMessageCancel();
 
 		// Pregunta si tendrá ts
@@ -127,7 +142,7 @@ const createFolder = async (fsPath, COMPONENT_NAME) => {
 		await fsP.access(FOLDER_NAME);
 		vscode.window
 			.showErrorMessage(
-				`The Component ${COMPONENT_NAME} already exists in the path ${fsPath}`,
+				`The Component "${COMPONENT_NAME}" already exists in the path ${fsPath}`,
 				'Retry'
 			)
 			.then(selection => {
