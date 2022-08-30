@@ -56,3 +56,9 @@ const ComponentName = () =>{
 
 export default ComponentName;
 ```
+
+```css
+.ComponentName { }
+```
+
+
