@@ -44,7 +44,7 @@ to enter the command palette execute (ctrl + shift + p)
 
 ## Settings
 
-![Working](https://firebasestorage.googleapis.com/v0/b/recursos-ae4c5.appspot.com/o/Captura%20de%20pantalla%202022-08-30%20014924.png?al)
+![Working](https://firebasestorage.googleapis.com/v0/b/recursos-ae4c5.appspot.com/o/Captura%20de%20pantalla%202022-08-30%20014924.png?alt=media&token=837eb0a2-6a5b-429c-856e-c01d00e78ce7)
 You can make plugin settings to make component creation much faster.
 
 ## Structure Results
