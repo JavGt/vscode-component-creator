@@ -11,6 +11,15 @@ Create your React Js components (Currently) in a fast way, with multiple variety
 - You can create a style component with the integrated import.
 
 
+## How does it work?
+
+### Use from a specific path
+![Working](https://github.com/JavGt/Create-component/blob/JavGttz/src/assets/gif/sample1.gif)
+
+### Use by entering the path
+![Working](https://github.com/JavGt/Create-component/blob/JavGttz/src/assets/gif/sample1.gif)
+
+
 ## Integrations
 
 | Integrations            | Technologies                                      |
