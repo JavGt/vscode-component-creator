@@ -37,3 +37,22 @@ ComponentFolder
 │    └── Component.css   // The extension will depend on the selected option
 └── index.tsx            // Index file to export the component
 ```
+
+## Component result example
+
+### Javascript and Styles modules
+
+```javascript
+import React from "react"
+import styles from "./styles/ComponentName.module.css"
+
+const ComponentName = () =>{
+    return (
+        <div className={styles.ComponentName}>
+            ComponentName
+        </div>
+    )
+};
+
+export default ComponentName;
+```
