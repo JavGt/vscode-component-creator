@@ -8,18 +8,24 @@
 	},
 	"publisher": "JavierGutierrez",
 	"description": "Create your React Js components (Currently) in a fast way, with multiple variety in less than 5 seconds.",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"icon": "src/assets/icon/icon.png",
 	"engines": {
 		"vscode": "^1.70.0"
 	},
+	"main": "./src/index.js",
+	"keywords": [
+		"react",
+		"javascript",
+		"typescript",
+		"jsx"
+	],
 	"categories": [
 		"Snippets"
 	],
 	"activationEvents": [
 		"onCommand:Create-component"
 	],
-	"main": "./src/index.js",
 	"contributes": {
 		"commands": [
 			{
@@ -36,6 +42,60 @@
 					"group": "Hli@React"
 				}
 			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "React Create Component",
+			"properties": {
+				"reactCreateComponent.settings.importReactOnTop": {
+					"type": "boolean",
+					"markdownDescription": "Controls if snippets should add `import React from 'react';` at the top of components.\nUse if you have React +17 and use jsx transform.",
+					"default": true
+				},
+				"reactCreateComponent.settings.SelectExtensionStyle": {
+					"type": "string",
+					"enum": [
+						"to ask",
+						"css",
+						"sass",
+						"scss"
+					],
+					"default": "to ask",
+					"markdownDescription": "Controls the style of the component.\nUse if you want to use css, sass, or scss."
+				},
+				"reactCreateComponent.settings.CreateBarrel": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Controls the creation of the barrel file or index file inside the folder."
+				},
+				"reactCreateComponent.settings.SelectLanguage": {
+					"type": "string",
+					"enum": [
+						"to ask",
+						"Javascript",
+						"TypeScript"
+					],
+					"default": "to ask",
+					"markdownDescription": "Controls the language of the component.\nUse if you want to use javascript or typescript."
+				},
+				"reactCreateComponent.settings.SelectTypeStyle": {
+					"type": "string",
+					"enum": [
+						"to ask",
+						"Style Traditional",
+						"Style Module",
+						"Style Component",
+						"Not style"
+					],
+					"default": "to ask",
+					"markdownDescription": "Controls the type of the component.\nUse if you want to use style traditional, style module, style component, or not style."
+				},
+				"reactCreateComponent.settings.CreateFolderStyles": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Controls the creation of the folder styles."
+				}
+			}
 		}
 	},
 	"scripts": {

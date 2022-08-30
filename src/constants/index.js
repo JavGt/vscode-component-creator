@@ -1,7 +1,10 @@
 const messageCancel = 'Component creation aborted. 😢';
 
+const NOT_CONFIG = 'to ask';
+
 const STRUCTURE_OPTIONS = {
 	ts: 'TypeScript',
+	js: 'JavaScript',
 };
 
 const EXTENSION_OPTIONS = {
@@ -9,10 +12,13 @@ const EXTENSION_OPTIONS = {
 	js: '.jsx',
 };
 
+const NOT_STYLE = 'Not style';
+
 const STYLE_OPTIONS = {
 	STYLE_TRADITIONAL: 'Style Traditional',
 	STYLE_MODULE: 'Style Module',
 	STYLE_COMPONENT: 'Style Component',
+	NOT_STYLE,
 };
 
 const STYLE_EXTENSIONS = {
@@ -21,8 +27,6 @@ const STYLE_EXTENSIONS = {
 	SCSS: 'scss',
 };
 
-const NOT_STYLE = 'nothing';
-
 module.exports = {
 	STYLE_OPTIONS,
 	STYLE_EXTENSIONS,
@@ -30,4 +34,5 @@ module.exports = {
 	STRUCTURE_OPTIONS,
 	EXTENSION_OPTIONS,
 	messageCancel,
+	NOT_CONFIG,
 };
