@@ -43,7 +43,7 @@ ComponentFolder
 
 ## Component result example
 
-### Javascript and Styles modules
+### Javascript
 
 ```javascript
 import React from "react"
@@ -59,10 +59,16 @@ const ComponentName = () =>{
 
 export default ComponentName;
 ```
-### Css 
+### css 
 
 ```css
 .ComponentName { }
 ```
+### Barrel 
+
+```javascript
+export { default as ComponentName } from "./ComponentName";
+```
+
 
 
