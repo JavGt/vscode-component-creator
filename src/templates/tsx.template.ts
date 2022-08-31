@@ -1,10 +1,14 @@
-const { contentTemplate, importReact } = require('./sharedTemplate');
+import { templateStyleInterface } from '../helpers';
+import { contentTemplate, importReact } from './shared.template';
 
-const templateInterface = COMPONENT_NAME => {
+const templateInterface = (COMPONENT_NAME: string) => {
 	return `export interface ${COMPONENT_NAME}Interface {}\n`;
 };
 
-const templateTsx = (COMPONENT_NAME, templateStyle) => {
+export const templateTsx = (
+	COMPONENT_NAME: string,
+	templateStyle: templateStyleInterface
+) => {
 	return `${importReact()}${templateStyle.import}\n\n${templateInterface(
 		COMPONENT_NAME
 	)}\nconst ${COMPONENT_NAME}: React.FC<${COMPONENT_NAME}Interface> = () => {${contentTemplate(
@@ -12,8 +16,4 @@ const templateTsx = (COMPONENT_NAME, templateStyle) => {
 		COMPONENT_NAME,
 		templateStyle.className
 	)}\n${templateStyle.plus}`;
-};
-
-module.exports = {
-	templateTsx,
 };

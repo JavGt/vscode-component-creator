@@ -8,23 +8,23 @@
 	},
 	"publisher": "JavierGutierrez",
 	"description": "Create your React Js components (Currently) in a fast way, with multiple variety in less than 5 seconds.",
-	"version": "0.0.5",
-	"icon": "src/assets/icon/icon.png",
+	"version": "0.0.6",
+	"icon": "img/icon.png",
 	"engines": {
 		"vscode": "^1.70.0"
 	},
-	"main": "./src/index.js",
-	"keywords": [
-		"React Js",
-		"Javascript",
-		"Typescript",
-		"Jsx"
-	],
 	"categories": [
 		"Other"
 	],
 	"activationEvents": [
 		"onCommand:Create-component"
+	],
+	"main": "./out/extension.js",
+	"keywords": [
+		"React Js",
+		"Javascript",
+		"Typescript",
+		"Jsx"
 	],
 	"contributes": {
 		"keybindings": [
@@ -100,21 +100,32 @@
 					"type": "boolean",
 					"default": true,
 					"markdownDescription": "Controls the creation of the folder styles."
+				},
+				"reactCreateComponent.settings.DefaultRoute": {
+					"type": "string",
+					"default": "./src",
+					"markdownDescription": "Controls the default route of the component."
 				}
 			}
 		}
 	},
 	"scripts": {
-		"lint": "eslint .",
-		"pretest": "yarn run lint",
-		"test": "node ./test/runTest.js",
-		"deploy": "vsce publish"
+		"vscode:prepublish": "yarn run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "yarn run compile && yarn run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js",
+		"build": "vsce package",
+		"publish": "vsce publish"
 	},
 	"devDependencies": {
 		"@types/vscode": "^1.70.0",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",
 		"@types/node": "16.x",
+		"@typescript-eslint/eslint-plugin": "^5.31.0",
+		"@typescript-eslint/parser": "^5.31.0",
 		"eslint": "^8.20.0",
 		"glob": "^8.0.3",
 		"mocha": "^10.0.0",
