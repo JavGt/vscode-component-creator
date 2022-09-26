@@ -1,6 +1,7 @@
 import { ExtensionContext, commands, window } from 'vscode';
-import { showMessageCancel } from './helpers';
+import { removeDot, showMessageCancel } from './helpers';
 import { comandoCreateComponent, NOT_STYLE } from './constants';
+
 import {
 	checkPath,
 	InputNameComponent,
@@ -8,6 +9,7 @@ import {
 	selectStyleLanguage,
 	selectStyleType,
 } from './showInput';
+
 import { createFolder, createStyles, createComponent, createBarrer } from './creators';
 
 export function activate(context: ExtensionContext) {
@@ -48,9 +50,7 @@ export function activate(context: ExtensionContext) {
 
 		createBarrer(COMPONENT_NAME, FOLDER_PATH, COMPONENT_STRUCTURE);
 
-		window.showInformationMessage(
-			`Component ${COMPONENT_NAME.split('.')[0]} created. 🎉`
-		);
+		window.showInformationMessage(`Component ${removeDot(COMPONENT_NAME)} created. 🎉`);
 	});
 
 	context.subscriptions.push(disposable);
