@@ -9,35 +9,35 @@ export interface templateStyleInterface {
 }
 
 export const checkStyle = (
-	COMPONENT_NAME: string,
-	STYLE_TYPE: string,
-	STYLE_SELECT: string
+	componentName: string,
+	styleType: string,
+	styleLanguage: string
 ) => {
 	const { CreateFolderStyles } = GetSettings();
 
 	const isFolderStyles = CreateFolderStyles ? '/styles' : '';
 
-	switch (STYLE_TYPE) {
+	switch (styleType) {
 		case STYLE_OPTIONS.STYLE_MODULE:
 			return {
-				import: `import styles from '.${isFolderStyles}/${COMPONENT_NAME}.module.${STYLE_SELECT}';`,
-				etiqueta: `div`,
-				className: `className={styles.${COMPONENT_NAME}}`,
+				import: `import styles from '.${isFolderStyles}/${componentName}.module.${styleLanguage}';\n`,
+				etiqueta: `div `,
+				className: `className={styles.${componentName.toLowerCase()}}`,
 				plus: ``,
 			};
 		case STYLE_OPTIONS.STYLE_TRADITIONAL:
 			return {
-				import: `import '.${isFolderStyles}/${COMPONENT_NAME}.${STYLE_SELECT}';`,
-				etiqueta: `div`,
-				className: `className='${COMPONENT_NAME}'`,
+				import: `import '.${isFolderStyles}/${componentName}.${styleLanguage}';\n`,
+				etiqueta: `div `,
+				className: `className='${componentName.toLowerCase()}'`,
 				plus: ``,
 			};
 		case STYLE_OPTIONS.STYLE_COMPONENT:
 			return {
-				import: `import styled from 'styled-components';`,
-				etiqueta: `${COMPONENT_NAME}Styled`,
+				import: `import styled from 'styled-components';\n`,
+				etiqueta: `${componentName}Style`,
 				className: ``,
-				plus: `export const ${COMPONENT_NAME}Styled = styled.div\`\`;`,
+				plus: `\nexport const ${componentName}Style = styled.div\`\`;\n`,
 			};
 		default:
 			return {

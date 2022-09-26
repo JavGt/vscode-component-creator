@@ -8,7 +8,7 @@
 	},
 	"publisher": "JavierGutierrez",
 	"description": "Create your React Js components (Currently) in a fast way, with multiple variety in less than 5 seconds.",
-	"version": "0.0.6",
+	"version": "1.0.0",
 	"icon": "img/icon.png",
 	"engines": {
 		"vscode": "^1.70.0"
@@ -105,6 +105,11 @@
 					"type": "string",
 					"default": "./src",
 					"markdownDescription": "Controls the default route of the component."
+				},
+				"reactCreateComponent.settings.CreateInterface": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Controls the creation of the interface."
 				}
 			}
 		}

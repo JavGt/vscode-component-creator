@@ -2,14 +2,14 @@ import { templateStyleInterface } from '../helpers/CheckStyle';
 import { contentTemplate, importReact } from './shared.template';
 
 export const templateJsx = (
-	COMPONENT_NAME: string,
+	nameComponent: string,
 	templateStyle: templateStyleInterface
 ) => {
 	return `${importReact()}${
 		templateStyle.import
-	}\n\nconst ${COMPONENT_NAME} = () => {${contentTemplate(
+	}\nconst ${nameComponent} = () => {\n${contentTemplate(
 		templateStyle.etiqueta,
-		COMPONENT_NAME,
+		nameComponent,
 		templateStyle.className
-	)}\n${templateStyle.plus}`;
+	)}};\n${templateStyle.plus}\nexport default ${nameComponent};\n`;
 };
