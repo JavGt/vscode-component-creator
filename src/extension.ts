@@ -15,6 +15,7 @@ import { createFolder, createStyles, createComponent, createBarrer } from './cre
 export function activate(context: ExtensionContext) {
 	let disposable = commands.registerCommand(comandoCreateComponent, async args => {
 		// Valida la ruta del proyecto
+
 		const path = await checkPath(args);
 		if (!path) return showMessageCancel();
 
@@ -50,7 +51,7 @@ export function activate(context: ExtensionContext) {
 
 		createBarrer(COMPONENT_NAME, FOLDER_PATH, COMPONENT_STRUCTURE);
 
-		window.showInformationMessage(`Component ${removeDot(COMPONENT_NAME)} created. 🎉`);
+		window.showInformationMessage(`Component ${removeDot(COMPONENT_NAME)} created. ⚛`);
 	});
 
 	context.subscriptions.push(disposable);

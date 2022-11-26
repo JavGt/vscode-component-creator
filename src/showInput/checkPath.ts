@@ -2,7 +2,7 @@ import { window, workspace } from 'vscode';
 import { join } from 'path';
 import { GetSettings } from '../helpers';
 
-const checkPath = async (args: any) => {
+export const checkPath = async (args: any) => {
 	if (!workspace.workspaceFolders)
 		return window.showInformationMessage("You don't have an open project.");
 
@@ -25,5 +25,3 @@ const checkPath = async (args: any) => {
 
 	return join(projectRoot, pathInput);
 };
-
-export { checkPath };

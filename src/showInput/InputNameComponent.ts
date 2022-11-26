@@ -1,7 +1,7 @@
 import { addCapitalize } from '../helpers';
 import { window } from 'vscode';
 
-const InputNameComponent = async () => {
+export const InputNameComponent = async () => {
 	let isValidate = false;
 	let component;
 
@@ -22,5 +22,3 @@ const InputNameComponent = async () => {
 
 	return addCapitalize(component);
 };
-
-export { InputNameComponent };

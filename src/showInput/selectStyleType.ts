@@ -2,7 +2,7 @@ import { window } from 'vscode';
 import { NOT_CONFIG, STYLE_OPTIONS } from '../constants';
 import { GetSettings } from '../helpers';
 
-const selectStyleType = async () => {
+export const selectStyleType = async () => {
 	const { SelectTypeStyle } = GetSettings();
 
 	if (SelectTypeStyle !== NOT_CONFIG) return SelectTypeStyle;
@@ -13,5 +13,3 @@ const selectStyleType = async () => {
 		ignoreFocusOut: true,
 	});
 };
-
-export { selectStyleType };

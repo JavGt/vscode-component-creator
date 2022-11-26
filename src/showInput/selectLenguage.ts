@@ -1,17 +1,28 @@
 import { NOT_CONFIG, STRUCTURE_OPTIONS } from '../constants';
-import { window } from 'vscode';
+import { window, workspace } from 'vscode';
 import { GetSettings } from '../helpers';
+import { existsSync } from 'fs';
+import { join } from 'path';
 
-const selectLanguage = async () => {
-	const { SelectLanguage } = GetSettings();
+export const selectLanguage = async () => {
+	if (!workspace.workspaceFolders)
+		return window.showInformationMessage("You don't have an open project.");
 
-	if (SelectLanguage !== NOT_CONFIG) return SelectLanguage;
+	const projectRoot = workspace.workspaceFolders[0].uri.fsPath;
 
-	return await window.showQuickPick(Object.values(STRUCTURE_OPTIONS), {
-		title: 'Language',
-		placeHolder: 'Select the type of component you want to create',
-		ignoreFocusOut: true,
-	});
+	try {
+		return existsSync(join(projectRoot, 'tsconfig.json'))
+			? STRUCTURE_OPTIONS.ts
+			: STRUCTURE_OPTIONS.js;
+	} catch (error) {
+		const { SelectLanguage } = GetSettings();
+
+		if (SelectLanguage !== NOT_CONFIG) return SelectLanguage;
+
+		return await window.showQuickPick(Object.values(STRUCTURE_OPTIONS), {
+			title: 'Language',
+			placeHolder: 'Select the type of component you want to create',
+			ignoreFocusOut: true,
+		});
+	}
 };
-
-export { selectLanguage };

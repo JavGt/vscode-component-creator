@@ -2,7 +2,7 @@ import { GetSettings } from '../helpers';
 import { window } from 'vscode';
 import { NOT_CONFIG, NOT_STYLE, STYLE_EXTENSIONS, STYLE_OPTIONS } from '../constants';
 
-const selectStyleLanguage = async (TYPE_STYLE: string) => {
+export const selectStyleLanguage = async (TYPE_STYLE: string) => {
 	if (
 		TYPE_STYLE === STYLE_OPTIONS.STYLE_COMPONENT ||
 		TYPE_STYLE === STYLE_OPTIONS.NOT_STYLE
@@ -20,5 +20,3 @@ const selectStyleLanguage = async (TYPE_STYLE: string) => {
 		ignoreFocusOut: true,
 	});
 };
-
-export { selectStyleLanguage };
