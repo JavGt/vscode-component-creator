@@ -10,15 +10,15 @@ export const selectLanguage = async () => {
 
 	const projectRoot = workspace.workspaceFolders[0].uri.fsPath;
 
+	const { SelectLanguage } = GetSettings();
+
+	if (SelectLanguage !== NOT_CONFIG) return SelectLanguage;
+
 	try {
 		return existsSync(join(projectRoot, 'tsconfig.json'))
 			? STRUCTURE_OPTIONS.ts
 			: STRUCTURE_OPTIONS.js;
 	} catch (error) {
-		const { SelectLanguage } = GetSettings();
-
-		if (SelectLanguage !== NOT_CONFIG) return SelectLanguage;
-
 		return await window.showQuickPick(Object.values(STRUCTURE_OPTIONS), {
 			title: 'Language',
 			placeHolder: 'Select the type of component you want to create',

@@ -7,6 +7,7 @@ export const checkPath = async (args: any) => {
 		return window.showInformationMessage("You don't have an open project.");
 
 	const fsPath = args?.fsPath ?? null;
+
 	if (fsPath) return fsPath;
 
 	const { DefaultRoute } = GetSettings();
