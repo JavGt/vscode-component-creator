@@ -27,7 +27,7 @@ const createStyles = async (
 
 	const isModule = styleType === STYLE_OPTIONS.STYLE_MODULE ? '.module' : '';
 
-	const nameFile = componentName + isModule + '.' + styleLanguage;
+	const nameFile = removeDot(componentName) + isModule + '.' + styleLanguage;
 
 	const nameClass = removeDot(componentName).toLowerCase();
 
