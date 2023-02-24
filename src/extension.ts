@@ -16,7 +16,7 @@ export function activate(context: ExtensionContext) {
 	let disposable = commands.registerCommand(comandoCreateComponent, async args => {
 		// Valida la ruta del proyecto
 
-		const path = await checkPath(args);
+		const path = await checkPath(args?.fsPath ?? null);
 		if (!path) return showMessageCancel();
 
 		// Selecciona el lenguaje

@@ -1,9 +1,8 @@
 import { GetSettings, templateStyleInterface } from '../helpers';
 import { contentTemplate, importReact } from './shared.template';
 
-const templateInterface = (nameComponent: string) => {
-	return `export interface ${nameComponent}Interface {}\n`;
-};
+const templateInterface = (nameComponent: string) =>
+	`export interface ${nameComponent}Props {}\n`;
 
 export const templateTsx = (
 	nameComponent: string,
@@ -14,7 +13,7 @@ export const templateTsx = (
 	return `${importReact()}${templateStyle.import}${
 		CreateInterface ? templateInterface(nameComponent) : ''
 	}\nconst ${nameComponent} ${
-		CreateInterface ? `: React.FC<${nameComponent}Interface> ` : ''
+		CreateInterface ? `: React.FC<${nameComponent}Props> ` : ''
 	}= () => {\n${contentTemplate(
 		templateStyle.etiqueta,
 		nameComponent,
