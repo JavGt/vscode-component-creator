@@ -2,7 +2,7 @@
 	"name": "create-component-React",
 	"displayName": "React Create Component",
 	"description": "Create your React Js components (Currently) in a fast way, with multiple variety in less than 5 seconds. 🚀",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"icon": "assets/image/icon.png",
 	"author": {
 		"name": "Javier Gutierrez",
@@ -52,6 +52,7 @@
 	},
 	"homepage": "https://github.com/JavGt/Create-component/blob/main/README.md",
 	"license": "MIT",
+	"activationEvents": [],
 	"contributes": {
 		"keybindings": [
 			{
