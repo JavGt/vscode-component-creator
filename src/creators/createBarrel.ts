@@ -1,29 +1,29 @@
 import { templateBarrel } from '../templates';
 import { writeFile } from 'fs/promises';
 import { join } from 'path';
-import { checkExtension, GetSettings } from '../helpers';
-import { window } from 'vscode';
+import { checkExtension, getWorkspaceSettings, LanguageType } from '../helpers';
+import { NameComponent } from '../showInput/InputNameComponent';
+import { finishProcess } from '../helpers/finish-process';
 
-const createBarrer = (
-	componentName: string,
+export const createBarrer = (
+	nameComponent: NameComponent,
 	folderPath: string,
-	componentStructure: string
+	language: LanguageType
 ) => {
-	const { CreateBarrel } = GetSettings();
-	if (!CreateBarrel) return;
+	const createBarrel = getWorkspaceSettings('CreateBarrel');
 
-	const { extension } = checkExtension(componentStructure);
+	if (!createBarrel) {
+		return;
+	}
 
-	const nameDefault = componentName.split('.')[0];
+	const { extension } = checkExtension(language);
 
 	try {
 		writeFile(
 			join(folderPath, 'index' + extension),
-			templateBarrel(nameDefault, componentName)
+			templateBarrel(nameComponent.capitalize)
 		);
 	} catch (error: any) {
-		window.showErrorMessage(error.message);
+		finishProcess(error.message);
 	}
 };
-
-export { createBarrer };

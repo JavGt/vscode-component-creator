@@ -1,22 +1,21 @@
-import { GetSettings } from '../helpers';
+import { ExtensionStyle, getWorkspaceSettings } from '../helpers';
 import { window } from 'vscode';
-import { NOT_CONFIG, NOT_STYLE, STYLE_EXTENSIONS, STYLE_OPTIONS } from '../constants';
+import { NOT_CONFIGURED, STYLE_EXTENSIONS } from '../constants';
+import { finishProcess } from '../helpers/finish-process';
 
-export const selectStyleLanguage = async (TYPE_STYLE: string) => {
-	if (
-		TYPE_STYLE === STYLE_OPTIONS.STYLE_COMPONENT ||
-		TYPE_STYLE === STYLE_OPTIONS.NOT_STYLE
-	)
-		return NOT_STYLE;
+export const selectStyleLanguage = async () => {
+	const extensionStyle = getWorkspaceSettings('SelectExtensionStyle');
 
-	const { SelectExtensionStyle } = GetSettings();
-
-	if (SelectExtensionStyle !== NOT_CONFIG) return SelectExtensionStyle;
+	if (extensionStyle !== NOT_CONFIGURED) {
+		return extensionStyle;
+	}
 
 	// Pregunta que extension de la hoja de estilos tendrá
-	return await window.showQuickPick(Object.values(STYLE_EXTENSIONS), {
-		title: 'Style language',
-		placeHolder: 'Select the type of extension that your style sheet will have',
-		ignoreFocusOut: true,
-	});
+	return (await window
+		.showQuickPick(Object.values(STYLE_EXTENSIONS), {
+			title: 'Style language',
+			placeHolder: 'Select the type of extension that your style sheet will have',
+			ignoreFocusOut: true,
+		})
+		.then(style => style ?? finishProcess())) as ExtensionStyle;
 };

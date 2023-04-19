@@ -1,41 +1,25 @@
 import { join } from 'path';
-import { window } from 'vscode';
-import { GetSettings, removeDot } from '../helpers';
-import { mkdir, writeFile } from 'fs/promises';
-import { STYLE_OPTIONS } from '../constants';
+import { ExtensionStyle, StyleType } from '../helpers';
+import { writeFile } from 'fs/promises';
 import { templateStyle } from '../templates';
+import { NameComponent } from '../showInput/InputNameComponent';
+import { finishProcess } from '../helpers/finish-process';
 
-const createStyles = async (
+export const createStyles = async (
 	folderPath: string,
-	componentName: string,
-	styleType: string,
-	styleLanguage: string
+	nameComponent: NameComponent,
+	styleType: StyleType,
+	extensionStyle: ExtensionStyle
 ) => {
-	const { CreateFolderStyles } = GetSettings();
+	const isModule = styleType === 'Style Module' ? '.module' : '';
 
-	let path: string;
+	const nameFile = nameComponent.capitalize + isModule + '.' + extensionStyle;
 
-	if (CreateFolderStyles) {
-		path = join(folderPath, 'styles');
-
-		try {
-			await mkdir(path);
-		} catch (err: any) {
-			window.showErrorMessage(err.message);
-		}
-	} else path = folderPath;
-
-	const isModule = styleType === STYLE_OPTIONS.STYLE_MODULE ? '.module' : '';
-
-	const nameFile = removeDot(componentName) + isModule + '.' + styleLanguage;
-
-	const nameClass = removeDot(componentName).toLowerCase();
+	const nameClass = nameComponent.original;
 
 	try {
-		writeFile(join(path, nameFile), templateStyle(nameClass));
+		writeFile(join(folderPath, nameFile), templateStyle(nameClass));
 	} catch (error: any) {
-		window.showErrorMessage(error.message);
+		finishProcess(error.message);
 	}
 };
-
-export { createStyles };

@@ -126,7 +126,8 @@
 				"reactCreateComponent.settings.CreateFolderStyles": {
 					"type": "boolean",
 					"default": true,
-					"markdownDescription": "Controls the creation of the folder styles."
+					"markdownDescription": "Controls the creation of the folder styles.",
+					"deprecationMessage": "This setting is deprecated as unnecessary, it was removed."
 				},
 				"reactCreateComponent.settings.DefaultRoute": {
 					"type": "string",
@@ -137,6 +138,13 @@
 					"type": "boolean",
 					"default": true,
 					"markdownDescription": "Controls the creation of the interface."
+				},
+				"reactCreateComponent.settings.RouteList": {
+					"type": "array",
+					"default": [
+						"./src"
+					],
+					"markdownDescription": "Controls the list of routes to create the component."
 				}
 			}
 		}
