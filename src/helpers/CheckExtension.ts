@@ -1,11 +1,24 @@
-import { EXTENSION_OPTIONS, STRUCTURE_OPTIONS } from '../constants';
 import { templateJsx, templateTsx } from '../templates';
+import { LanguageType } from './GetSettings';
 
-export const checkExtension = (COMPONENT_STRUCTURE: string) => {
-	const isTs = COMPONENT_STRUCTURE === STRUCTURE_OPTIONS.ts;
+export const checkExtension = (language: LanguageType) => {
+	switch (language) {
+		case 'JavaScript':
+			return {
+				extension: '.js',
+				template: templateJsx,
+			};
 
-	return {
-		extension: isTs ? EXTENSION_OPTIONS.ts : EXTENSION_OPTIONS.js,
-		template: isTs ? templateTsx : templateJsx,
-	};
+		case 'TypeScript':
+			return {
+				extension: '.ts',
+				template: templateTsx,
+			};
+
+		default:
+			return {
+				extension: '.js',
+				template: templateTsx,
+			};
+	}
 };

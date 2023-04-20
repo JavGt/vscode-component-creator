@@ -1,1 +1,1 @@
-export const templateStyle = (COMPONENT_NAME: string) => `.${COMPONENT_NAME}{\n\n}`;
+export const templateStyle = (nameClass: string) => `.${nameClass} {\n  \n}`;

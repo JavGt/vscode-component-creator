@@ -1,7 +1,7 @@
-import { STYLE_OPTIONS } from '../constants';
-import { GetSettings } from './GetSettings';
+import { NameComponent } from '../showInput';
+import { ExtensionStyle, StyleType } from './GetSettings';
 
-export interface templateStyleInterface {
+export interface TemplateStyleInterface {
 	import: string;
 	etiqueta: string;
 	className: string;
@@ -9,36 +9,35 @@ export interface templateStyleInterface {
 }
 
 export const checkStyle = (
-	componentName: string,
-	styleType: string,
-	styleLanguage: string
-) => {
-	const { CreateFolderStyles } = GetSettings();
-
-	const isFolderStyles = CreateFolderStyles ? '/styles' : '';
-
+	nameComponent: NameComponent,
+	styleType: StyleType,
+	extensionStyle: ExtensionStyle
+): TemplateStyleInterface => {
 	switch (styleType) {
-		case STYLE_OPTIONS.STYLE_MODULE:
+		case 'Style Module':
 			return {
-				import: `import styles from '.${isFolderStyles}/${componentName}.module.${styleLanguage}';\n`,
-				etiqueta: `div `,
-				className: `className={styles.${componentName.toLowerCase()}}`,
+				import: `import styles from './${nameComponent.capitalize}.module.${extensionStyle}';\n`,
+				etiqueta: `div`,
+				className: `className={styles.${nameComponent.original}}`,
 				plus: ``,
 			};
-		case STYLE_OPTIONS.STYLE_TRADITIONAL:
+
+		case 'Style Traditional':
 			return {
-				import: `import '.${isFolderStyles}/${componentName}.${styleLanguage}';\n`,
-				etiqueta: `div `,
-				className: `className='${componentName.toLowerCase()}'`,
+				import: `import './${nameComponent.capitalize}.${extensionStyle}';\n`,
+				etiqueta: `div`,
+				className: `className='${nameComponent.original}'`,
 				plus: ``,
 			};
-		case STYLE_OPTIONS.STYLE_COMPONENT:
+
+		case 'Style Component':
 			return {
 				import: `import styled from 'styled-components';\n`,
-				etiqueta: `${componentName}Style`,
+				etiqueta: `${nameComponent.original}Style`,
 				className: ``,
-				plus: `\nexport const ${componentName}Style = styled.div\`\`;\n`,
+				plus: `\nexport const ${nameComponent.original}Style = styled.div\`\`;\n`,
 			};
+
 		default:
 			return {
 				import: ``,

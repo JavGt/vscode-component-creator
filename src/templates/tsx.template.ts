@@ -1,20 +1,19 @@
-import { GetSettings, templateStyleInterface } from '../helpers';
+import { getWorkspaceSettings, TemplateStyleInterface } from '../helpers';
 import { contentTemplate, importReact } from './shared.template';
 
-const templateInterface = (nameComponent: string) => {
-	return `export interface ${nameComponent}Interface {}\n`;
-};
+const templateInterface = (nameComponent: string) =>
+	`\nexport type ${nameComponent}Props = {\n}\n`;
 
 export const templateTsx = (
 	nameComponent: string,
-	templateStyle: templateStyleInterface
+	templateStyle: TemplateStyleInterface
 ) => {
-	const { CreateInterface } = GetSettings();
+	const createInterface = getWorkspaceSettings('CreateInterface');
 
 	return `${importReact()}${templateStyle.import}${
-		CreateInterface ? templateInterface(nameComponent) : ''
-	}\nconst ${nameComponent} ${
-		CreateInterface ? `: React.FC<${nameComponent}Interface> ` : ''
+		createInterface ? templateInterface(nameComponent) : ''
+	}\nconst ${nameComponent}${
+		createInterface ? `: React.FC<${nameComponent}Props> ` : ''
 	}= () => {\n${contentTemplate(
 		templateStyle.etiqueta,
 		nameComponent,

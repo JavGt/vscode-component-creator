@@ -10,7 +10,11 @@ export const messageNotName = 'Component Name is required.';
 
 export const messageCancel = 'Component creation aborted. 😢';
 
+/**
+ * @deprecated
+ */
 export const NOT_CONFIG = 'to ask';
+export const NOT_CONFIGURED = 'to ask';
 
 export const STRUCTURE_OPTIONS = {
 	ts: 'TypeScript',
@@ -36,3 +40,5 @@ export const STYLE_EXTENSIONS = {
 	SCSS: 'scss',
 	SASS: 'sass',
 };
+
+export const WORKSPACE_NAME = 'reactCreateComponent.settings';

@@ -1,15 +1,17 @@
-import { GetSettings } from '../helpers';
+import { getWorkspaceSettings } from '../helpers';
 
 export const contentTemplate = (
 	etiqueta: string,
 	nameComponent: string,
 	className: string
-) => `\treturn <${etiqueta}${className}>${nameComponent}</${etiqueta}>;\n`;
+) => `\treturn <${etiqueta} ${className}>${nameComponent}</${etiqueta}>;\n`;
 
 export const importReact = () => {
-	const { importReactOnTop } = GetSettings();
+	const importReact = getWorkspaceSettings('importReactOnTop');
 
-	if (!importReactOnTop) return '';
+	if (!importReact) {
+		return '';
+	}
 
 	return "import React from 'react';\n";
 };

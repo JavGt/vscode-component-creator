@@ -1,9 +1,9 @@
-import { templateStyleInterface } from '../helpers/CheckStyle';
+import { TemplateStyleInterface } from '../helpers/CheckStyle';
 import { contentTemplate, importReact } from './shared.template';
 
 export const templateJsx = (
 	nameComponent: string,
-	templateStyle: templateStyleInterface
+	templateStyle: TemplateStyleInterface
 ) => {
 	return `${importReact()}${
 		templateStyle.import

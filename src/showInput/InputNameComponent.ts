@@ -1,26 +1,35 @@
-import { addCapitalize } from '../helpers';
+import { capitalize, capitalizeArray } from '../helpers';
 import { window } from 'vscode';
+import { finishProcess } from '../helpers/finish-process';
 
-const InputNameComponent = async () => {
-	let isValidate = false;
-	let component;
+/**
+ * tipos de opciones que pueden dar el nombre del componente
+ * "nombre",
+ * "Nombre",
+ * "nombre del componente",
+ */
 
-	do {
-		const componentName = await window.showInputBox({
-			placeHolder: 'Component Name',
-			title: 'Component Name',
-			ignoreFocusOut: true,
-			validateInput: value =>
-				value.length === 0 ? 'The name of the component is required' : '',
-		});
-		// validar a futuro las si agrega caracteres especiales
-		component = componentName;
-		isValidate = true;
-	} while (!isValidate);
-
-	if (!component) return;
-
-	return addCapitalize(component);
+export type NameComponent = {
+	original: string;
+	capitalize: string;
 };
 
-export { InputNameComponent };
+export const getNameComponent = async (): Promise<NameComponent> => {
+	const name = await window
+		.showInputBox({
+			title: 'Component Name',
+			placeHolder: 'Ej: "name", "Name", "name of component"',
+			ignoreFocusOut: true,
+			prompt: 'Enter component Name',
+			validateInput: value =>
+				!value.length ? 'The name of the component is required' : '',
+		})
+		.then(value => value ?? finishProcess());
+
+	const hasSpace = name.includes(' ');
+
+	return {
+		original: hasSpace ? capitalizeArray(name, true) : name,
+		capitalize: hasSpace ? capitalizeArray(name) : capitalize(name),
+	};
+};
