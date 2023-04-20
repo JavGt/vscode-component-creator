@@ -12,10 +12,30 @@ export const selectStyleLanguage = async () => {
 
 	// Pregunta que extension de la hoja de estilos tendrá
 	return (await window
-		.showQuickPick(Object.values(STYLE_EXTENSIONS), {
-			title: 'Style language',
-			placeHolder: 'Select the type of extension that your style sheet will have',
-			ignoreFocusOut: true,
-		})
-		.then(style => style ?? finishProcess())) as ExtensionStyle;
+		.showQuickPick(
+			[
+				{
+					label: 'CSS',
+					detail: 'Create a component with CSS style',
+					value: 'css',
+				},
+				{
+					label: 'SCSS',
+					detail: 'Create a component with SCSS style',
+					description: 'Recommended',
+					value: 'scss',
+				},
+				{
+					label: 'SASS',
+					detail: 'Create a component with SASS style',
+					value: 'sass',
+				},
+			],
+			{
+				title: 'Style language',
+				placeHolder: 'Select the type of extension that your style sheet will have',
+				ignoreFocusOut: true,
+			}
+		)
+		.then(style => style?.value ?? finishProcess())) as ExtensionStyle;
 };

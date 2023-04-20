@@ -2,7 +2,7 @@
 	"name": "create-component-React",
 	"displayName": "React Create Component",
 	"description": "Create your React Js components (Currently) in a fast way, with multiple variety in less than 5 seconds. 🚀",
-	"version": "1.0.4",
+	"version": "1.1.0",
 	"icon": "assets/image/icon.png",
 	"author": {
 		"name": "Javier Gutierrez",
@@ -34,17 +34,18 @@
 		"publish": "vsce publish"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.70.0",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",
 		"@types/node": "16.x",
+		"@types/vscode": "^1.70.0",
 		"@typescript-eslint/eslint-plugin": "^5.31.0",
 		"@typescript-eslint/parser": "^5.31.0",
+		"@vscode/test-electron": "^2.1.5",
+		"date-fns": "^2.29.3",
 		"eslint": "^8.20.0",
 		"glob": "^8.0.3",
 		"mocha": "^10.0.0",
-		"typescript": "^4.7.4",
-		"@vscode/test-electron": "^2.1.5"
+		"typescript": "^4.7.4"
 	},
 	"repository": {
 		"type": "git",
@@ -64,6 +65,11 @@
 			{
 				"command": "Create-component",
 				"title": "Create Component",
+				"category": "RCC"
+			},
+			{
+				"command": "Create-component-React:delete-cache",
+				"title": "Delete cache",
 				"category": "RCC"
 			}
 		],
@@ -131,7 +137,7 @@
 				},
 				"reactCreateComponent.settings.DefaultRoute": {
 					"type": "string",
-					"default": "./src",
+					"default": "src/",
 					"markdownDescription": "Controls the default route of the component."
 				},
 				"reactCreateComponent.settings.CreateInterface": {
@@ -139,10 +145,10 @@
 					"default": true,
 					"markdownDescription": "Controls the creation of the interface."
 				},
-				"reactCreateComponent.settings.RouteList": {
+				"reactCreateComponent.settings.recommendedRoutes": {
 					"type": "array",
 					"default": [
-						"./src"
+						"src/components"
 					],
 					"markdownDescription": "Controls the list of routes to create the component."
 				}

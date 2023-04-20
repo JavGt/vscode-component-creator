@@ -12,10 +12,10 @@ import {
 
 import { createFolder, createStyles, createComponent, createBarrer } from './creators';
 
-export function activate(context: ExtensionContext) {
+export async function activate(context: ExtensionContext) {
 	let disposable = commands.registerCommand(comandoCreateComponent, async args => {
 		// Obtiene la ruta del archivo seleccionado
-		const path = args?.fsPath ?? (await getPath());
+		const path = args?.fsPath ?? (await getPath(context));
 
 		// Selecciona el lenguaje
 		const language = await getLanguage();
@@ -53,7 +53,14 @@ export function activate(context: ExtensionContext) {
 		);
 	});
 
-	context.subscriptions.push(disposable);
+	const deleteCache = commands.registerCommand(
+		'Create-component-React:delete-cache',
+		async args => {
+			context.workspaceState.update('routes', []);
+		}
+	);
+
+	context.subscriptions.push(disposable, deleteCache);
 }
 
 export function deactivate() {}

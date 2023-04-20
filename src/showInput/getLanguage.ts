@@ -11,10 +11,25 @@ export const getLanguage = async (): Promise<LanguageType> => {
 	}
 
 	return (await window
-		.showQuickPick(Object.values(STRUCTURE_OPTIONS), {
-			title: 'Language',
-			placeHolder: 'Select the type of component you want to create',
-			ignoreFocusOut: true,
-		})
-		.then(len => len ?? finishProcess())) as LanguageType;
+		.showQuickPick(
+			[
+				{
+					label: 'TypeScript',
+					detail: 'Create a component using TypeScript',
+					description: 'Recommended',
+					value: 'TypeScript',
+				},
+				{
+					label: 'JavaScript',
+					detail: 'Create a component using JavaScript',
+					value: 'JavaScript',
+				},
+			],
+			{
+				title: 'Language',
+				placeHolder: 'Select the type of component you want to create',
+				ignoreFocusOut: true,
+			}
+		)
+		.then(len => len?.value ?? finishProcess())) as LanguageType;
 };

@@ -17,9 +17,10 @@ export type NameComponent = {
 export const getNameComponent = async (): Promise<NameComponent> => {
 	const name = await window
 		.showInputBox({
-			placeHolder: 'Component Name',
 			title: 'Component Name',
+			placeHolder: 'Ej: "name", "Name", "name of component"',
 			ignoreFocusOut: true,
+			prompt: 'Enter component Name',
 			validateInput: value =>
 				!value.length ? 'The name of the component is required' : '',
 		})

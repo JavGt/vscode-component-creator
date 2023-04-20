@@ -10,10 +10,35 @@ export const getStyleType = async (): Promise<StyleType> => {
 		return styleType;
 	}
 	return (await window
-		.showQuickPick(Object.values(STYLE_OPTIONS), {
-			placeHolder: 'Select the type of design that your component will have.',
-			title: 'Style type',
-			ignoreFocusOut: true,
-		})
-		.then(style => style ?? finishProcess())) as StyleType;
+		.showQuickPick(
+			[
+				{
+					label: 'Style Traditional',
+					detail: 'import "./style.css;',
+					value: 'Style Traditional',
+				},
+				{
+					label: 'Style Module',
+					description: 'Recommended',
+					detail: 'import styles from "./style.module.css;"',
+					value: 'Style Module',
+				},
+				{
+					label: 'Style Component',
+					detail: 'import styled from "styled-components";',
+					value: 'Style Component',
+				},
+				{
+					label: 'None',
+					detail: 'Create a component without style',
+					value: 'Not Style',
+				},
+			],
+			{
+				placeHolder: 'Select the type of design that your component will have.',
+				title: 'Style type',
+				ignoreFocusOut: true,
+			}
+		)
+		.then(style => style?.value ?? finishProcess())) as StyleType;
 };

@@ -21,6 +21,7 @@ export const checkStyle = (
 				className: `className={styles.${nameComponent.original}}`,
 				plus: ``,
 			};
+
 		case 'Style Traditional':
 			return {
 				import: `import './${nameComponent.capitalize}.${extensionStyle}';\n`,
@@ -28,6 +29,7 @@ export const checkStyle = (
 				className: `className='${nameComponent.original}'`,
 				plus: ``,
 			};
+
 		case 'Style Component':
 			return {
 				import: `import styled from 'styled-components';\n`,
@@ -35,6 +37,7 @@ export const checkStyle = (
 				className: ``,
 				plus: `\nexport const ${nameComponent.original}Style = styled.div\`\`;\n`,
 			};
+
 		default:
 			return {
 				import: ``,

@@ -33,6 +33,7 @@ export type SettingsWorkspace = {
 	CreateInterface: boolean;
 	// eslint-disable-next-line @typescript-eslint/naming-convention
 	CreateBarrel: boolean;
+	recommendedRoutes: string[];
 };
 
 /**
@@ -63,6 +64,7 @@ export const settingsWorkspace: SettingsWorkspace = {
 	CreateInterface: true,
 	// eslint-disable-next-line @typescript-eslint/naming-convention
 	CreateBarrel: true,
+	recommendedRoutes: ['src/components'],
 };
 
 /**
