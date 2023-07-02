@@ -1,3 +1,11 @@
+<center>
+  <a align="center" href="https://github.com/JavGt/component-creator" target="_blank">
+    <picture>
+   <img alt="React Create Component logo" src="./assets/image/icon.png" width="150">
+    </picture>
+  </a>
+</center>
+
 # React Create Component
 
 Create your React Js components (Currently) in a fast way, with multiple variety in less than 5 seconds.
@@ -13,21 +21,21 @@ Create your React Js components (Currently) in a fast way, with multiple variety
 
 ## Integrations
 
-| Integrations         | Technologies                             |
-| -------------------- | ---------------------------------------- |
-| Framework or library | [React]                                  |
-| Language             | [Javascript], [Typescript]               |
-| Style extensions     | [css], [sass], [scss]                    |
-| Styles options       | [module], [Style-Component], tradicional |
+| Integrations         | Technologies                                  |
+| -------------------- | --------------------------------------------- |
+| Framework or library | [React]                                       |
+| Language             | [Javascript], [Typescript]                    |
+| Style extensions     | [CSS], [SASS], [SCSS]                         |
+| Styles options       | [CSS Module], [styled-component], tradicional |
 
-[react]: https://github.com/facebook/react
-[css]: https://developer.mozilla.org/es/docs/Web/CSS
-[sass]: https://github.com/sass/sass
-[scss]: https://github.com/sass/sass
-[typescript]: https://github.com/microsoft/TypeScript
+[React]: https://github.com/facebook/react
+[CSS]: https://developer.mozilla.org/es/docs/Web/CSS
+[SASS]: https://github.com/sass/sass
+[SCSS]: https://github.com/sass/sass
+[Typescript]: https://github.com/microsoft/TypeScript
 [javascript]: https://developer.mozilla.org/es/docs/Web/JavaScript
-[style-component]: https://github.com/styled-components/styled-components
-[module]: https://github.com/css-modules/css-modules
+[styled-component]: https://github.com/styled-components/styled-components
+[CSS Module]: https://github.com/css-modules/css-modules
 
 ## How does it work?
 
@@ -49,41 +57,29 @@ You can make plugin settings to make component creation much faster.
 
 ## Structure Results
 
-```
+```routes
 ComponentFolder
-│── Component.tsx        // The component can have the extension ".tsx" or ".jsx"
-|── Styles               // Folder where you store the styles
-│    └── Component.css   // The extension will depend on the selected option
-└── index.tsx            // Index file to export the component
+│
+│── Component.{jsx, tsx}
+│
+|── styles.{css, scss, sass}
+│
+└── index.{js, ts}
 ```
 
-## Component result example
+## Example of output with traditional CSS
 
 ### Javascript
 
-```javascript
-import React from 'react';
-import './styles/ComponentName.css';
-
-const ComponentName = () => {
-	return <div className='ComponentName'>ComponentName</div>;
-};
-
-export default ComponentName;
-```
+<img alt="Ejemplo de resultado de Js" height="300" src="./assets/images/examples/example-js.png">
 
 ### css
 
-```css
-.ComponentName {
-}
-```
+<img alt="Ejemplo de resultado de CSS" height="200" src="./assets/images/examples/example-css.png">
 
 ### Barrel
 
-```javascript
-export { default as ComponentName } from './ComponentName';
-```
+<img alt="Ejemplo de resultado de Barrel" height="200" src="./assets/images/examples/example-barrel.png">
 
 ### License
 

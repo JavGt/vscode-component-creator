@@ -1,7 +1,8 @@
 import { join } from 'path';
-import { access, mkdir } from 'fs/promises';
+import { mkdir } from 'fs/promises';
 import { finishProcess } from '../helpers/finish-process';
-import { NameComponent } from '../showInput/InputNameComponent';
+import { NameComponent } from '../showInput/getNameComponent';
+import { checkPathExistence } from '../helpers/checkPathExistence';
 
 export const createFolder = async (
 	path: string,
@@ -11,16 +12,16 @@ export const createFolder = async (
 	const folderPath = join(path, componentName.capitalize);
 
 	// Verifica si la carpeta ya existe
-	try {
-		await access(folderPath);
-
-		finishProcess(
-			`The Component "${componentName.capitalize}" already exists in the path ${folderPath}`
-		);
-	} catch (err) {}
+	checkPathExistence(
+		folderPath,
+		path =>
+			`The Component "${componentName.capitalize}" already exists in the path ${path}`
+	);
 
 	try {
-		await mkdir(folderPath, { recursive: true });
+		await mkdir(folderPath, {
+			recursive: true,
+		});
 	} catch (err: any) {
 		finishProcess(err.message);
 	}

@@ -1,24 +1,25 @@
+import { LANGUAGE_OPTIONS } from '../constants';
 import { templateJsx, templateTsx } from '../templates';
-import { LanguageType } from './GetSettings';
+import { LanguageType } from '../types';
 
 export const checkExtension = (language: LanguageType) => {
 	switch (language) {
-		case 'JavaScript':
+		case LANGUAGE_OPTIONS.javascript.value:
 			return {
-				extension: '.js',
+				...LANGUAGE_OPTIONS.javascript,
 				template: templateJsx,
 			};
 
-		case 'TypeScript':
+		case LANGUAGE_OPTIONS.typescript.value:
 			return {
-				extension: '.ts',
+				...LANGUAGE_OPTIONS.typescript,
 				template: templateTsx,
 			};
 
 		default:
 			return {
-				extension: '.js',
-				template: templateTsx,
+				...LANGUAGE_OPTIONS.javascript,
+				template: templateJsx,
 			};
 	}
 };

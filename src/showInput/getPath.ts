@@ -6,12 +6,12 @@ import {
 	workspace,
 } from 'vscode';
 import { join } from 'path';
-import { finishProcess } from '../helpers/finish-process';
+import { finishProcess } from '../helpers';
 import { getWorkspace } from './getWorkspace';
 import { statSync } from 'fs';
 import { access, readdir } from 'fs/promises';
 import { formatDistance } from 'date-fns';
-import { getWorkspaceSettings } from '../helpers/GetSettings';
+import { getWorkspaceSettings } from '../helpers';
 
 const optionsRecommended = () => {
 	const optionsRecommended = getWorkspaceSettings('recommendedRoutes');
@@ -26,7 +26,7 @@ const optionsRecommended = () => {
 			label: option,
 		})),
 		{
-			label: 'Tools. 🔧',
+			label: 'Extras',
 			description: 'folder',
 			kind: QuickPickItemKind.Separator,
 		},
@@ -34,7 +34,7 @@ const optionsRecommended = () => {
 			label: 'create',
 			detail: 'Create a new folder. 📁 ',
 		},
-	];
+	] as QuickPickItem[];
 };
 
 export const getPath = async (ctx: ExtensionContext): Promise<string> => {
@@ -54,6 +54,51 @@ export const getPath = async (ctx: ExtensionContext): Promise<string> => {
 			pick.ignoreFocusOut = true;
 			pick.placeholder = 'Base url /';
 			pick.title = 'Select a path or search (To finish it must end with /)';
+
+			// * Sirve para seleccionará mas de 1
+			// pick.canSelectMany = true;
+
+			// * Sirve como event cuando selecciona otro item de la lista (Se usa solo cuando se canSelectMany esta en true)
+			// pick.onDidChangeSelection(event => {
+			// 	console.log('onDidChangeSelection', event);
+			// });
+
+			// * Sirve como event cuando cambias de sección en el list
+			pick.onDidChangeActive(items => {
+				// if (items[0] && items[0].label === 'Elemento 1') {
+				// 	// La flecha derecha ha sido presionada, haz algo aquí
+				// 	console.log('La flecha derecha ha sido presionada');
+				// }
+			});
+
+			pick.show();
+
+			// * Sirve como event cuando el valor dentro del input cambia
+			pick.onDidChangeValue(async value => {
+				if (!value.length) {
+					await getOptions();
+				}
+
+				if (value.endsWith('/')) {
+					await getOptions(value);
+				}
+			});
+
+			pick.onDidAccept(() => {
+				const { label: value } = pick.selectedItems[0];
+
+				if (value !== 'create') {
+					addOptionCache(value);
+				}
+
+				resolve(value);
+			});
+
+			pick.onDidHide(() => {
+				if (!pick.selectedItems.length) {
+					finishProcess();
+				}
+			});
 
 			const getOptions = async (prompt: string = '') => {
 				// concatena el workspaceFolder con la ruta
@@ -120,31 +165,7 @@ export const getPath = async (ctx: ExtensionContext): Promise<string> => {
 				];
 			};
 
-			pick.onDidChangeValue(async value => {
-				if (!value.length) {
-					await getOptions();
-				}
-
-				if (value.endsWith('/')) {
-					await getOptions(value);
-				}
-			});
-
-			pick.onDidAccept(() => {
-				const { label: value } = pick.activeItems[0];
-
-				if (value !== 'create') {
-					addOptionCache(value);
-				}
-
-				resolve(value);
-			});
-
 			getOptions();
-
-			pick.onDidHide(() => finishProcess());
-
-			pick.show();
 		});
 	};
 
@@ -162,31 +183,29 @@ export const getPath = async (ctx: ExtensionContext): Promise<string> => {
 	};
 
 	return await pickCustom().then(async value => {
-		if (value === 'create') {
-			const defaultRoute = getWorkspaceSettings('DefaultRoute');
-
-			return await window
-				.showInputBox({
-					value: defaultRoute,
-					ignoreFocusOut: true,
-					placeHolder: 'Folder name',
-					prompt: 'Enter the name of the folder you want to create.',
-					validateInput: value => (!value.length ? 'The folder name is required.' : ''),
-				})
-				.then(folder => {
-					if (!folder) {
-						finishProcess();
-					}
-
-					addOptionCache(
-						// Remover la barra al final
-						folder.endsWith('/') ? folder.slice(0, -1) : folder
-					);
-
-					return join(workspaceFolder + '/' + folder);
-				});
+		if (value !== 'create') {
+			return join(workspaceFolder + '/' + value);
 		}
 
-		return join(workspaceFolder + '/' + value);
+		const defaultRoute = getWorkspaceSettings('defaultRoute');
+
+		const path = await window.showInputBox({
+			value: defaultRoute,
+			ignoreFocusOut: true,
+			placeHolder: 'Folder name',
+			prompt: 'Enter the name of the folder you want to create.',
+			validateInput: value => (!value.length ? 'The folder name is required.' : ''),
+		});
+
+		if (!path) {
+			finishProcess();
+		}
+
+		addOptionCache(
+			// Remover la barra al final
+			path.endsWith('/') ? path.slice(0, -1) : path
+		);
+
+		return join(workspaceFolder + '/' + path);
 	});
 };

@@ -1,5 +1,7 @@
+import { STYLE_OPTIONS } from '../constants/style';
 import { NameComponent } from '../showInput';
-import { ExtensionStyle, StyleType } from './GetSettings';
+import { getWorkspaceSettings } from '.';
+import { ExtensionStyle, StyleType } from '../types';
 
 export interface TemplateStyleInterface {
 	import: string;
@@ -14,28 +16,35 @@ export const checkStyle = (
 	extensionStyle: ExtensionStyle
 ): TemplateStyleInterface => {
 	switch (styleType) {
-		case 'Style Module':
+		case STYLE_OPTIONS.module.value:
 			return {
-				import: `import styles from './${nameComponent.capitalize}.module.${extensionStyle}';\n`,
+				import: `import styles from './${nameComponent.capitalize}.module.${extensionStyle}';`,
 				etiqueta: `div`,
-				className: `className={styles.${nameComponent.original}}`,
+				className: ` className={styles.${nameComponent.original}}`,
 				plus: ``,
 			};
 
-		case 'Style Traditional':
+		case STYLE_OPTIONS.traditional.value:
 			return {
-				import: `import './${nameComponent.capitalize}.${extensionStyle}';\n`,
+				import: `import './${nameComponent.capitalize}.${extensionStyle}';`,
 				etiqueta: `div`,
-				className: `className='${nameComponent.original}'`,
+				className: ` className='${nameComponent.original}'`,
 				plus: ``,
 			};
 
-		case 'Style Component':
+		case STYLE_OPTIONS.component.value:
+			const styledComponentsLibrary = getWorkspaceSettings('styledComponentsLibrary');
+
+			const importLib =
+				styledComponentsLibrary === 'styled-components'
+					? 'styled-components'
+					: '@emotion/styled';
+
 			return {
-				import: `import styled from 'styled-components';\n`,
-				etiqueta: `${nameComponent.original}Style`,
+				import: `import styled from '${importLib}';`,
+				etiqueta: `${nameComponent.capitalize}Stl`,
 				className: ``,
-				plus: `\nexport const ${nameComponent.original}Style = styled.div\`\`;\n`,
+				plus: `export const ${nameComponent.capitalize}Stl = styled.div\`\`;`,
 			};
 
 		default:

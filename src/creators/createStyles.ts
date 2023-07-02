@@ -1,9 +1,10 @@
 import { join } from 'path';
-import { ExtensionStyle, StyleType } from '../helpers';
 import { writeFile } from 'fs/promises';
 import { templateStyle } from '../templates';
-import { NameComponent } from '../showInput/InputNameComponent';
+import { NameComponent } from '../showInput/getNameComponent';
 import { finishProcess } from '../helpers/finish-process';
+import { STYLE_OPTIONS, STYLE_EXTENSIONS } from '../constants/style';
+import { ExtensionStyle, StyleType } from '../types';
 
 export const createStyles = async (
 	folderPath: string,
@@ -11,14 +12,15 @@ export const createStyles = async (
 	styleType: StyleType,
 	extensionStyle: ExtensionStyle
 ) => {
-	const isModule = styleType === 'Style Module' ? '.module' : '';
+	const isModule = styleType === STYLE_OPTIONS.module.value ? '.module' : '';
 
-	const nameFile = nameComponent.capitalize + isModule + '.' + extensionStyle;
+	const fileName =
+		nameComponent.capitalize + isModule + STYLE_EXTENSIONS[extensionStyle].ext;
 
-	const nameClass = nameComponent.original;
+	const className = nameComponent.original;
 
 	try {
-		writeFile(join(folderPath, nameFile), templateStyle(nameClass));
+		writeFile(join(folderPath, fileName), templateStyle(className));
 	} catch (error: any) {
 		finishProcess(error.message);
 	}
