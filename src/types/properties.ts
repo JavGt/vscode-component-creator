@@ -12,6 +12,8 @@ export type TypePage = 'folder' | 'file';
 
 export type TypeFolder = 'pages' | 'app';
 
+export type Platform = 'web' | 'native';
+
 export type SettingsWorkspace = {
 	importReactOnTop: boolean;
 	defaultRoute: string;
@@ -28,4 +30,5 @@ export type SettingsWorkspace = {
 	selectedExtras: Extras[];
 	askExtras: boolean;
 	pageType: TypePage | 'to ask';
+	platform: Platform | 'to ask';
 };

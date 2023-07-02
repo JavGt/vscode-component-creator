@@ -2,7 +2,7 @@
 	"name": "create-component-React",
 	"displayName": "React Create Component",
 	"description": "Create your React Js components (Currently) in a fast way, with multiple variety in less than 5 seconds. 🚀",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"icon": "assets/images/icon/icon.png",
 	"main": "out/extension.js",
 	"author": {
@@ -215,6 +215,16 @@
 					],
 					"default": "to ask",
 					"markdownDescription": "Controls the type of page to create (`folder` or `file`) for nextjs."
+				},
+				"reactCreateComponent.settings.platform": {
+					"type": "string",
+					"enum": [
+						"to ask",
+						"web",
+						"native"
+					],
+					"default": "to ask",
+					"markdownDescription": "Controls the platform to create the component (`web` or `native`)."
 				}
 			}
 		}
