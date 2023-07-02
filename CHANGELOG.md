@@ -1,5 +1,12 @@
 
 
+## [1.3.0](https://github.com/JavGt/component-creator/compare/v1.2.0...v1.3.0) (2023-07-02)
+
+
+### Features
+
+* :sparkles: agregacion de la opcion para native ([d564434](https://github.com/JavGt/component-creator/commit/d564434c60d725b12a3d606763e6eff3755c8e01))
+
 ## 1.2.0 (2023-07-02)
 
 
