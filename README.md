@@ -1,9 +1,6 @@
+
 <center>
-  <a align="center" href="https://github.com/JavGt/component-creator" target="_blank">
-    <picture>
-   <img alt="React Create Component logo" src="./assets/image/icon.png" width="150">
-    </picture>
-  </a>
+   <img alt="React Create Component logo" src="https://raw.githubusercontent.com/JavGt/component-creator/main/assets/images/icon/icon.png" width="150">
 </center>
 
 # React Create Component
