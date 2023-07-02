@@ -2,8 +2,9 @@
 	"name": "create-component-React",
 	"displayName": "React Create Component",
 	"description": "Create your React Js components (Currently) in a fast way, with multiple variety in less than 5 seconds. 🚀",
-	"version": "1.1.0",
-	"icon": "assets/image/icon.png",
+	"version": "1.1.5",
+	"icon": "assets/images/icon/icon.png",
+	"main": "out/extension.js",
 	"author": {
 		"name": "Javier Gutierrez",
 		"email": "javier.bz.gt@gmail.com",
@@ -11,12 +12,12 @@
 	},
 	"publisher": "JavierGutierrez",
 	"engines": {
-		"vscode": "^1.70.0"
+		"vscode": "^1.70.0",
+		"node": ">18.0.0"
 	},
 	"categories": [
 		"Other"
 	],
-	"main": "out/extension.js",
 	"keywords": [
 		"react",
 		"javascript",
@@ -24,16 +25,19 @@
 		"jsx"
 	],
 	"scripts": {
-		"vscode:prepublish": "yarn run compile",
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
 		"pretest": "yarn run compile && yarn run lint",
 		"lint": "eslint src --ext ts",
 		"test": "node ./out/test/runTest.js",
 		"build": "vsce package",
-		"publish": "vsce publish"
+		"publish": "vsce publish",
+		"check-types": "tsc --noEmit --pretty --project tsconfig.json",
+		"vscode:prepublish": "yarn run compile",
+		"release": "release-it"
 	},
 	"devDependencies": {
+		"@release-it/conventional-changelog": "^5.1.1",
 		"@types/glob": "^7.2.0",
 		"@types/mocha": "^9.1.1",
 		"@types/node": "16.x",
@@ -41,43 +45,59 @@
 		"@typescript-eslint/eslint-plugin": "^5.31.0",
 		"@typescript-eslint/parser": "^5.31.0",
 		"@vscode/test-electron": "^2.1.5",
-		"date-fns": "^2.29.3",
 		"eslint": "^8.20.0",
 		"glob": "^8.0.3",
 		"mocha": "^10.0.0",
+		"release-it": "^15.11.0",
 		"typescript": "^4.7.4"
+	},
+	"dependencies": {
+		"date-fns": "^2.29.3"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/JavGt/Create-component"
+		"url": "git+https://github.com/JavGt/component-creator.git"
 	},
-	"homepage": "https://github.com/JavGt/Create-component/blob/main/README.md",
+	"homepage": "https://github.com/JavGt/component-creator#readme",
 	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Jean-Luc-2020/ebookReader/issues"
+	},
 	"activationEvents": [],
 	"contributes": {
-		"keybindings": [
-			{
-				"command": "Create-component",
-				"key": "ctrl+shift+l"
-			}
-		],
 		"commands": [
 			{
-				"command": "Create-component",
+				"command": "RCC:create-component",
 				"title": "Create Component",
 				"category": "RCC"
 			},
 			{
-				"command": "Create-component-React:delete-cache",
+				"command": "RCC:delete-cache",
 				"title": "Delete cache",
 				"category": "RCC"
+			},
+			{
+				"command": "RCC:create-page",
+				"title": "Create Page",
+				"category": "RCC"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "RCC:create-component",
+				"key": "ctrl+shift+l"
 			}
 		],
 		"menus": {
 			"explorer/context": [
 				{
 					"when": "explorerResourceIsFolder",
-					"command": "Create-component",
+					"command": "RCC:create-component",
+					"group": "Hli@React"
+				},
+				{
+					"when": "explorerResourceIsFolder && resourcePath =~ /.*[Aa]pp.*/ || resourcePath =~ /.*[Pp]ages.*/",
+					"command": "RCC:create-page",
 					"group": "Hli@React"
 				}
 			]
@@ -88,10 +108,10 @@
 			"properties": {
 				"reactCreateComponent.settings.importReactOnTop": {
 					"type": "boolean",
-					"markdownDescription": "Controls if snippets should add `import React from 'react';` at the top of components.\nUse if you have React +17 and use jsx transform.",
+					"markdownDescription": "Controls if should add `import React from 'react';` at the top of components",
 					"default": true
 				},
-				"reactCreateComponent.settings.SelectExtensionStyle": {
+				"reactCreateComponent.settings.selectExtensionStyle": {
 					"type": "string",
 					"enum": [
 						"to ask",
@@ -100,50 +120,53 @@
 						"scss"
 					],
 					"default": "to ask",
-					"markdownDescription": "Controls the style of the component.\nUse if you want to use css, sass, or scss."
+					"markdownDescription": "Controls the style of the component.Use if you want to use `css`, `sass`, or `scss`."
 				},
-				"reactCreateComponent.settings.CreateBarrel": {
+				"reactCreateComponent.settings.createBarrel": {
 					"type": "boolean",
 					"default": true,
-					"markdownDescription": "Controls the creation of the barrel file or index file inside the folder."
+					"markdownDescription": "Controls the creation of the barrel file or index file `index.[tj]s` inside the folder."
 				},
-				"reactCreateComponent.settings.SelectLanguage": {
+				"reactCreateComponent.settings.selectLanguage": {
 					"type": "string",
 					"enum": [
 						"to ask",
-						"Javascript",
-						"TypeScript"
+						"javascript",
+						"typescript"
 					],
 					"default": "to ask",
-					"markdownDescription": "Controls the language of the component.\nUse if you want to use javascript or typescript."
+					"markdownDescription": "Controls the language of the component (`javascript` or `typescript`)."
 				},
-				"reactCreateComponent.settings.SelectTypeStyle": {
+				"reactCreateComponent.settings.selectTypeStyle": {
 					"type": "string",
 					"enum": [
 						"to ask",
-						"Style Traditional",
-						"Style Module",
-						"Style Component",
-						"Not style"
+						"traditional",
+						"module",
+						"component",
+						"none"
 					],
 					"default": "to ask",
-					"markdownDescription": "Controls the type of the component.\nUse if you want to use style traditional, style module, style component, or not style."
+					"markdownDescription": "Controls the type of style the component (`traditional`, `module`, `component` or `none`)."
 				},
-				"reactCreateComponent.settings.CreateFolderStyles": {
-					"type": "boolean",
-					"default": true,
-					"markdownDescription": "Controls the creation of the folder styles.",
-					"deprecationMessage": "This setting is deprecated as unnecessary, it was removed."
-				},
-				"reactCreateComponent.settings.DefaultRoute": {
+				"reactCreateComponent.settings.defaultRoute": {
 					"type": "string",
 					"default": "src/",
-					"markdownDescription": "Controls the default route of the component."
+					"markdownDescription": "Control the default route when creating a new route."
 				},
-				"reactCreateComponent.settings.CreateInterface": {
+				"reactCreateComponent.settings.createInterface": {
 					"type": "boolean",
 					"default": true,
 					"markdownDescription": "Controls the creation of the interface."
+				},
+				"reactCreateComponent.settings.interfaceType": {
+					"type": "string",
+					"enum": [
+						"interface",
+						"type"
+					],
+					"default": "type",
+					"markdownDescription": "Controls the type of interface to create (`interface` or `type`)."
 				},
 				"reactCreateComponent.settings.recommendedRoutes": {
 					"type": "array",
@@ -151,6 +174,74 @@
 						"src/components"
 					],
 					"markdownDescription": "Controls the list of routes to create the component."
+				},
+				"reactCreateComponent.settings.styledComponentsLibrary": {
+					"type": "string",
+					"enum": [
+						"styled-components",
+						"emotion"
+					],
+					"default": "styled-components",
+					"markdownDescription": "Controls the library to use for styled components."
+				},
+				"reactCreateComponent.settings.importPropTypes": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Controls the import of `import PropTypes from 'prop-types';`."
+				},
+				"reactCreateComponent.settings.selectedExtras": {
+					"type": "array",
+					"default": [],
+					"markdownDescription": "Controls the list of extras to create the component.",
+					"items": {
+						"type": "string",
+						"enum": [
+							"stories",
+							"test"
+						]
+					}
+				},
+				"reactCreateComponent.settings.askExtras": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Controls if the user will be asked about the extras."
+				},
+				"reactCreateComponent.settings.pageType": {
+					"type": "string",
+					"enum": [
+						"to ask",
+						"folder",
+						"file"
+					],
+					"default": "to ask",
+					"markdownDescription": "Controls the type of page to create (`folder` or `file`) for nextjs."
+				}
+			}
+		}
+	},
+	"release-it": {
+		"git": {
+			"commitMessage": "chore(release): v${version}",
+			"tagName": "v${version}"
+		},
+		"github": {
+			"release": true
+		},
+		"plugins": {
+			"@release-it/conventional-changelog": {
+				"infile": "CHANGELOG.md",
+				"preset": {
+					"name": "conventionalcommits",
+					"types": [
+						{
+							"type": "feat",
+							"section": "Features"
+						},
+						{
+							"type": "fix",
+							"section": "Bug Fixes"
+						}
+					]
 				}
 			}
 		}

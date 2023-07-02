@@ -1,22 +1,42 @@
 import { getWorkspaceSettings, TemplateStyleInterface } from '../helpers';
-import { contentTemplate, importReact } from './shared.template';
+import { contentTemplate, importReact, typeFunction } from './shared.template';
 
-const templateInterface = (nameComponent: string) =>
-	`\nexport type ${nameComponent}Props = {\n}\n`;
+const templateInterface = (nameComponent: string) => {
+	const createInterface = getWorkspaceSettings('createInterface');
+	const interfaceType = getWorkspaceSettings('interfaceType');
 
+	const type = createInterface
+		? `export ${
+				interfaceType === 'type'
+					? `type ${nameComponent}Props =`
+					: `interface ${nameComponent}Props`
+		  } {\n}\n\n`
+		: '';
+
+	const assignation = createInterface ? `: React.FC<${nameComponent}Props> ` : '';
+
+	return {
+		type,
+		assignation,
+	};
+};
 export const templateTsx = (
 	nameComponent: string,
 	templateStyle: TemplateStyleInterface
 ) => {
-	const createInterface = getWorkspaceSettings('CreateInterface');
+	const { type, assignation } = templateInterface(nameComponent);
+	const importLib = importReact();
 
-	return `${importReact()}${templateStyle.import}${
-		createInterface ? templateInterface(nameComponent) : ''
-	}\nconst ${nameComponent}${
-		createInterface ? `: React.FC<${nameComponent}Props> ` : ''
-	}= () => {\n${contentTemplate(
+	const imports = [importLib, templateStyle.import].filter(Boolean).join('\n').trim();
+
+	const plus = [templateStyle.plus].filter(Boolean).join('\n\n');
+	const { initial, end } = typeFunction();
+
+	return `${imports}${
+		imports ? '\n\n' : ''
+	}${type}${initial}${nameComponent}${assignation}${end}${contentTemplate(
 		templateStyle.etiqueta,
 		nameComponent,
 		templateStyle.className
-	)}};\n${templateStyle.plus}\nexport default ${nameComponent};\n`;
+	)}};\n\n${plus}${plus ? '\n\n' : ''}export default ${nameComponent};\n`;
 };

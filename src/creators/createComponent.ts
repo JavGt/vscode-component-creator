@@ -1,21 +1,20 @@
 import { join } from 'path';
 import { commands, Uri, window } from 'vscode';
-import { checkExtension, checkStyle, LanguageType, removeDot } from '../helpers';
+import { checkExtension, checkStyle } from '../helpers';
 import { writeFile } from 'fs/promises';
-import { NameComponent } from '../showInput/InputNameComponent';
-import { ExtensionStyle, StyleType } from '../helpers/GetSettings';
-import { NOT_STYLE } from '../constants/constants';
+import { NameComponent } from '../showInput/getNameComponent';
+import type { ExtensionStyle, LanguageType, StyleType } from '../types';
 
-const createComponent = async (
+export const createComponent = async (
 	folderPath: string,
 	componentName: NameComponent,
 	language: LanguageType,
 	styleType: StyleType,
 	extensionStyle: ExtensionStyle
 ) => {
-	const { extension, template } = checkExtension(language);
+	const { template, jxs } = checkExtension(language);
 
-	const fileName = componentName.capitalize + extension + 'x';
+	const fileName = componentName.capitalize + jxs;
 
 	const componentPath = join(folderPath, fileName);
 
@@ -29,5 +28,3 @@ const createComponent = async (
 
 	commands.executeCommand('vscode.open', Uri.file(componentPath));
 };
-
-export { createComponent };
