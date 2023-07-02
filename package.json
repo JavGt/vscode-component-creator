@@ -2,7 +2,7 @@
 	"name": "create-component-React",
 	"displayName": "React Create Component",
 	"description": "Create your React Js components (Currently) in a fast way, with multiple variety in less than 5 seconds. 🚀",
-	"version": "1.1.5",
+	"version": "1.2.0",
 	"icon": "assets/images/icon/icon.png",
 	"main": "out/extension.js",
 	"author": {
