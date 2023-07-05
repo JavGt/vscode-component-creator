@@ -18,6 +18,7 @@ export const settingsWorkspace: SettingsWorkspace = {
 	selectedExtras: [],
 	askExtras: true,
 	pageType: 'to ask',
+	platform: 'to ask',
 };
 
 /**
