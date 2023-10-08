@@ -5,9 +5,9 @@ import { SettingsWorkspace } from '../types/properties';
 export const settingsWorkspace: SettingsWorkspace = {
 	importReactOnTop: true,
 	defaultRoute: 'src/components',
-	selectLanguage: 'to ask',
-	selectTypeStyle: 'to ask',
-	selectExtensionStyle: 'to ask',
+	lenguaje: 'to ask',
+	typeStyle: 'to ask',
+	extensionStyle: 'to ask',
 	createInterface: true,
 	createBarrel: true,
 	recommendedRoutes: ['src/components'],

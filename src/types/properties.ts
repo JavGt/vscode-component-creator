@@ -17,9 +17,9 @@ export type Platform = 'web' | 'native';
 export type SettingsWorkspace = {
 	importReactOnTop: boolean;
 	defaultRoute: string;
-	selectLanguage: LanguageType | 'to ask';
-	selectTypeStyle: StyleType | 'to ask';
-	selectExtensionStyle: ExtensionStyle | 'to ask';
+	lenguaje: LanguageType | 'to ask';
+	typeStyle: StyleType | 'to ask';
+	extensionStyle: ExtensionStyle | 'to ask';
 	createInterface: boolean;
 	createBarrel: boolean;
 	recommendedRoutes: string[];

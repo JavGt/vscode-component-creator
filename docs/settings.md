@@ -16,7 +16,7 @@ Description: Controls if should add `import React from 'react';` at the top of c
 }
 ```
 
-## Select extension style
+## Extension style
 
 type: `string`
 
@@ -30,7 +30,7 @@ Description: Controls the style of the component.Use if you want to use `css`, `
 
 ```json
 {
-  "reactCreateComponent.settings.selectExtensionStyle": "css"
+  "reactCreateComponent.settings.extensionStyle": "css"
 }
 ```
 
@@ -50,7 +50,7 @@ Description: Controls the creation of the barrel file or index file `index.[tj]s
 }
 ```
 
-## Select language
+## Lenguaje
 
 type: `string`
 
@@ -64,11 +64,11 @@ Description: Controls the language of the component (`javascript` or `typescript
 
 ```json
 {
-  "reactCreateComponent.settings.selectLanguage": "javascript"
+  "reactCreateComponent.settings.lenguaje": "javascript"
 }
 ```
 
-## select type style
+## Type style
 
 type: `string`
 
@@ -82,7 +82,7 @@ Description: Controls the type of style the component (`traditional`, `module`, 
 
 ```json
 {
-  "reactCreateComponent.settings.selectTypeStyle": "component"
+  "reactCreateComponent.settings.selectTypeStyletypeStyle": "component"
 }
 ```
 
