@@ -3,7 +3,7 @@ import { WORKSPACE_NAME } from '../constants/constants';
 import { SettingsWorkspace } from '../types/properties';
 
 export const settingsWorkspace: SettingsWorkspace = {
-  importReactOnTop: true,
+  importReact: true,
   defaultRoute: 'src/components',
   lenguaje: 'to ask',
   typeStyle: 'to ask',
@@ -27,7 +27,7 @@ export const settingsWorkspace: SettingsWorkspace = {
  * @returns Valor de la configuración
  * @example
  * getWorkspaceSettings('defaultRoute') : string
- * getWorkspaceSettings('importReactOnTop') : boolean
+ * getWorkspaceSettings('importReact') : boolean
  */
 export const getWorkspaceSettings = <K extends keyof SettingsWorkspace>(
   setting: K

@@ -12,7 +12,7 @@ export const contentTemplate = (
 };
 
 export const importReact = () => {
-  const importReact = getWorkspaceSettings('importReactOnTop');
+  const importReact = getWorkspaceSettings('importReact');
 
   if (!importReact) return '';
 

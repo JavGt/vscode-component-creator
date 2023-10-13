@@ -15,7 +15,7 @@ export type TypeFolder = 'pages' | 'app';
 export type Platform = 'web' | 'native';
 
 export type SettingsWorkspace = {
-  importReactOnTop: boolean;
+  importReact: boolean;
   defaultRoute: string;
   lenguaje: LanguageType | 'to ask';
   typeStyle: StyleType | 'to ask';

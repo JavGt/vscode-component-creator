@@ -6,13 +6,13 @@ type: `boolean`
 
 Default: `true`
 
-Description: Controls if should add `import React from 'react';` at the top of components
+Description: Controls whether to automatically include the `import React from 'react';` statement at the top of newly created React components. Set to `true` to include the import statement, and `false` to omit it. This setting enhances code clarity and conformity to best practices.
 
 ### Example
 
 ```json
 {
-  "reactCreateComponent.settings.importReactOnTop": true
+  "reactCreateComponent.settings.importReact": true
 }
 ```
 
