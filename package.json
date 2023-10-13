@@ -161,10 +161,10 @@
           "default": "src/",
           "markdownDescription": "Control the default route when creating a new route."
         },
-        "reactCreateComponent.settings.createInterface": {
+        "reactCreateComponent.settings.createTypes": {
           "type": "boolean",
           "default": true,
-          "markdownDescription": "Controls the creation of the interface."
+          "markdownDescription": "Controls whether to generate type annotations for TypeScript or PropTypes for JavaScript when creating the component. Set to `true` to automatically create types (interface for TypeScript or PropTypes for JavaScript), and `false` to skip type generation."
         },
         "reactCreateComponent.settings.interfaceType": {
           "type": "string",
@@ -175,6 +175,7 @@
           "default": "type",
           "markdownDescription": "Controls the type of interface to create (`interface` or `type`)."
         },
+     
         "reactCreateComponent.settings.recommendedRoutes": {
           "type": "array",
           "default": [
@@ -191,11 +192,7 @@
           "default": "styled-components",
           "markdownDescription": "Controls the library to use for styled components."
         },
-        "reactCreateComponent.settings.importPropTypes": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Controls the import of `import PropTypes from 'prop-types';`."
-        },
+       
         "reactCreateComponent.settings.selectedExtras": {
           "type": "array",
           "default": [],

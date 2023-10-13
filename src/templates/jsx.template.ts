@@ -1,7 +1,7 @@
 import { TemplateStyleInterface } from '../helpers/checkStyle';
 import {
   contentTemplate,
-  importPropTypes,
+  propTypes,
   importReact,
   typeFunction,
 } from './shared.template';
@@ -11,17 +11,15 @@ export const templateJsx = (
   templateStyle: TemplateStyleInterface
 ) => {
   const importLib = importReact();
-  const { import: isImportPropTypes, plus: plusImportPropTypes } =
-    importPropTypes(nameComponent);
+  const { import: importPropTypes, plus: plusPropTypes } =
+    propTypes(nameComponent);
 
-  const imports = [importLib, templateStyle.import, isImportPropTypes]
+  const imports = [importLib, templateStyle.import, importPropTypes]
     .filter(Boolean)
     .join('\n')
     .trim();
 
-  const plus = [templateStyle.plus, plusImportPropTypes]
-    .filter(Boolean)
-    .join('\n\n');
+  const plus = [templateStyle.plus, plusPropTypes].filter(Boolean).join('\n\n');
 
   const { initial, end } = typeFunction();
 

@@ -102,19 +102,19 @@ Description: Control the default route when creating a new route
 }
 ```
 
-## Create interface
+## Create types
 
 type: `boolean`
 
 Default: `true`
 
-Description: Controls the creation of the interface
+Description: Controls whether to generate type annotations for TypeScript or PropTypes for JavaScript when creating the component. Set to `true` to automatically create types (interface for TypeScript or PropTypes for JavaScript), and `false` to skip type generation.
 
 ### Example
 
 ```json
 {
-  "reactCreateComponent.settings.createInterface": true
+  "reactCreateComponent.settings.createTypes": true
 }
 ```
 
@@ -170,13 +170,6 @@ Description: Controls the library to use for styled components.
 }
 ```
 
-## Import propTypes
-
-type: `boolean`
-
-Default: `true`
-
-Description: Controls the import of `import PropTypes from 'prop-types';`
 
 ### Example
 

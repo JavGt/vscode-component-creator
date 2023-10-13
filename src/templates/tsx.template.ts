@@ -2,10 +2,10 @@ import { getWorkspaceSettings, TemplateStyleInterface } from '../helpers';
 import { contentTemplate, importReact, typeFunction } from './shared.template';
 
 const templateInterface = (nameComponent: string) => {
-  const createInterface = getWorkspaceSettings('createInterface');
+  const createTypes = getWorkspaceSettings('createTypes');
   const interfaceType = getWorkspaceSettings('interfaceType');
 
-  const type = createInterface
+  const type = createTypes
     ? `export ${
         interfaceType === 'type'
           ? `type ${nameComponent}Props =`
@@ -13,7 +13,7 @@ const templateInterface = (nameComponent: string) => {
       } {\n}\n\n`
     : '';
 
-  const assignation = createInterface
+  const assignation = createTypes
     ? `: React.FC<${nameComponent}Props> `
     : '';
 

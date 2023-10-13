@@ -5,9 +5,10 @@ export const contentTemplate = (
   nameComponent: string,
   className: string
 ) => {
-  const extra = getWorkspaceSettings('selectedExtras');
+  const isAddTest = getWorkspaceSettings('selectedExtras').includes('test');
+
   return `\treturn <${etiqueta}${className}${
-    extra.includes('test') ? ` data-testid="${nameComponent}"` : ''
+    isAddTest ? ` data-testid="${nameComponent}"` : ''
   }>${nameComponent}</${etiqueta}>;\n`;
 };
 
@@ -19,12 +20,12 @@ export const importReact = () => {
   return `import React from 'react';`;
 };
 
-export const importPropTypes = (nameComponent: string) => {
-  const importPropTypes = getWorkspaceSettings('importPropTypes');
+export const propTypes = (nameComponent: string) => {
+  const createTypes = getWorkspaceSettings('createTypes');
 
   return {
-    import: importPropTypes ? `import PropTypes from 'prop-types';` : '',
-    plus: importPropTypes ? `${nameComponent}.propTypes = {};` : '',
+    import: createTypes ? `import PropTypes from 'prop-types';` : '',
+    plus: createTypes ? `${nameComponent}.propTypes = {};` : '',
   };
 };
 

@@ -20,13 +20,12 @@ export type SettingsWorkspace = {
   lenguaje: LanguageType | 'to ask';
   typeStyle: StyleType | 'to ask';
   extensionStyle: ExtensionStyle | 'to ask';
-  createInterface: boolean;
+  createTypes: boolean;
   createBarrel: boolean;
   recommendedRoutes: string[];
   experimentalStorybook: boolean;
   interfaceType: 'type' | 'interface';
   styledComponentsLibrary: 'styled-components' | 'emotion';
-  importPropTypes: boolean;
   selectedExtras: Extras[];
   askExtras: boolean;
   pageType: TypePage | 'to ask';
