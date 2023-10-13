@@ -7,24 +7,24 @@ import { join } from 'path';
 import { Uri, commands } from 'vscode';
 
 export const createComponentNt = async (
-	nameComponent: NameComponent,
-	folderPath: string,
-	language: LanguageType
+  nameComponent: NameComponent,
+  folderPath: string,
+  language: LanguageType
 ) => {
-	const { jsx, template } = factoryNative(language);
+  const { jsx, template } = factoryNative(language);
 
-	const path = join(folderPath, nameComponent.capitalize + jsx);
+  const path = join(folderPath, nameComponent.capitalize + jsx);
 
-	checkPathExistence(
-		path,
-		path =>
-			`The Component "${nameComponent.capitalize}" already exists in the path ${path}`
-	);
+  checkPathExistence(
+    path,
+    (path) =>
+      `The Component "${nameComponent.capitalize}" already exists in the path ${path}`
+  );
 
-	try {
-		await writeFile(path, template(nameComponent));
-		commands.executeCommand('vscode.open', Uri.file(join(path)));
-	} catch (error: any) {
-		finishProcess(error.message);
-	}
+  try {
+    await writeFile(path, template(nameComponent));
+    commands.executeCommand('vscode.open', Uri.file(join(path)));
+  } catch (error: any) {
+    finishProcess(error.message);
+  }
 };

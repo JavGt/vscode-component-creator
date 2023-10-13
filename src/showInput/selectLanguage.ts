@@ -1,11 +1,11 @@
-import { LANGUAGE_OPTIONS, NOT_CONFIGURED } from "../constants";
-import { window } from "vscode";
-import { getWorkspaceSettings } from "../helpers";
-import { finishProcess } from "../helpers/finish-process";
-import { LanguageType } from "../types";
+import { LANGUAGE_OPTIONS, NOT_CONFIGURED } from '../constants';
+import { window } from 'vscode';
+import { getWorkspaceSettings } from '../helpers';
+import { finishProcess } from '../helpers/finish-process';
+import { LanguageType } from '../types';
 
 export const selectLanguage = async (): Promise<LanguageType> => {
-  const languageDefault = getWorkspaceSettings("lenguaje");
+  const languageDefault = getWorkspaceSettings('lenguaje');
 
   if (languageDefault !== NOT_CONFIGURED) return languageDefault;
 
@@ -16,8 +16,8 @@ export const selectLanguage = async (): Promise<LanguageType> => {
       value: language.value,
     })),
     {
-      title: "Language",
-      placeHolder: "Select the language that your component will have.",
+      title: 'Language',
+      placeHolder: 'Select the language that your component will have.',
       ignoreFocusOut: true,
     }
   );

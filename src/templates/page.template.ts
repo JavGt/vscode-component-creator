@@ -1,5 +1,5 @@
 export const pageTsTemplate = () => {
-	return `import type { NextPage } from 'next';
+  return `import type { NextPage } from 'next';
 
 const Page: NextPage = () => {
     return (
@@ -14,7 +14,7 @@ export default Page;
 };
 
 export const pageJsTemplate = () => {
-	return `/** @type {NextPage} */
+  return `/** @type {NextPage} */
 const Page = () => {
     return (
         <div>

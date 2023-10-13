@@ -6,25 +6,28 @@ import { NameComponent } from '../showInput/getNameComponent';
 import type { ExtensionStyle, LanguageType, StyleType } from '../types';
 
 export const createComponent = async (
-	folderPath: string,
-	componentName: NameComponent,
-	language: LanguageType,
-	styleType: StyleType,
-	extensionStyle: ExtensionStyle
+  folderPath: string,
+  componentName: NameComponent,
+  language: LanguageType,
+  styleType: StyleType,
+  extensionStyle: ExtensionStyle
 ) => {
-	const { template, jxs } = checkExtension(language);
+  const { template, jxs } = checkExtension(language);
 
-	const fileName = componentName.capitalize + jxs;
+  const fileName = componentName.capitalize + jxs;
 
-	const componentPath = join(folderPath, fileName);
+  const componentPath = join(folderPath, fileName);
 
-	const templateStyle = checkStyle(componentName, styleType, extensionStyle);
+  const templateStyle = checkStyle(componentName, styleType, extensionStyle);
 
-	try {
-		await writeFile(componentPath, template(componentName.capitalize, templateStyle));
-	} catch (err: any) {
-		return window.showErrorMessage(err.message);
-	}
+  try {
+    await writeFile(
+      componentPath,
+      template(componentName.capitalize, templateStyle)
+    );
+  } catch (err: any) {
+    return window.showErrorMessage(err.message);
+  }
 
-	commands.executeCommand('vscode.open', Uri.file(componentPath));
+  commands.executeCommand('vscode.open', Uri.file(componentPath));
 };

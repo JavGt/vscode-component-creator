@@ -1,27 +1,22 @@
-
-
 ### [1.3.1](https://github.com/JavGt/component-creator/compare/v1.3.0...v1.3.1) (2023-07-05)
 
 ## [1.3.0](https://github.com/JavGt/component-creator/compare/v1.2.0...v1.3.0) (2023-07-02)
 
-
 ### Features
 
-* :sparkles: agregacion de la opcion para native ([d564434](https://github.com/JavGt/component-creator/commit/d564434c60d725b12a3d606763e6eff3755c8e01))
+- :sparkles: agregacion de la opcion para native ([d564434](https://github.com/JavGt/component-creator/commit/d564434c60d725b12a3d606763e6eff3755c8e01))
 
 ## 1.2.0 (2023-07-02)
 
-
 ### Features
 
-* :sparkles: agregacion de un nuevo comando ([d24854d](https://github.com/JavGt/component-creator/commit/d24854decd63e62e47c1194f853450bdbd7232e6))
-* :sparkles: version change ([e7f484e](https://github.com/JavGt/component-creator/commit/e7f484e6e11458ec0e165859c5c2282f3ec99ce8))
-
+- :sparkles: agregacion de un nuevo comando ([d24854d](https://github.com/JavGt/component-creator/commit/d24854decd63e62e47c1194f853450bdbd7232e6))
+- :sparkles: version change ([e7f484e](https://github.com/JavGt/component-creator/commit/e7f484e6e11458ec0e165859c5c2282f3ec99ce8))
 
 ### Bug Fixes
 
-* :bug: area de trabajo lenguaje ([851b365](https://github.com/JavGt/component-creator/commit/851b365a48057cd4b258a0745bd42d4adfcc931e))
-* :bug: Remove auto select for language ([e9adcf4](https://github.com/JavGt/component-creator/commit/e9adcf44cf765b1aa412d0a68491bbd70d80df70))
+- :bug: area de trabajo lenguaje ([851b365](https://github.com/JavGt/component-creator/commit/851b365a48057cd4b258a0745bd42d4adfcc931e))
+- :bug: Remove auto select for language ([e9adcf4](https://github.com/JavGt/component-creator/commit/e9adcf44cf765b1aa412d0a68491bbd70d80df70))
 
 # CHANGELOG
 

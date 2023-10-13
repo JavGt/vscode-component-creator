@@ -32,6 +32,7 @@
     "test": "node ./out/test/runTest.js",
     "build": "vsce package",
     "publish": "vsce publish",
+    "pretty": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\" --ignore-path .gitignore",
     "check-types": "tsc --noEmit --pretty --project tsconfig.json",
     "check-types:watch": "tsc --noEmit --pretty --project tsconfig.json --watch",
     "vscode:prepublish": "yarn run compile",
@@ -49,6 +50,7 @@
     "eslint": "^8.20.0",
     "glob": "^8.0.3",
     "mocha": "^10.0.0",
+    "prettier": "3.0.3",
     "release-it": "^15.11.0",
     "typescript": "^4.7.4"
   },

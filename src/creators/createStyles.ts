@@ -7,21 +7,21 @@ import { STYLE_OPTIONS, STYLE_EXTENSIONS } from '../constants/style';
 import { ExtensionStyle, StyleType } from '../types';
 
 export const createStyles = async (
-	folderPath: string,
-	nameComponent: NameComponent,
-	styleType: StyleType,
-	extensionStyle: ExtensionStyle
+  folderPath: string,
+  nameComponent: NameComponent,
+  styleType: StyleType,
+  extensionStyle: ExtensionStyle
 ) => {
-	const isModule = styleType === STYLE_OPTIONS.module.value ? '.module' : '';
+  const isModule = styleType === STYLE_OPTIONS.module.value ? '.module' : '';
 
-	const fileName =
-		nameComponent.capitalize + isModule + STYLE_EXTENSIONS[extensionStyle].ext;
+  const fileName =
+    nameComponent.capitalize + isModule + STYLE_EXTENSIONS[extensionStyle].ext;
 
-	const className = nameComponent.original;
+  const className = nameComponent.original;
 
-	try {
-		writeFile(join(folderPath, fileName), templateStyle(className));
-	} catch (error: any) {
-		finishProcess(error.message);
-	}
+  try {
+    writeFile(join(folderPath, fileName), templateStyle(className));
+  } catch (error: any) {
+    finishProcess(error.message);
+  }
 };

@@ -3,23 +3,23 @@ import { templateJsx, templateTsx } from '../templates';
 import { LanguageType } from '../types';
 
 export const checkExtension = (language: LanguageType) => {
-	switch (language) {
-		case LANGUAGE_OPTIONS.javascript.value:
-			return {
-				...LANGUAGE_OPTIONS.javascript,
-				template: templateJsx,
-			};
+  switch (language) {
+    case LANGUAGE_OPTIONS.javascript.value:
+      return {
+        ...LANGUAGE_OPTIONS.javascript,
+        template: templateJsx,
+      };
 
-		case LANGUAGE_OPTIONS.typescript.value:
-			return {
-				...LANGUAGE_OPTIONS.typescript,
-				template: templateTsx,
-			};
+    case LANGUAGE_OPTIONS.typescript.value:
+      return {
+        ...LANGUAGE_OPTIONS.typescript,
+        template: templateTsx,
+      };
 
-		default:
-			return {
-				...LANGUAGE_OPTIONS.javascript,
-				template: templateJsx,
-			};
-	}
+    default:
+      return {
+        ...LANGUAGE_OPTIONS.javascript,
+        template: templateJsx,
+      };
+  }
 };

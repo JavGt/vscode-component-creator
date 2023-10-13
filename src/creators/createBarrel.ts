@@ -7,20 +7,20 @@ import { LANGUAGE_OPTIONS } from '../constants';
 import { LanguageType } from '../types';
 
 export const createBarrer = (
-	nameComponent: NameComponent,
-	folderPath: string,
-	language: LanguageType
+  nameComponent: NameComponent,
+  folderPath: string,
+  language: LanguageType
 ) => {
-	const createBarrel = getWorkspaceSettings('createBarrel');
+  const createBarrel = getWorkspaceSettings('createBarrel');
 
-	if (!createBarrel) return;
+  if (!createBarrel) return;
 
-	try {
-		writeFile(
-			join(folderPath, 'index' + LANGUAGE_OPTIONS[language].ext),
-			templateBarrel(nameComponent.capitalize)
-		);
-	} catch (error: any) {
-		finishProcess(error.message);
-	}
+  try {
+    writeFile(
+      join(folderPath, 'index' + LANGUAGE_OPTIONS[language].ext),
+      templateBarrel(nameComponent.capitalize)
+    );
+  } catch (error: any) {
+    finishProcess(error.message);
+  }
 };

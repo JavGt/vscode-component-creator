@@ -1,2 +1,2 @@
 export const templateBarrel = (nameComponent: string) =>
-	`export { default as ${nameComponent} } from './${nameComponent}';`;
+  `export { default as ${nameComponent} } from './${nameComponent}';`;

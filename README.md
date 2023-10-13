@@ -17,11 +17,11 @@ Generate your components quickly, with multiple easily customizable templates
 
 ## Commands
 
-| Command | Description | context | keybindings |
-| ------- | ----------- | ------- | ----------- |
-| RCC: Create Component | Create a component in the path that you select  | palette command  | ctrl + shift + l |
-| RCC: Delete cache | Delete the cache of the component creator | palette command | |
-| RCC: Create page | Create a page in the path that you select | menu context    | |
+| Command               | Description                                    | context         | keybindings      |
+| --------------------- | ---------------------------------------------- | --------------- | ---------------- |
+| RCC: Create Component | Create a component in the path that you select | palette command | ctrl + shift + l |
+| RCC: Delete cache     | Delete the cache of the component creator      | palette command |                  |
+| RCC: Create page      | Create a page in the path that you select      | menu context    |                  |
 
 ## Integrations
 

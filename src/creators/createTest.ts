@@ -6,19 +6,19 @@ import { writeFile } from 'fs/promises';
 import { window } from 'vscode';
 
 export const createTest = async (
-	folderPath: string,
-	componentName: NameComponent,
-	language: LanguageType
+  folderPath: string,
+  componentName: NameComponent,
+  language: LanguageType
 ) => {
-	const { template, jsx } = factoryTest(language);
+  const { template, jsx } = factoryTest(language);
 
-	const fileName = `${componentName.capitalize}.test${jsx}`;
+  const fileName = `${componentName.capitalize}.test${jsx}`;
 
-	const path = join(folderPath, fileName);
+  const path = join(folderPath, fileName);
 
-	try {
-		await writeFile(path, template(componentName.capitalize));
-	} catch (err: any) {
-		return window.showErrorMessage(err.message);
-	}
+  try {
+    await writeFile(path, template(componentName.capitalize));
+  } catch (err: any) {
+    return window.showErrorMessage(err.message);
+  }
 };

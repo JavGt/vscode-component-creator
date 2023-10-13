@@ -1,7 +1,7 @@
 import { NameComponent } from '../showInput';
 
 export const nativeTsTemplate = (nameComponent: NameComponent) => {
-	return `import { Text } from 'react-native'
+  return `import { Text } from 'react-native'
 
 const ${nameComponent.capitalize} = () => {
     return (
@@ -13,7 +13,7 @@ export default ${nameComponent.capitalize}`;
 };
 
 export const nativeJsTemplate = (nameComponent: NameComponent) => {
-	return `import { Text } from 'react-native'
+  return `import { Text } from 'react-native'
 
 const ${nameComponent.capitalize} = () => {
     return (

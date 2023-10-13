@@ -1,7 +1,7 @@
 import { NameComponent } from '../showInput';
 
 export const testTsTemplate = (componentName: NameComponent['capitalize']) => {
-	return `import React from 'react';
+  return `import React from 'react';
 import { render } from '@testing-library/react';
 import Button from './Button';
 
@@ -15,7 +15,7 @@ describe('Button', () => {
 };
 
 export const testJsTemplate = (componentName: NameComponent['capitalize']) => {
-	return `import React from 'react';
+  return `import React from 'react';
 import { render } from '@testing-library/react';
 import Button from './Button';
 

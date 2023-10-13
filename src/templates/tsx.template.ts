@@ -2,41 +2,46 @@ import { getWorkspaceSettings, TemplateStyleInterface } from '../helpers';
 import { contentTemplate, importReact, typeFunction } from './shared.template';
 
 const templateInterface = (nameComponent: string) => {
-	const createInterface = getWorkspaceSettings('createInterface');
-	const interfaceType = getWorkspaceSettings('interfaceType');
+  const createInterface = getWorkspaceSettings('createInterface');
+  const interfaceType = getWorkspaceSettings('interfaceType');
 
-	const type = createInterface
-		? `export ${
-				interfaceType === 'type'
-					? `type ${nameComponent}Props =`
-					: `interface ${nameComponent}Props`
-		  } {\n}\n\n`
-		: '';
+  const type = createInterface
+    ? `export ${
+        interfaceType === 'type'
+          ? `type ${nameComponent}Props =`
+          : `interface ${nameComponent}Props`
+      } {\n}\n\n`
+    : '';
 
-	const assignation = createInterface ? `: React.FC<${nameComponent}Props> ` : '';
+  const assignation = createInterface
+    ? `: React.FC<${nameComponent}Props> `
+    : '';
 
-	return {
-		type,
-		assignation,
-	};
+  return {
+    type,
+    assignation,
+  };
 };
 export const templateTsx = (
-	nameComponent: string,
-	templateStyle: TemplateStyleInterface
+  nameComponent: string,
+  templateStyle: TemplateStyleInterface
 ) => {
-	const { type, assignation } = templateInterface(nameComponent);
-	const importLib = importReact();
+  const { type, assignation } = templateInterface(nameComponent);
+  const importLib = importReact();
 
-	const imports = [importLib, templateStyle.import].filter(Boolean).join('\n').trim();
+  const imports = [importLib, templateStyle.import]
+    .filter(Boolean)
+    .join('\n')
+    .trim();
 
-	const plus = [templateStyle.plus].filter(Boolean).join('\n\n');
-	const { initial, end } = typeFunction();
+  const plus = [templateStyle.plus].filter(Boolean).join('\n\n');
+  const { initial, end } = typeFunction();
 
-	return `${imports}${
-		imports ? '\n\n' : ''
-	}${type}${initial}${nameComponent}${assignation}${end}${contentTemplate(
-		templateStyle.etiqueta,
-		nameComponent,
-		templateStyle.className
-	)}};\n\n${plus}${plus ? '\n\n' : ''}export default ${nameComponent};\n`;
+  return `${imports}${
+    imports ? '\n\n' : ''
+  }${type}${initial}${nameComponent}${assignation}${end}${contentTemplate(
+    templateStyle.etiqueta,
+    nameComponent,
+    templateStyle.className
+  )}};\n\n${plus}${plus ? '\n\n' : ''}export default ${nameComponent};\n`;
 };

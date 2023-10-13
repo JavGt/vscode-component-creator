@@ -1,12 +1,12 @@
-import { window } from "vscode";
-import { NOT_CONFIGURED } from "../constants";
-import { getWorkspaceSettings } from "../helpers";
-import { finishProcess } from "../helpers/finish-process";
-import { STYLE_OPTIONS } from "../constants/style";
-import { StyleType } from "../types";
+import { window } from 'vscode';
+import { NOT_CONFIGURED } from '../constants';
+import { getWorkspaceSettings } from '../helpers';
+import { finishProcess } from '../helpers/finish-process';
+import { STYLE_OPTIONS } from '../constants/style';
+import { StyleType } from '../types';
 
 export const selectStyleType = async (): Promise<StyleType> => {
-  const styleTypeDefault = getWorkspaceSettings("typeStyle");
+  const styleTypeDefault = getWorkspaceSettings('typeStyle');
 
   if (styleTypeDefault !== NOT_CONFIGURED) return styleTypeDefault;
 
@@ -17,8 +17,8 @@ export const selectStyleType = async (): Promise<StyleType> => {
       value: style.value,
     })),
     {
-      title: "Style type",
-      placeHolder: "Select the type of design that your component will have.",
+      title: 'Style type',
+      placeHolder: 'Select the type of design that your component will have.',
       ignoreFocusOut: true,
     }
   );

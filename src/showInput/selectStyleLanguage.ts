@@ -1,12 +1,12 @@
-import { getWorkspaceSettings } from "../helpers";
-import { window } from "vscode";
-import { NOT_CONFIGURED } from "../constants";
-import { finishProcess } from "../helpers/finish-process";
-import { STYLE_EXTENSIONS } from "../constants/style";
-import { ExtensionStyle } from "../types";
+import { getWorkspaceSettings } from '../helpers';
+import { window } from 'vscode';
+import { NOT_CONFIGURED } from '../constants';
+import { finishProcess } from '../helpers/finish-process';
+import { STYLE_EXTENSIONS } from '../constants/style';
+import { ExtensionStyle } from '../types';
 
 export const selectStyleLanguage = async (): Promise<ExtensionStyle> => {
-  const extensionStyleDefault = getWorkspaceSettings("extensionStyle");
+  const extensionStyleDefault = getWorkspaceSettings('extensionStyle');
 
   if (extensionStyleDefault !== NOT_CONFIGURED) return extensionStyleDefault;
 
@@ -17,9 +17,9 @@ export const selectStyleLanguage = async (): Promise<ExtensionStyle> => {
       value: style.value,
     })),
     {
-      title: "Style language",
+      title: 'Style language',
       placeHolder:
-        "Select the type of extension that your style sheet will have",
+        'Select the type of extension that your style sheet will have',
       ignoreFocusOut: true,
     }
   );

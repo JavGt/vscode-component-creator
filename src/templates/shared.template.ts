@@ -1,39 +1,39 @@
 import { getWorkspaceSettings } from '../helpers';
 
 export const contentTemplate = (
-	etiqueta: string,
-	nameComponent: string,
-	className: string
+  etiqueta: string,
+  nameComponent: string,
+  className: string
 ) => {
-	const extra = getWorkspaceSettings('selectedExtras');
-	return `\treturn <${etiqueta}${className}${
-		extra.includes('test') ? ` data-testid="${nameComponent}"` : ''
-	}>${nameComponent}</${etiqueta}>;\n`;
+  const extra = getWorkspaceSettings('selectedExtras');
+  return `\treturn <${etiqueta}${className}${
+    extra.includes('test') ? ` data-testid="${nameComponent}"` : ''
+  }>${nameComponent}</${etiqueta}>;\n`;
 };
 
 export const importReact = () => {
-	const importReact = getWorkspaceSettings('importReactOnTop');
+  const importReact = getWorkspaceSettings('importReactOnTop');
 
-	if (!importReact) return '';
+  if (!importReact) return '';
 
-	return `import React from 'react';`;
+  return `import React from 'react';`;
 };
 
 export const importPropTypes = (nameComponent: string) => {
-	const importPropTypes = getWorkspaceSettings('importPropTypes');
+  const importPropTypes = getWorkspaceSettings('importPropTypes');
 
-	return {
-		import: importPropTypes ? `import PropTypes from 'prop-types';` : '',
-		plus: importPropTypes ? `${nameComponent}.propTypes = {};` : '',
-	};
+  return {
+    import: importPropTypes ? `import PropTypes from 'prop-types';` : '',
+    plus: importPropTypes ? `${nameComponent}.propTypes = {};` : '',
+  };
 };
 
 export const typeFunction = () => {
-	const initial = 'const ';
-	const end = ' = ({}) => {' + '\n';
+  const initial = 'const ';
+  const end = ' = ({}) => {' + '\n';
 
-	return {
-		initial,
-		end,
-	};
+  return {
+    initial,
+    end,
+  };
 };
