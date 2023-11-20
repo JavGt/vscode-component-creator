@@ -14,7 +14,7 @@ export const directive = () => {
 
 	if (directive === NONE || !DIRECTIVE_ARRAY.includes(directive)) return '';
 
-	return `"use ${directive}"`;
+	return `"use ${directive}";`;
 };
 
 export const importReact = () => {

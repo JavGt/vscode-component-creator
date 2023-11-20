@@ -31,6 +31,10 @@ export class ComponentWeb {
 
 	private _styleSheet: StyleSheet | undefined;
 
+	public get styleSheet(): StyleSheet | undefined {
+		return this._styleSheet;
+	}
+
 	public set styleSheet(value: StyleSheet | None) {
 		this._styleSheet = value === NONE ? undefined : value;
 	}
@@ -46,6 +50,10 @@ export class ComponentWeb {
 		this._extras = value;
 	}
 	public _typeStyle: TypeStyle | None = NONE;
+
+	public get typeStyle(): TypeStyle | None {
+		return this._typeStyle;
+	}
 
 	public set typeStyle(value: TypeStyle | None) {
 		this._typeStyle = value;
