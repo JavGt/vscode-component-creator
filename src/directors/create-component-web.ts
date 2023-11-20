@@ -26,7 +26,6 @@ export const createComponentWeb = async (
 		component.typeStyle === typeStyleOptions.none.value
 			? typeStyleOptions.none.value
 			: await pickStyleSheet();
-	// Pregunta por el nombre del componente
 
 	component.name = await getNameComponent();
 
