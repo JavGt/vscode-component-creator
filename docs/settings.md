@@ -1,5 +1,10 @@
 # Settings for your work area
 
+<!-- TODO: update docs/settings.md -->
+La documentación esta en proceso de actualización, sin embargo la extension esta lista para usar
+
+The documentation is in the process of being updated, however the extension is ready to use
+
 ## Import react top
 
 type: `boolean`
@@ -12,7 +17,7 @@ Description: Controls whether to automatically include the `import React from 'r
 
 ```json
 {
-  "reactCreateComponent.settings.importReact": true
+ "reactCreateComponent.settings.importReact": true
 }
 ```
 
@@ -30,7 +35,7 @@ Description: Controls the style of the component.Use if you want to use `css`, `
 
 ```json
 {
-  "reactCreateComponent.settings.extensionStyle": "css"
+ "reactCreateComponent.settings.extensionStyle": "css"
 }
 ```
 
@@ -46,7 +51,7 @@ Description: Controls the creation of the barrel file or index file `index.[tj]s
 
 ```json
 {
-  "reactCreateComponent.settings.createBarrel": true
+ "reactCreateComponent.settings.createBarrel": true
 }
 ```
 
@@ -64,7 +69,7 @@ Description: Controls the language of the component (`javascript` or `typescript
 
 ```json
 {
-  "reactCreateComponent.settings.lenguaje": "javascript"
+ "reactCreateComponent.settings.lenguaje": "javascript"
 }
 ```
 
@@ -82,7 +87,7 @@ Description: Controls the type of style the component (`traditional`, `module`, 
 
 ```json
 {
-  "reactCreateComponent.settings.selectTypeStyletypeStyle": "component"
+ "reactCreateComponent.settings.selectTypeStyletypeStyle": "component"
 }
 ```
 
@@ -98,23 +103,23 @@ Description: Control the default route when creating a new route
 
 ```json
 {
-  "reactCreateComponent.settings.defaultRoute": "src/"
+ "reactCreateComponent.settings.defaultRoute": "src/"
 }
 ```
 
-## Create interface
+## Create types
 
 type: `boolean`
 
 Default: `true`
 
-Description: Controls the creation of the interface
+Description: Controls whether to generate type annotations for TypeScript or PropTypes for JavaScript when creating the component. Set to `true` to automatically create types (interface for TypeScript or PropTypes for JavaScript), and `false` to skip type generation.
 
 ### Example
 
 ```json
 {
-  "reactCreateComponent.settings.createInterface": true
+ "reactCreateComponent.settings.createTypes": true
 }
 ```
 
@@ -132,7 +137,7 @@ Description: Controls the type of interface to create (`interface` or `type`)
 
 ```json
 {
-  "reactCreateComponent.settings.interfaceType": "type"
+ "reactCreateComponent.settings.interfaceType": "type"
 }
 ```
 
@@ -148,7 +153,7 @@ Description: Controls the list of routes to create the component
 
 ```json
 {
-  "reactCreateComponent.settings.recommendedRoutes": ["src/components"]
+ "reactCreateComponent.settings.recommendedRoutes": ["src/components"]
 }
 ```
 
@@ -166,23 +171,15 @@ Description: Controls the library to use for styled components.
 
 ```json
 {
-  "reactCreateComponent.settings.styledComponentsLibrary": "styled-components"
+ "reactCreateComponent.settings.styledComponentsLibrary": "styled-components"
 }
 ```
-
-## Import propTypes
-
-type: `boolean`
-
-Default: `true`
-
-Description: Controls the import of `import PropTypes from 'prop-types';`
 
 ### Example
 
 ```json
 {
-  "reactCreateComponent.settings.importPropTypes": true
+ "reactCreateComponent.settings.importPropTypes": true
 }
 ```
 
@@ -200,23 +197,7 @@ Description: Controls the list of extras to create the component.
 
 ```json
 {
-  "reactCreateComponent.settings.selectedExtras": ["stories", "test"]
-}
-```
-
-## Ask extras
-
-type: `boolean`
-
-Default: `true`
-
-Description: Controls if the user will be asked about the extras
-
-### Example
-
-```json
-{
-  "reactCreateComponent.settings.askExtras": true
+ "reactCreateComponent.settings.selectedExtras": ["stories", "test"]
 }
 ```
 
@@ -234,7 +215,7 @@ Description: Controls the type of page to create (`folder` or `file`) for nextjs
 
 ```json
 {
-  "reactCreateComponent.settings.pageType": "folder"
+ "reactCreateComponent.settings.pageType": "folder"
 }
 ```
 
@@ -252,6 +233,6 @@ Description: Controls the platform to create the component (`web` or `native`).
 
 ```json
 {
-  "reactCreateComponent.settings.platform": "web"
+ "reactCreateComponent.settings.platform": "web"
 }
 ```

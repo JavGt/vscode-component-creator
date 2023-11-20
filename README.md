@@ -1,8 +1,8 @@
+# React Create Component
+
 <center>
    <img alt="React Create Component logo" src="https://raw.githubusercontent.com/JavGt/component-creator/main/assets/images/icon/icon.png" width="150">
 </center>
-
-# React Create Component
 
 Generate your components quickly, with multiple easily customizable templates
 

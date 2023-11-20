@@ -1,35 +1,39 @@
-import { TemplateStyleInterface } from '../helpers/checkStyle';
+import type { TemplateStyleInterface } from '../types';
+import { toSort } from '../utils/functions';
 import {
-  contentTemplate,
-  importPropTypes,
-  importReact,
-  typeFunction,
+	contentTemplate,
+	propTypes,
+	importReact,
+	typeFunction,
+	directive,
 } from './shared.template';
 
 export const templateJsx = (
-  nameComponent: string,
-  templateStyle: TemplateStyleInterface
+	nameComponent: string,
+	templateStyle: TemplateStyleInterface,
 ) => {
-  const importLib = importReact();
-  const { import: isImportPropTypes, plus: plusImportPropTypes } =
-    importPropTypes(nameComponent);
+	const di = directive();
+	const importLib = importReact();
 
-  const imports = [importLib, templateStyle.import, isImportPropTypes]
-    .filter(Boolean)
-    .join('\n')
-    .trim();
+	const { import: importPropTypes, plus: plusPropTypes } =
+		propTypes(nameComponent);
 
-  const plus = [templateStyle.plus, plusImportPropTypes]
-    .filter(Boolean)
-    .join('\n\n');
+	const imports = toSort([
+		di,
+		importLib,
+		templateStyle.import,
+		importPropTypes,
+	]);
 
-  const { initial, end } = typeFunction();
+	const plus = toSort([templateStyle.plus, plusPropTypes]);
 
-  return `${imports}${
-    imports ? '\n\n' : ''
-  }${initial}${nameComponent}${end}${contentTemplate(
-    templateStyle.etiqueta,
-    nameComponent,
-    templateStyle.className
-  )}};\n\n${plus}${plus ? '\n\n' : ''}export default ${nameComponent};`;
+	const { initial, end } = typeFunction();
+
+	return `${imports}${
+		imports ? '\n\n' : ''
+	}${initial}${nameComponent}${end}${contentTemplate(
+		templateStyle.etiqueta,
+		nameComponent,
+		templateStyle.className,
+	)}};\n\n${plus}${plus ? '\n\n' : ''}export default ${nameComponent};`;
 };

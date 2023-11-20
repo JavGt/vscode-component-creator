@@ -1,33 +1,36 @@
+import type { StyleSheet, Language, TypeStyle, NameComponent, None } from '../types';
 import { join } from 'path';
 import { commands, Uri, window } from 'vscode';
-import { checkExtension, checkStyle } from '../helpers';
+import { checkStyle, finishProcess } from '../helpers';
 import { writeFile } from 'fs/promises';
-import { NameComponent } from '../showInput/getNameComponent';
-import type { ExtensionStyle, LanguageType, StyleType } from '../types';
+import { getTemplateWeb } from '../utils/functions/getTemplateWeb';
 
-export const createComponent = async (
-  folderPath: string,
-  componentName: NameComponent,
-  language: LanguageType,
-  styleType: StyleType,
-  extensionStyle: ExtensionStyle
+export const createComponentWeb = async (
+	folderPath: string,
+	componentName: NameComponent,
+	language: Language,
+	styleType: TypeStyle | None,
+	extensionStyle: StyleSheet,
 ) => {
-  const { template, jxs } = checkExtension(language);
+	const options = getTemplateWeb(language);
 
-  const fileName = componentName.capitalize + jxs;
+	const componentPath = join(
+		folderPath,
+		options.fileName(componentName.capitalize),
+	);
 
-  const componentPath = join(folderPath, fileName);
+	const templateStyle = checkStyle(componentName, styleType, extensionStyle);
 
-  const templateStyle = checkStyle(componentName, styleType, extensionStyle);
+	try {
+		await writeFile(
+			componentPath,
+			options.template(componentName.capitalize, templateStyle),
+			{ encoding: 'utf-8' },
+		);
+	} catch (err: any) {
+		finishProcess();
+		return window.showErrorMessage(err.message);
+	}
 
-  try {
-    await writeFile(
-      componentPath,
-      template(componentName.capitalize, templateStyle)
-    );
-  } catch (err: any) {
-    return window.showErrorMessage(err.message);
-  }
-
-  commands.executeCommand('vscode.open', Uri.file(componentPath));
+	commands.executeCommand('vscode.open', Uri.file(componentPath));
 };

@@ -1,30 +1,33 @@
+import type { Language, NameComponent } from '../types';
 import { writeFile } from 'fs/promises';
-import { checkPathExistence, finishProcess } from '../helpers';
-import { factoryNative } from '../helpers/factoryNative';
-import { NameComponent } from '../showInput';
-import { LanguageType } from '../types';
+import { finishProcess } from '../helpers';
 import { join } from 'path';
 import { Uri, commands } from 'vscode';
+import { verifyPath } from '../utils/functions';
+import { getTemplateNative } from '../utils/functions/getTemplateNative';
 
 export const createComponentNt = async (
-  nameComponent: NameComponent,
-  folderPath: string,
-  language: LanguageType
+	nameComponent: NameComponent,
+	folderPath: string,
+	language: Language,
 ) => {
-  const { jsx, template } = factoryNative(language);
+	const options = getTemplateNative(language);
 
-  const path = join(folderPath, nameComponent.capitalize + jsx);
+	const path = join(folderPath, options.fileName(nameComponent.capitalize));
 
-  checkPathExistence(
-    path,
-    (path) =>
-      `The Component "${nameComponent.capitalize}" already exists in the path ${path}`
-  );
+	verifyPath(
+		path,
+		(path) =>
+			`The Component "${nameComponent.capitalize}" already exists in the path ${path}`,
+	);
 
-  try {
-    await writeFile(path, template(nameComponent));
-    commands.executeCommand('vscode.open', Uri.file(join(path)));
-  } catch (error: any) {
-    finishProcess(error.message);
-  }
+	try {
+		await writeFile(path, options.template(nameComponent), {
+			encoding: 'utf-8',
+		});
+
+		commands.executeCommand('vscode.open', Uri.file(join(path)));
+	} catch (error: any) {
+		finishProcess(error.message);
+	}
 };

@@ -1,8 +1,8 @@
 import { LANGUAGE_OPTIONS } from '../constants';
 import { pageJsTemplate, pageTsTemplate } from '../templates/page.template';
-import { LanguageType } from '../types';
+import { Language } from '../types';
 
-export const factoryPage = (language: LanguageType) => {
+export const factoryPage = (language: Language) => {
   switch (language) {
     case LANGUAGE_OPTIONS.javascript.value:
       return {

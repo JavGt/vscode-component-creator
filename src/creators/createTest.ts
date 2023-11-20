@@ -1,24 +1,23 @@
+import type { Language, NameComponent } from '../types';
 import { join } from 'path';
-import { factoryTest } from '../helpers/factoryTest';
-import { NameComponent } from '../showInput';
-import { LanguageType } from '../types';
 import { writeFile } from 'fs/promises';
-import { window } from 'vscode';
+import { getTemplateTest } from '../utils/functions';
+import { finishProcess } from '../helpers';
 
 export const createTest = async (
-  folderPath: string,
-  componentName: NameComponent,
-  language: LanguageType
+	folderPath: string,
+	componentName: NameComponent,
+	language: Language,
 ) => {
-  const { template, jsx } = factoryTest(language);
+	const options = getTemplateTest(language);
 
-  const fileName = `${componentName.capitalize}.test${jsx}`;
+	const path = join(folderPath, options.fileName(componentName.capitalize));
 
-  const path = join(folderPath, fileName);
-
-  try {
-    await writeFile(path, template(componentName.capitalize));
-  } catch (err: any) {
-    return window.showErrorMessage(err.message);
-  }
+	try {
+		await writeFile(path, options.template(componentName.capitalize), {
+			encoding: 'utf-8',
+		});
+	} catch (err: any) {
+		finishProcess(err);
+	}
 };
