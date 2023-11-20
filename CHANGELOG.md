@@ -1,3 +1,19 @@
+
+
+## [1.4.0](https://github.com/JavGt/vscode-component-creator/compare/v1.3.1...v1.4.0) (2023-11-20)
+
+
+### Features
+
+* :recycle: refactorizacion de flujo de creador de compontes para web y correcion de tipos ([b98d606](https://github.com/JavGt/vscode-component-creator/commit/b98d606156d7ea97a4c33f03f5a68d13a6775418))
+* :sparkles: agregacion y mejoras para la parte de react native ([0cc7f72](https://github.com/JavGt/vscode-component-creator/commit/0cc7f722321cf14db297a3c1b35f286ca485eabe))
+* :sparkles: Improve semantics and names in type import generation utility ([dee819f](https://github.com/JavGt/vscode-component-creator/commit/dee819f28560a07562ae4a7815865b491a199dc7))
+
+
+### Bug Fixes
+
+* :pencil2: fixed configuration names ([30f09bd](https://github.com/JavGt/vscode-component-creator/commit/30f09bdd08d0ed1215a9843d9fc8181157422ed2))
+
 ### [1.3.1](https://github.com/JavGt/component-creator/compare/v1.3.0...v1.3.1) (2023-07-05)
 
 ## [1.3.0](https://github.com/JavGt/component-creator/compare/v1.2.0...v1.3.0) (2023-07-02)
