@@ -2,7 +2,7 @@
 	"name": "create-component-React",
 	"displayName": "React Create Component",
 	"description": "Generate your components quickly, with multiple easily customizable templates. 🚀",
-	"version": "1.4.0",
+	"version": "1.4.1",
 	"icon": "assets/images/icon/icon.png",
 	"main": "out/extension.js",
 	"author": {

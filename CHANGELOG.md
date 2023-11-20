@@ -1,5 +1,14 @@
 
 
+## [1.4.1](https://github.com/JavGt/vscode-component-creator/compare/v1.4.0...v1.4.1) (2023-11-20)
+
+
+### Bug Fixes
+
+* :ambulance: agregacion de seters para poder leer el valor del tipo de estilo ([096c22e](https://github.com/JavGt/vscode-component-creator/commit/096c22ec23c75bbdafb342e58e48c9c6f0d120c8))
+* ⬆️ cambio de yarn a npm y actualización de dependencias ([97056e3](https://github.com/JavGt/vscode-component-creator/commit/97056e3e9b34756b2ae0a8ee4e5d178e564d2feb))
+* correcion menores en los templates ([8d972c9](https://github.com/JavGt/vscode-component-creator/commit/8d972c998718b5328748bd8f3a4beff1fb783f45))
+
 ## [1.4.0](https://github.com/JavGt/vscode-component-creator/compare/v1.3.1...v1.4.0) (2023-11-20)
 
 
