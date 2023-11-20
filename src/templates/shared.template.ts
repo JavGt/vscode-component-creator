@@ -1,40 +1,37 @@
 import { getWorkspaceSettings } from '../helpers';
 
 export const contentTemplate = (
-  etiqueta: string,
-  nameComponent: string,
-  className: string
+	etiqueta: string,
+	nameComponent: string,
+	className: string,
 ) => {
-  const isAddTest = getWorkspaceSettings('selectedExtras').includes('test');
-
-  return `\treturn <${etiqueta}${className}${
-    isAddTest ? ` data-testid="${nameComponent}"` : ''
-  }>${nameComponent}</${etiqueta}>;\n`;
+	return `\treturn (\n\t\t<${etiqueta}${className}>\n \t\t\t${nameComponent} works!\n \t\t</${etiqueta}>\n\t);\n`;
 };
 
 export const importReact = () => {
-  const importReact = getWorkspaceSettings('importReact');
+	const importReact = getWorkspaceSettings('root', 'importReact');
 
-  if (!importReact) return '';
+	if (!importReact) return '';
 
-  return `import React from 'react';`;
+	return `import React from 'react';`;
 };
 
 export const propTypes = (nameComponent: string) => {
-  const createTypes = getWorkspaceSettings('createTypes');
+	const createTypes = getWorkspaceSettings('root', 'createTypes');
 
-  return {
-    import: createTypes ? `import PropTypes from 'prop-types';` : '',
-    plus: createTypes ? `${nameComponent}.propTypes = {};` : '',
-  };
+	return {
+		import: createTypes ? `import PropTypes from 'prop-types';` : '',
+		plus: createTypes ? `${nameComponent}.propTypes = {};` : '',
+	};
 };
 
 export const typeFunction = () => {
-  const initial = 'const ';
-  const end = ' = ({}) => {' + '\n';
+	const initial = 'const ';
 
-  return {
-    initial,
-    end,
-  };
+	const end = ' = ({}) => {' + '\n';
+
+	return {
+		initial,
+		end,
+	};
 };

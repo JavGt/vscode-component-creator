@@ -1,6 +1,6 @@
 import { window } from 'vscode';
 import { createBarrer, createFolder } from '../creators';
-import { getNameComponent, selectLanguage } from '../showInput';
+import { getNameComponent, selectLanguage } from '../inputs';
 import { createComponentNt } from '../creators/createComponentNt';
 
 export const createComponentNative = async (path: string) => {

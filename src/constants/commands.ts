@@ -1,15 +1,14 @@
 /**
- * @deprecated
+ * @description Sufijo de los comandos, es la abreviación de React Create Component
  */
-export const COMMANDS_V1 = Object.freeze({
-  deleteCache: 'Create-component-React:delete-cache',
-  createComponent: 'Create-component',
-});
-
 export const SUFFIX = 'RCC';
 
-export const command = Object.freeze({
-  createComponent: `${SUFFIX}:create-component`,
-  createPage: `${SUFFIX}:create-page`,
-  deleteCache: `${SUFFIX}:delete-cache`,
+/**
+ * @description Comandos de la extensión
+ */
+export const COMMAND = Object.freeze({
+	CREATE_COMPONENT: `${SUFFIX}:create-component`,
+	CREATE_PAGE: `${SUFFIX}:create-page`,
+	DELETE_CACHE: `${SUFFIX}:delete-cache`,
+	ADD_QUICK_SUGGESTION: `${SUFFIX}:add-quick-suggestion`,
 });

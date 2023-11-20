@@ -1,8 +1,8 @@
 import { LANGUAGE_OPTIONS } from '../constants';
 import { testJsTemplate, testTsTemplate } from '../templates/test.template';
-import { LanguageType } from '../types';
+import { Language } from '../types';
 
-export const factoryTest = (language: LanguageType) => {
+export const factoryTest = (language: Language) => {
   switch (language) {
     case LANGUAGE_OPTIONS.javascript.value:
       return {

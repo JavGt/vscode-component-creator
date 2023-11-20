@@ -3,9 +3,9 @@ import {
   nativeJsTemplate,
   nativeTsTemplate,
 } from '../templates/native.template';
-import { LanguageType } from '../types';
+import { Language } from '../types';
 
-export const factoryNative = (language: LanguageType) => {
+export const factoryNative = (language: Language) => {
   switch (language) {
     case LANGUAGE_OPTIONS.javascript.value:
       return {

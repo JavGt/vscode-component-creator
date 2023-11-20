@@ -1,21 +1,21 @@
 import { writeFile } from 'fs/promises';
-import { checkPathExistence, finishProcess } from '../helpers';
+import {  finishProcess } from '../helpers';
 import { factoryNative } from '../helpers/factoryNative';
-import { NameComponent } from '../showInput';
-import { LanguageType } from '../types';
+import { Language, NameComponent } from '../types';
 import { join } from 'path';
 import { Uri, commands } from 'vscode';
+import { verifyPath } from '../utils/functions';
 
 export const createComponentNt = async (
   nameComponent: NameComponent,
   folderPath: string,
-  language: LanguageType
+  language: Language
 ) => {
   const { jsx, template } = factoryNative(language);
 
   const path = join(folderPath, nameComponent.capitalize + jsx);
 
-  checkPathExistence(
+  verifyPath(
     path,
     (path) =>
       `The Component "${nameComponent.capitalize}" already exists in the path ${path}`

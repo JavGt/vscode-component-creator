@@ -1,8 +1,8 @@
 import { LANGUAGE_OPTIONS } from '../constants';
 import { templateJsx, templateTsx } from '../templates';
-import { LanguageType } from '../types';
+import { Language } from '../types';
 
-export const checkExtension = (language: LanguageType) => {
+export const checkExtension = (language: Language) => {
   switch (language) {
     case LANGUAGE_OPTIONS.javascript.value:
       return {

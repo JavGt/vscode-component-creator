@@ -1,71 +1,40 @@
 import { ExtensionContext, window } from 'vscode';
 import {
-  selectLanguage,
-  getNameComponent,
-  getPath,
-  selectStyleType,
-  selectStyleLanguage,
-} from '../showInput';
-import {
-  createBarrer,
-  createComponent,
-  createFolder,
-  createStyles,
-} from '../creators';
-import { createStorybook } from '../creators/createStorybook';
-import { STYLE_OPTIONS } from '../constants/style';
-import { ExtensionStyle } from '../types';
-import { selectExtras } from '../showInput/selectExtras';
-import { createTest } from '../creators/createTest';
+	selectLanguage,
+	getNameComponent,
+	selectStyleType,
+	selectStyleLanguage,
+} from '../inputs';
+import { selectExtras } from '../inputs/selectExtras';
+import { ComponentWeb } from '../class/ComponentWeb';
+import { typeStyleOptions } from '../constants';
 
-export const createComponentWeb = async (path: string) => {
-  const extras = await selectExtras();
+export const createComponentWeb = async (
+	ctx: ExtensionContext,
+	path: string,
+) => {
+	const component = new ComponentWeb(ctx, path);
 
-  // Selecciona el lenguaje
-  const language = await selectLanguage();
+	component.extras = await selectExtras();
 
-  // El tipo de diseño que tendrá el componente, ej: style-component
-  const styleType = await selectStyleType();
+	component.language = await selectLanguage();
 
-  // Selecciona la extension de la hoja de estilos
-  const extensionStyle =
-    styleType === STYLE_OPTIONS.component.value ||
-    styleType === STYLE_OPTIONS.none.value
-      ? STYLE_OPTIONS.none.value
-      : await selectStyleLanguage();
+	component.typeStyle = await selectStyleType();
 
-  // Pregunta por el nombre del componente
-  const nameComponent = await getNameComponent();
+	console.log(component.typeStyle);
 
-  const folderPath = await createFolder(path, nameComponent);
+	component.styleSheet =
+		component.typeStyle === typeStyleOptions.component.value ||
+		component.typeStyle === typeStyleOptions.none.value
+			? typeStyleOptions.none.value
+			: await selectStyleLanguage();
+	// Pregunta por el nombre del componente
 
-  if (extensionStyle !== STYLE_OPTIONS.none.value)
-    createStyles(
-      folderPath,
-      nameComponent,
-      styleType,
-      extensionStyle as ExtensionStyle
-    );
+	component.name = await getNameComponent();
 
-  createComponent(
-    folderPath,
-    nameComponent,
-    language,
-    styleType,
-    extensionStyle as ExtensionStyle
-  );
+	await component.build();
 
-  createBarrer(nameComponent, folderPath, language);
-
-  if (extras.includes('stories')) {
-    createStorybook(folderPath, nameComponent, language);
-  }
-
-  if (extras.includes('test')) {
-    createTest(folderPath, nameComponent, language);
-  }
-
-  window.showInformationMessage(
-    `Component ${nameComponent.capitalize} created. ⚛`
-  );
+	// window.showInformationMessage(
+	// 	`Component ${component.name.capitalize} created. ⚛`,
+	// );
 };
