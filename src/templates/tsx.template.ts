@@ -17,7 +17,7 @@ export const templateInterface = (nameComponent: string) => {
 				interfaceType === 'type'
 					? `type ${nameComponent}Props =`
 					: `interface ${nameComponent}Props`
-		  } {\n}\n\n`
+		  } {\n\t// types...\n}\n\n`
 		: '';
 
 	const assignation = createTypes ? `: React.FC<${nameComponent}Props> ` : '';
