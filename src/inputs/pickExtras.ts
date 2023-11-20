@@ -3,7 +3,7 @@ import { finishProcess, getWorkspaceSettings } from '../helpers';
 import { Extras } from '../types';
 import { extrasOptions } from '../constants';
 
-export const selectExtras = async (): Promise<Extras[]> => {
+export const pickExtras = async (): Promise<Extras[]> => {
 	const extras = getWorkspaceSettings('web', 'extras');
 
 	const isBoolean = !Array.isArray(extras);

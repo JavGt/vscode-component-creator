@@ -2,11 +2,11 @@
  * TODO: refactor this flow
  */
 import { type FunctionFlow } from '../types';
-import { selectTypePage } from '../inputs/selectTypePage';
+import { pickTypePage } from '../inputs/pickTypePage';
 import { TypeFolder } from '../types';
 import { getNamePage } from '../inputs/getNamePage';
 import { createPage } from '../creators/createPage';
-import { selectLanguage } from '../inputs';
+import { pickLanguage } from '../inputs';
 
 export const isVerifyFolder = (path: string): TypeFolder => {
 	if (path.includes('pages')) {
@@ -21,9 +21,9 @@ export const createPageFlow: FunctionFlow = async (ctx, args) => {
 
 	const typeFolder = isVerifyFolder(args.fsPath);
 
-	const type = await selectTypePage();
+	const type = await pickTypePage();
 
-	const language = await selectLanguage();
+	const language = await pickLanguage();
 
 	const name = await getNamePage(type);
 

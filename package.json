@@ -58,12 +58,12 @@
 	"dependencies": {},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/JavGt/component-creator.git"
+		"url": "git+https://github.com/JavGt/vscode-component-creator.git"
 	},
-	"homepage": "https://github.com/JavGt/component-creator#readme",
+	"homepage": "https://github.com/JavGt/vscode-component-creator#readme",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/JavGt/component-creator/issues"
+		"url": "https://github.com/JavGt/vscode-component-creator/issues"
 	},
 	"galleryBanner": {
 		"color": "#2b6e6233",
@@ -104,6 +104,10 @@
 				{
 					"command": "RCC:add-quick-suggestion",
 					"when": "false"
+				},
+				{
+					"command": "RCC:create-page",
+					"when": "false"
 				}
 			],
 			"explorer/context": [
@@ -128,6 +132,25 @@
 			"type": "object",
 			"title": "React Create Component",
 			"properties": {
+				"reactCreateComponent.settings.native.styleSheet": {
+					"default": true,
+					"type": [
+						"boolean",
+						"string"
+					],
+					"markdownDescription": "controls the creation of styleSheet either in a file or in the component itself.",
+					"enum": [
+						"file",
+						true,
+						false
+					],
+					"items": {
+						"type": [
+							"string",
+							"boolean"
+						]
+					}
+				},
 				"reactCreateComponent.settings.web.directive": {
 					"default": "client",
 					"type": "string",

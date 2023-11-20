@@ -3,7 +3,7 @@ import { TypePage } from '../types';
 import { getWorkspaceSettings, finishProcess } from '../helpers';
 import { NOT_CONFIGURED, typePageOptions } from '../constants';
 
-export const selectTypePage = async (): Promise<TypePage> => {
+export const pickTypePage = async (): Promise<TypePage> => {
 	const typePageDefault = getWorkspaceSettings('web', 'pageType');
 
 	if (typePageDefault !== NOT_CONFIGURED) return typePageDefault;

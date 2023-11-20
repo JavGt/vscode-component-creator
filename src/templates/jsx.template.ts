@@ -1,26 +1,31 @@
-import { TemplateStyleInterface } from '../types';
+import type { TemplateStyleInterface } from '../types';
+import { toSort } from '../utils/functions';
 import {
 	contentTemplate,
 	propTypes,
 	importReact,
 	typeFunction,
+	directive,
 } from './shared.template';
 
 export const templateJsx = (
 	nameComponent: string,
 	templateStyle: TemplateStyleInterface,
 ) => {
+	const di = directive();
 	const importLib = importReact();
 
 	const { import: importPropTypes, plus: plusPropTypes } =
 		propTypes(nameComponent);
 
-	const imports = [importLib, templateStyle.import, importPropTypes]
-		.filter(Boolean)
-		.join('\n')
-		.trim();
+	const imports = toSort([
+		di,
+		importLib,
+		templateStyle.import,
+		importPropTypes,
+	]);
 
-	const plus = [templateStyle.plus, plusPropTypes].filter(Boolean).join('\n\n').trim();
+	const plus = toSort([templateStyle.plus, plusPropTypes]);
 
 	const { initial, end } = typeFunction();
 

@@ -9,7 +9,7 @@ import {
 import { getWorkspaceSettings } from '../helpers';
 import { finishProcess } from '../helpers';
 
-export const selectStyleType = async (): Promise<TypeStyle | None> => {
+export const pickTypeStyle = async (): Promise<TypeStyle | None> => {
 	const styleTypeDefault = getWorkspaceSettings('web', 'typeStyle');
 
 	if (styleTypeDefault === NONE) return NONE;

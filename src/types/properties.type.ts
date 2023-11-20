@@ -45,7 +45,9 @@ export type WebProperties = {
 	pageType: TypePage | NotConfigured;
 };
 
-export type NativeProperties = {};
+export type NativeProperties = {
+	styleSheet: Boolean | 'file';
+};
 
 // reactCreateComponent.settings
 export type SettingsProperties = {

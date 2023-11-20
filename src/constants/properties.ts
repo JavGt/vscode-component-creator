@@ -21,5 +21,7 @@ export const settingsWorkspaceDefault: SettingsProperties = {
 		pageType: 'to ask',
 		typeStyle: 'to ask',
 	},
-	native: {},
+	native: {
+		styleSheet: true,
+	},
 };

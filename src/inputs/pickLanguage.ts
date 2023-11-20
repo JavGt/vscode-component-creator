@@ -4,7 +4,7 @@ import { window } from 'vscode';
 import { getWorkspaceSettings } from '../helpers';
 import { finishProcess } from '../helpers/finish-process';
 
-export const selectLanguage = async (): Promise<Language> => {
+export const pickLanguage = async (): Promise<Language> => {
 	const languageDefault = getWorkspaceSettings('root', 'language');
 
 	if (

@@ -11,7 +11,7 @@ import { finishProcess, getWorkspaceSettings } from '../helpers';
 import { join, basename } from 'path';
 import { statSync } from 'fs';
 import { access, readdir } from 'fs/promises';
-import { inputPath } from '../inputs/inputPath';
+import { getPath } from '../inputs/getPath';
 import { regexFolders, workspaceState } from '../constants';
 
 export class Route {
@@ -33,7 +33,7 @@ export class Route {
 		/**
 		 * NOTE: el tipo es dado como any porque no hay typing, si estoy en un error puedes crear un issue en el repositorio
 		 * NOTE: the type is given as any because there is no typing, if I am in an error you can create an issue in the repository
-		 * @see https://github.com/JavGt/component-creator/issues/new
+		 * @see https://github.com/JavGt/vscode-component-creator/issues/new
 		 */
 		public readonly args: any,
 	) {
@@ -109,7 +109,7 @@ export class Route {
 				let value = pick.selectedItems[0].label;
 
 				if (value === 'New folder') {
-					value = await inputPath();
+					value = await getPath();
 				}
 
 				this.setHistory(value);

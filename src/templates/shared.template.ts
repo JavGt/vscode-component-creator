@@ -1,3 +1,4 @@
+import { DIRECTIVE, DIRECTIVE_ARRAY, NONE } from '../constants';
 import { getWorkspaceSettings } from '../helpers';
 
 export const contentTemplate = (
@@ -6,6 +7,14 @@ export const contentTemplate = (
 	className: string,
 ) => {
 	return `\treturn (\n\t\t<${etiqueta}${className}>\n \t\t\t${nameComponent} works!\n \t\t</${etiqueta}>\n\t);\n`;
+};
+
+export const directive = () => {
+	const directive = getWorkspaceSettings('web', 'directive');
+
+	if (directive === NONE || !DIRECTIVE_ARRAY.includes(directive)) return '';
+
+	return `"use ${directive}"`;
 };
 
 export const importReact = () => {

@@ -1,7 +1,7 @@
 import { window } from 'vscode';
 import { finishProcess, getWorkspaceSettings } from '../helpers';
 
-export const inputPath = async (): Promise<string> => {
+export const getPath = async (): Promise<string> => {
 	const defaultRoute = getWorkspaceSettings('root', 'defaultRoute');
 
 	const path = await window.showInputBox({

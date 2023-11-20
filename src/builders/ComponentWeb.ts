@@ -1,4 +1,4 @@
-import { type ExtensionContext } from 'vscode';
+import { window, type ExtensionContext } from 'vscode';
 import type {
 	Extras,
 	Language,
@@ -7,8 +7,6 @@ import type {
 	TypeStyle,
 	NameComponent,
 } from '../types';
-import { Component } from '../interface';
-import { getNameComponent } from '../inputs';
 import {
 	createBarrer,
 	createComponentWeb,
@@ -67,6 +65,10 @@ export class ComponentWeb {
 			this.buildExtras(),
 			this.buildComponent(),
 		]);
+
+		window.showInformationMessage(
+			`Component ${this._name?.capitalize} created. ⚛`,
+		);
 	}
 
 	private async buildComponent(): Promise<void> {
@@ -95,9 +97,6 @@ export class ComponentWeb {
 	}
 
 	private buildBarrer() {
-		console.log('buildBarrer');
-		console.log(this._name!, this._folderPath!, this._language!);
-		console.log(this._name!, this._folderPath!, this._language!);
 		createBarrer(this._name!, this._folderPath!, this._language!);
 	}
 

@@ -8,7 +8,7 @@ import {
 import { finishProcess } from '../helpers/finish-process';
 import type { StyleSheet } from '../types';
 
-export const selectStyleLanguage = async (): Promise<StyleSheet> => {
+export const pickStyleSheet = async (): Promise<StyleSheet> => {
 	const extensionStyleDefault = getWorkspaceSettings('web', 'styleSheet');
 
 	if (

@@ -1,8 +1,14 @@
+import type { TemplateStyleInterface } from '../types';
 import { getWorkspaceSettings } from '../helpers';
-import { TemplateStyleInterface } from '../types';
-import { contentTemplate, importReact, typeFunction } from './shared.template';
+import { toSort } from '../utils/functions';
+import {
+	contentTemplate,
+	directive,
+	importReact,
+	typeFunction,
+} from './shared.template';
 
-const templateInterface = (nameComponent: string) => {
+export const templateInterface = (nameComponent: string) => {
 	const createTypes = getWorkspaceSettings('root', 'createTypes');
 	const interfaceType = getWorkspaceSettings('root', 'interfaceType');
 
@@ -26,15 +32,15 @@ export const templateTsx = (
 	nameComponent: string,
 	templateStyle: TemplateStyleInterface,
 ) => {
+	const di = directive();
+
 	const { type, assignation } = templateInterface(nameComponent);
 	const importLib = importReact();
 
-	const imports = [importLib, templateStyle.import]
-		.filter(Boolean)
-		.join('\n')
-		.trim();
+	const imports = toSort([di, importLib, templateStyle.import]);
 
-	const plus = [templateStyle.plus].filter(Boolean).join('\n\n');
+	const plus = toSort([templateStyle.plus]);
+
 	const { initial, end } = typeFunction();
 
 	return `${imports}${

@@ -1,4 +1,4 @@
-import { NameComponent } from '../types';
+import type { NameComponent } from '../types';
 
 export const testTsTemplate = (componentName: NameComponent['capitalize']) => {
 	return `import React from 'react';

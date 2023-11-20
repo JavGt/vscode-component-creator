@@ -8,7 +8,6 @@ export const createFolder = async (
 	path: string,
 	componentName: NameComponent,
 ): Promise<string> => {
-	
 	const folderPath = join(path, componentName.capitalize);
 
 	// Verifica si la carpeta ya existe
@@ -25,8 +24,6 @@ export const createFolder = async (
 	} catch (err: any) {
 		finishProcess(err.message);
 	}
-
-	
 
 	return folderPath;
 };

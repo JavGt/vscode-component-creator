@@ -1,8 +1,8 @@
 import { type FunctionFlow } from '../types/function-flow.type';
-import { createComponentWeb } from '../commands/create-component-web';
+import { createComponentWeb } from '../directors/create-component-web';
 import { pickPlatform } from '../inputs/pickPlatform';
-import { createComponentNative } from '../commands/create-component-native';
-import { Route } from '../class';
+import { createComponentNative } from '../directors/create-component-native';
+import { Route } from '../builders';
 import { PLATFORM } from '../constants';
 
 export const createComponentFlow: FunctionFlow = async (ctx, args) => {
@@ -18,7 +18,7 @@ export const createComponentFlow: FunctionFlow = async (ctx, args) => {
 	}
 
 	if (plataforma === PLATFORM.NATIVE) {
-		await createComponentNative(route.path);
+		await createComponentNative(ctx, route.path);
 		return;
 	}
 };

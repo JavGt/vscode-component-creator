@@ -1,12 +1,12 @@
 import { ExtensionContext, window } from 'vscode';
 import {
-	selectLanguage,
+	pickLanguage,
 	getNameComponent,
-	selectStyleType,
-	selectStyleLanguage,
+	pickTypeStyle,
+	pickStyleSheet,
 } from '../inputs';
-import { selectExtras } from '../inputs/selectExtras';
-import { ComponentWeb } from '../class/ComponentWeb';
+import { pickExtras } from '../inputs/pickExtras';
+import { ComponentWeb } from '../builders/ComponentWeb';
 import { typeStyleOptions } from '../constants';
 
 export const createComponentWeb = async (
@@ -15,26 +15,20 @@ export const createComponentWeb = async (
 ) => {
 	const component = new ComponentWeb(ctx, path);
 
-	component.extras = await selectExtras();
+	component.extras = await pickExtras();
 
-	component.language = await selectLanguage();
+	component.language = await pickLanguage();
 
-	component.typeStyle = await selectStyleType();
-
-	console.log(component.typeStyle);
+	component.typeStyle = await pickTypeStyle();
 
 	component.styleSheet =
 		component.typeStyle === typeStyleOptions.component.value ||
 		component.typeStyle === typeStyleOptions.none.value
 			? typeStyleOptions.none.value
-			: await selectStyleLanguage();
+			: await pickStyleSheet();
 	// Pregunta por el nombre del componente
 
 	component.name = await getNameComponent();
 
 	await component.build();
-
-	// window.showInformationMessage(
-	// 	`Component ${component.name.capitalize} created. ⚛`,
-	// );
 };
