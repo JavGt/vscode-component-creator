@@ -12,7 +12,7 @@
 	},
 	"publisher": "JavierGutierrez",
 	"engines": {
-		"vscode": "^1.70.0",
+		"vscode": "^1.80.0",
 		"node": ">18.0.0"
 	},
 	"categories": [
@@ -28,7 +28,7 @@
 	"scripts": {
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
-		"pretest": "yarn run compile && yarn run lint",
+		"pretest": "npm run compile && npm run lint",
 		"lint": "eslint src --ext ts",
 		"test": "node ./out/test/runTest.js",
 		"build": "vsce package",
@@ -36,15 +36,15 @@
 		"pretty": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\" --ignore-path .gitignore",
 		"check-types": "tsc --noEmit --pretty --project tsconfig.json",
 		"check-types:watch": "tsc --noEmit --pretty --project tsconfig.json --watch",
-		"vscode:prepublish": "yarn run compile",
+		"vscode:prepublish": "npm run compile",
 		"release": "release-it"
 	},
 	"devDependencies": {
 		"@release-it/conventional-changelog": "^8.0.1",
 		"@types/glob": "^8.1.0",
 		"@types/mocha": "^10.0.4",
-		"@types/node": "20.9.2",
-		"@types/vscode": "^1.84.1",
+		"@types/node": "18.x",
+		"@types/vscode": "^1.80.0",
 		"@typescript-eslint/eslint-plugin": "^6.12.0",
 		"@typescript-eslint/parser": "^6.12.0",
 		"@vscode/test-electron": "^2.3.6",
@@ -66,7 +66,7 @@
 		"url": "https://github.com/JavGt/vscode-component-creator/issues"
 	},
 	"galleryBanner": {
-		"color": "#2b6e6233",
+		"color": "#343a46",
 		"theme": "dark"
 	},
 	"activationEvents": [],
