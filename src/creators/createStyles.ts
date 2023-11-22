@@ -1,26 +1,28 @@
+import type { NameComponent, StyleSheet, TypeStyle } from '../types';
 import { join } from 'path';
 import { writeFile } from 'fs/promises';
 import { templateStyle } from '../templates';
-import { NameComponent } from '../showInput/getNameComponent';
 import { finishProcess } from '../helpers/finish-process';
-import { STYLE_OPTIONS, STYLE_EXTENSIONS } from '../constants/style';
-import { ExtensionStyle, StyleType } from '../types';
+import { TYPE_STYLE } from '../constants';
+import { getStyleSheet } from '../utils/functions/getStyleSheet';
 
 export const createStyles = async (
 	folderPath: string,
 	nameComponent: NameComponent,
-	styleType: StyleType,
-	extensionStyle: ExtensionStyle
+	styleType: TypeStyle,
+	extensionStyle: StyleSheet,
 ) => {
-	const isModule = styleType === STYLE_OPTIONS.module.value ? '.module' : '';
+	const isModule = styleType === TYPE_STYLE.MODULE ? '.module' : '';
 
 	const fileName =
-		nameComponent.capitalize + isModule + STYLE_EXTENSIONS[extensionStyle].ext;
+		nameComponent.capitalize + isModule + getStyleSheet(extensionStyle).ext;
 
-	const className = nameComponent.original;
+	const className = nameComponent.lowerCase;
 
 	try {
-		writeFile(join(folderPath, fileName), templateStyle(className));
+		writeFile(join(folderPath, fileName), templateStyle(className), {
+			encoding: 'utf-8',
+		});
 	} catch (error: any) {
 		finishProcess(error.message);
 	}

@@ -1,35 +1,16 @@
+import type { SettingsProperties } from '../types';
 import { workspace } from 'vscode';
-import { WORKSPACE_NAME } from '../constants/constants';
-import { SettingsWorkspace } from '../types/properties';
+import { WORKSPACE_NAME } from '../constants/strings';
 
-export const settingsWorkspace: SettingsWorkspace = {
-	importReactOnTop: true,
-	defaultRoute: 'src/components',
-	selectLanguage: 'to ask',
-	selectTypeStyle: 'to ask',
-	selectExtensionStyle: 'to ask',
-	createInterface: true,
-	createBarrel: true,
-	recommendedRoutes: ['src/components'],
-	experimentalStorybook: false,
-	interfaceType: 'type',
-	styledComponentsLibrary: 'styled-components',
-	importPropTypes: true,
-	selectedExtras: [],
-	askExtras: true,
-	pageType: 'to ask',
-	platform: 'to ask',
+export const getWorkspaceSettings = <
+	Section extends keyof SettingsProperties,
+	Options extends keyof SettingsProperties[Section],
+	Return = SettingsProperties[Section][Options],
+>(
+	category: Section,
+	options: Options,
+): Return => {
+	const section = WORKSPACE_NAME + (category === 'root' ? '' : `.${category}`);
+
+	return workspace.getConfiguration(section).get(options as string) as Return;
 };
-
-/**
- * Obtiene la configuración del workspace
- * @param setting Nombre de la configuración
- * @returns Valor de la configuración
- * @example
- * getWorkspaceSettings('defaultRoute') : string
- * getWorkspaceSettings('importReactOnTop') : boolean
- */
-export const getWorkspaceSettings = <K extends keyof SettingsWorkspace>(
-	setting: K
-): SettingsWorkspace[K] =>
-	workspace.getConfiguration(WORKSPACE_NAME).get(setting) as SettingsWorkspace[K];

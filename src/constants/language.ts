@@ -1,3 +1,6 @@
+/**
+ * @deprecated
+ */
 export const LANGUAGE_OPTIONS = {
 	typescript: {
 		label: 'TypeScript',

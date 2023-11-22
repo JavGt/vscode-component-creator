@@ -1,24 +1,28 @@
+import type { Language, NameComponent } from '../types';
 import { templateBarrel } from '../templates';
 import { writeFile } from 'fs/promises';
 import { join } from 'path';
 import { getWorkspaceSettings, finishProcess } from '../helpers';
-import { NameComponent } from '../showInput/getNameComponent';
-import { LANGUAGE_OPTIONS } from '../constants';
-import { LanguageType } from '../types';
+import { getLanguage } from '../utils/functions';
 
 export const createBarrer = (
 	nameComponent: NameComponent,
 	folderPath: string,
-	language: LanguageType
+	language: Language,
 ) => {
-	const createBarrel = getWorkspaceSettings('createBarrel');
+	const createBarrel = getWorkspaceSettings('root', 'createBarrel');
 
 	if (!createBarrel) return;
 
+	const file = 'index' + getLanguage(language).ext;
+
 	try {
 		writeFile(
-			join(folderPath, 'index' + LANGUAGE_OPTIONS[language].ext),
-			templateBarrel(nameComponent.capitalize)
+			join(folderPath, file),
+			templateBarrel(nameComponent.capitalize),
+			{
+				encoding: 'utf-8',
+			},
 		);
 	} catch (error: any) {
 		finishProcess(error.message);

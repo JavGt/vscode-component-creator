@@ -1,35 +1,46 @@
-import { getWorkspaceSettings, TemplateStyleInterface } from '../helpers';
-import { contentTemplate, importReact, typeFunction } from './shared.template';
+import type { TemplateStyleInterface } from '../types';
+import { getWorkspaceSettings } from '../helpers';
+import { toSort } from '../utils/functions';
+import {
+	contentTemplate,
+	directive,
+	importReact,
+	typeFunction,
+} from './shared.template';
 
-const templateInterface = (nameComponent: string) => {
-	const createInterface = getWorkspaceSettings('createInterface');
-	const interfaceType = getWorkspaceSettings('interfaceType');
+export const templateInterface = (nameComponent: string) => {
+	const createTypes = getWorkspaceSettings('root', 'createTypes');
+	const interfaceType = getWorkspaceSettings('root', 'interfaceType');
 
-	const type = createInterface
+	const type = createTypes
 		? `export ${
 				interfaceType === 'type'
 					? `type ${nameComponent}Props =`
 					: `interface ${nameComponent}Props`
-		  } {\n}\n\n`
+		  } {\n\t// types...\n}\n\n`
 		: '';
 
-	const assignation = createInterface ? `: React.FC<${nameComponent}Props> ` : '';
+	const assignation = createTypes ? `: React.FC<${nameComponent}Props> ` : '';
 
 	return {
 		type,
 		assignation,
 	};
 };
+
 export const templateTsx = (
 	nameComponent: string,
-	templateStyle: TemplateStyleInterface
+	templateStyle: TemplateStyleInterface,
 ) => {
+	const di = directive();
+
 	const { type, assignation } = templateInterface(nameComponent);
 	const importLib = importReact();
 
-	const imports = [importLib, templateStyle.import].filter(Boolean).join('\n').trim();
+	const imports = toSort([di, importLib, templateStyle.import]);
 
-	const plus = [templateStyle.plus].filter(Boolean).join('\n\n');
+	const plus = toSort([templateStyle.plus]);
+
 	const { initial, end } = typeFunction();
 
 	return `${imports}${
@@ -37,6 +48,6 @@ export const templateTsx = (
 	}${type}${initial}${nameComponent}${assignation}${end}${contentTemplate(
 		templateStyle.etiqueta,
 		nameComponent,
-		templateStyle.className
+		templateStyle.className,
 	)}};\n\n${plus}${plus ? '\n\n' : ''}export default ${nameComponent};\n`;
 };

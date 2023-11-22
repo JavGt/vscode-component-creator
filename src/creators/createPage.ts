@@ -1,15 +1,16 @@
 import { mkdir, writeFile } from 'fs/promises';
 import { join } from 'path';
-import { checkPathExistence, factoryPage, finishProcess } from '../helpers';
-import { LanguageType, TypeFolder, TypePage } from '../types';
-import { NamePage } from '../showInput/getNamePage';
+import { factoryPage, finishProcess } from '../helpers';
+import { Language, TypeFolder, TypePage } from '../types';
+import { NamePage } from '../inputs/getNamePage';
 import { Uri, commands } from 'vscode';
+import { verifyPath } from '../utils/functions';
 
 export type CreatePageArgs = {
 	path: string;
 	typeFolder: TypeFolder;
 	name: NamePage;
-	language: LanguageType;
+	language: Language;
 	type: TypePage;
 };
 
@@ -26,9 +27,10 @@ export const createPage = async (options: CreatePageArgs) => {
 				? 'page'
 				: 'index') + jsx;
 
-		checkPathExistence(
+		verifyPath(
 			path,
-			path => `The folder ${path} already exists. Please, try again with another name.`
+			(path) =>
+				`The folder ${path} already exists. Please, try again with another name.`,
 		);
 
 		try {
@@ -49,9 +51,10 @@ export const createPage = async (options: CreatePageArgs) => {
 	if (typeof options.name === 'string' && options.type === 'file') {
 		const path = join(options.path, options.name + jsx);
 
-		checkPathExistence(
+		verifyPath(
 			path,
-			path => `The file ${path} already exists. Please, try again with another name.`
+			(path) =>
+				`The file ${path} already exists. Please, try again with another name.`,
 		);
 
 		try {

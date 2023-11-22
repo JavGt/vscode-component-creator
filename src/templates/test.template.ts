@@ -1,13 +1,13 @@
-import { NameComponent } from '../showInput';
+import type { NameComponent } from '../types';
 
 export const testTsTemplate = (componentName: NameComponent['capitalize']) => {
 	return `import React from 'react';
 import { render } from '@testing-library/react';
-import Button from './Button';
+import ${componentName} from './${componentName}';
 
-describe('Button', () => {
+describe('${componentName}', () => {
     it('should render successfully', () => {
-        const { baseElement } = render(<Button />);
+        const { baseElement } = render(<${componentName} />);
 
         expect(baseElement).toBeTruthy();
     });
@@ -17,12 +17,11 @@ describe('Button', () => {
 export const testJsTemplate = (componentName: NameComponent['capitalize']) => {
 	return `import React from 'react';
 import { render } from '@testing-library/react';
-import Button from './Button';
+import ${componentName} from './${componentName}';
 
-describe('Button', () => {
+describe('${componentName}', () => {
     it('should render successfully', () => {
-        const { baseElement } = render(<Button />);
-
+        const { baseElement } = render(<${componentName} />);
         expect(baseElement).toBeTruthy();
     });
 });`;

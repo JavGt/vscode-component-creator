@@ -9,3 +9,5 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 proyecto-pruebas
+test-js
+test-ts

@@ -2,7 +2,7 @@
 	"name": "create-component-React",
 	"displayName": "React Create Component",
 	"description": "Generate your components quickly, with multiple easily customizable templates. 🚀",
-	"version": "1.3.1",
+	"version": "1.4.1",
 	"icon": "assets/images/icon/icon.png",
 	"main": "out/extension.js",
 	"author": {
@@ -12,7 +12,7 @@
 	},
 	"publisher": "JavierGutierrez",
 	"engines": {
-		"vscode": "^1.70.0",
+		"vscode": "^1.80.0",
 		"node": ">18.0.0"
 	},
 	"categories": [
@@ -20,6 +20,7 @@
 	],
 	"keywords": [
 		"react",
+		"component",
 		"javascript",
 		"typescript",
 		"jsx"
@@ -27,53 +28,58 @@
 	"scripts": {
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
-		"pretest": "yarn run compile && yarn run lint",
+		"pretest": "npm run compile && npm run lint",
 		"lint": "eslint src --ext ts",
 		"test": "node ./out/test/runTest.js",
 		"build": "vsce package",
 		"publish": "vsce publish",
+		"pretty": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\" --ignore-path .gitignore",
 		"check-types": "tsc --noEmit --pretty --project tsconfig.json",
 		"check-types:watch": "tsc --noEmit --pretty --project tsconfig.json --watch",
-		"vscode:prepublish": "yarn run compile",
+		"vscode:prepublish": "npm run compile",
 		"release": "release-it"
 	},
 	"devDependencies": {
-		"@release-it/conventional-changelog": "^5.1.1",
-		"@types/glob": "^7.2.0",
-		"@types/mocha": "^9.1.1",
-		"@types/node": "16.x",
-		"@types/vscode": "^1.70.0",
-		"@typescript-eslint/eslint-plugin": "^5.31.0",
-		"@typescript-eslint/parser": "^5.31.0",
-		"@vscode/test-electron": "^2.1.5",
-		"eslint": "^8.20.0",
-		"glob": "^8.0.3",
-		"mocha": "^10.0.0",
-		"release-it": "^15.11.0",
-		"typescript": "^4.7.4"
+		"@release-it/conventional-changelog": "^8.0.1",
+		"@types/glob": "^8.1.0",
+		"@types/mocha": "^10.0.4",
+		"@types/node": "18.x",
+		"@types/vscode": "^1.80.0",
+		"@typescript-eslint/eslint-plugin": "^6.12.0",
+		"@typescript-eslint/parser": "^6.12.0",
+		"@vscode/test-electron": "^2.3.6",
+		"eslint": "^8.54.0",
+		"glob": "^10.3.10",
+		"mocha": "^10.2.0",
+		"prettier": "3.1.0",
+		"release-it": "^17.0.0",
+		"typescript": "^5.3.2"
 	},
-	"dependencies": {
-		"date-fns": "^2.29.3"
-	},
+	"dependencies": {},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/JavGt/component-creator.git"
+		"url": "git+https://github.com/JavGt/vscode-component-creator.git"
 	},
-	"homepage": "https://github.com/JavGt/component-creator#readme",
+	"homepage": "https://github.com/JavGt/vscode-component-creator#readme",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/JavGt/component-creator/issues"
+		"url": "https://github.com/JavGt/vscode-component-creator/issues"
 	},
 	"galleryBanner": {
-		"color": "#23272f",
+		"color": "#343a46",
 		"theme": "dark"
 	},
 	"activationEvents": [],
 	"contributes": {
 		"commands": [
 			{
+				"command": "RCC:add-quick-suggestion",
+				"title": "Add Quick Suggestion (RCC)",
+				"category": "RCC"
+			},
+			{
 				"command": "RCC:create-component",
-				"title": "Create Component",
+				"title": "Create Component (RCC)",
 				"category": "RCC"
 			},
 			{
@@ -94,7 +100,22 @@
 			}
 		],
 		"menus": {
+			"commandPalette": [
+				{
+					"command": "RCC:add-quick-suggestion",
+					"when": "false"
+				},
+				{
+					"command": "RCC:create-page",
+					"when": "false"
+				}
+			],
 			"explorer/context": [
+				{
+					"when": "explorerResourceIsFolder",
+					"command": "RCC:add-quick-suggestion",
+					"group": "Hli@React"
+				},
 				{
 					"when": "explorerResourceIsFolder",
 					"command": "RCC:create-component",
@@ -111,12 +132,57 @@
 			"type": "object",
 			"title": "React Create Component",
 			"properties": {
-				"reactCreateComponent.settings.importReactOnTop": {
-					"type": "boolean",
-					"markdownDescription": "Controls if should add `import React from 'react';` at the top of components",
-					"default": true
+				"reactCreateComponent.settings.native.styleSheet": {
+					"default": true,
+					"type": [
+						"boolean",
+						"string"
+					],
+					"markdownDescription": "controls the creation of styleSheet either in a file or in the component itself.",
+					"enum": [
+						"file",
+						true,
+						false
+					],
+					"items": {
+						"type": [
+							"string",
+							"boolean"
+						]
+					}
 				},
-				"reactCreateComponent.settings.selectExtensionStyle": {
+				"reactCreateComponent.settings.web.directive": {
+					"default": "client",
+					"type": "string",
+					"markdownDescription": "Control the directive `use [client|server]`.",
+					"enum": [
+						"none",
+						"client",
+						"server"
+					]
+				},
+				"reactCreateComponent.settings.importReact": {
+					"default": true,
+					"type": "boolean",
+					"markdownDescription": "Control the import `import React from 'react';`"
+				},
+				"reactCreateComponent.settings.createBarrel": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Controls the creation of the barrel (index) file `index.[tj]s` within the folder."
+				},
+				"reactCreateComponent.settings.language": {
+					"default": "to ask",
+					"type": "string",
+					"enum": [
+						"to ask",
+						"javascript",
+						"typescript"
+					],
+					"markdownDescription": "Controls the language `javascript` or `typescript`."
+				},
+				"reactCreateComponent.settings.web.styleSheet": {
+					"default": "to ask",
 					"type": "string",
 					"enum": [
 						"to ask",
@@ -124,25 +190,9 @@
 						"sass",
 						"scss"
 					],
-					"default": "to ask",
-					"markdownDescription": "Controls the style of the component.Use if you want to use `css`, `sass`, or `scss`."
+					"markdownDescription": "Control the style sheet `css`, `sass` or `scss`."
 				},
-				"reactCreateComponent.settings.createBarrel": {
-					"type": "boolean",
-					"default": true,
-					"markdownDescription": "Controls the creation of the barrel file or index file `index.[tj]s` inside the folder."
-				},
-				"reactCreateComponent.settings.selectLanguage": {
-					"type": "string",
-					"enum": [
-						"to ask",
-						"javascript",
-						"typescript"
-					],
-					"default": "to ask",
-					"markdownDescription": "Controls the language of the component (`javascript` or `typescript`)."
-				},
-				"reactCreateComponent.settings.selectTypeStyle": {
+				"reactCreateComponent.settings.web.typeStyle": {
 					"type": "string",
 					"enum": [
 						"to ask",
@@ -152,17 +202,17 @@
 						"none"
 					],
 					"default": "to ask",
-					"markdownDescription": "Controls the type of style the component (`traditional`, `module`, `component` or `none`)."
+					"markdownDescription": "Controls the style type (`traditional`, `module`, `component`)."
 				},
 				"reactCreateComponent.settings.defaultRoute": {
 					"type": "string",
 					"default": "src/",
 					"markdownDescription": "Control the default route when creating a new route."
 				},
-				"reactCreateComponent.settings.createInterface": {
+				"reactCreateComponent.settings.createTypes": {
 					"type": "boolean",
 					"default": true,
-					"markdownDescription": "Controls the creation of the interface."
+					"markdownDescription": "Controls the creation of types (`interface`|`type`) or `type`."
 				},
 				"reactCreateComponent.settings.interfaceType": {
 					"type": "string",
@@ -173,14 +223,23 @@
 					"default": "type",
 					"markdownDescription": "Controls the type of interface to create (`interface` or `type`)."
 				},
-				"reactCreateComponent.settings.recommendedRoutes": {
+				"reactCreateComponent.settings.disableQuickSuggestions": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Controls whether to disable the quick suggestions when creating a new component."
+				},
+				"reactCreateComponent.settings.quickSuggestions": {
 					"type": "array",
 					"default": [
-						"src/components"
+						"src/components",
+						"app/components"
 					],
-					"markdownDescription": "Controls the list of routes to create the component."
+					"markdownDescription": "Controls the list of folders to show in the quick suggestions.",
+					"items": {
+						"type": "string"
+					}
 				},
-				"reactCreateComponent.settings.styledComponentsLibrary": {
+				"reactCreateComponent.settings.web.styledComponentsLibrary": {
 					"type": "string",
 					"enum": [
 						"styled-components",
@@ -189,29 +248,30 @@
 					"default": "styled-components",
 					"markdownDescription": "Controls the library to use for styled components."
 				},
-				"reactCreateComponent.settings.importPropTypes": {
-					"type": "boolean",
+				"reactCreateComponent.settings.web.extras": {
+					"type": [
+						"array",
+						"boolean"
+					],
 					"default": true,
-					"markdownDescription": "Controls the import of `import PropTypes from 'prop-types';`."
-				},
-				"reactCreateComponent.settings.selectedExtras": {
-					"type": "array",
-					"default": [],
 					"markdownDescription": "Controls the list of extras to create the component.",
 					"items": {
-						"type": "string",
+						"type": [
+							"string",
+							"boolean"
+						],
 						"enum": [
 							"stories",
 							"test"
 						]
 					}
 				},
-				"reactCreateComponent.settings.askExtras": {
+				"reactCreateComponent.settings.disableHistory": {
 					"type": "boolean",
-					"default": true,
-					"markdownDescription": "Controls if the user will be asked about the extras."
+					"default": false,
+					"markdownDescription": "Controls whether to disable the history when creating a new route."
 				},
-				"reactCreateComponent.settings.pageType": {
+				"reactCreateComponent.settings.web.pageType": {
 					"type": "string",
 					"enum": [
 						"to ask",
@@ -219,7 +279,7 @@
 						"file"
 					],
 					"default": "to ask",
-					"markdownDescription": "Controls the type of page to create (`folder` or `file`) for nextjs."
+					"markdownDescription": "Controls the type of page to create (`folder` or `file`) for next."
 				},
 				"reactCreateComponent.settings.platform": {
 					"type": "string",

@@ -1,25 +1,31 @@
-import { TemplateStyleInterface } from '../helpers/checkStyle';
+import type { TemplateStyleInterface } from '../types';
+import { toSort } from '../utils/functions';
 import {
 	contentTemplate,
-	importPropTypes,
+	propTypes,
 	importReact,
 	typeFunction,
+	directive,
 } from './shared.template';
 
 export const templateJsx = (
 	nameComponent: string,
-	templateStyle: TemplateStyleInterface
+	templateStyle: TemplateStyleInterface,
 ) => {
+	const di = directive();
 	const importLib = importReact();
-	const { import: isImportPropTypes, plus: plusImportPropTypes } =
-		importPropTypes(nameComponent);
 
-	const imports = [importLib, templateStyle.import, isImportPropTypes]
-		.filter(Boolean)
-		.join('\n')
-		.trim();
+	const { import: importPropTypes, plus: plusPropTypes } =
+		propTypes(nameComponent);
 
-	const plus = [templateStyle.plus, plusImportPropTypes].filter(Boolean).join('\n\n');
+	const imports = toSort([
+		di,
+		importLib,
+		templateStyle.import,
+		importPropTypes,
+	]);
+
+	const plus = toSort([templateStyle.plus, plusPropTypes]);
 
 	const { initial, end } = typeFunction();
 
@@ -28,6 +34,6 @@ export const templateJsx = (
 	}${initial}${nameComponent}${end}${contentTemplate(
 		templateStyle.etiqueta,
 		nameComponent,
-		templateStyle.className
+		templateStyle.className,
 	)}};\n\n${plus}${plus ? '\n\n' : ''}export default ${nameComponent};`;
 };

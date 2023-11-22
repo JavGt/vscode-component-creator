@@ -20,24 +20,3 @@ export const STYLE_OPTIONS = {
 		value: 'none',
 	},
 };
-
-export const STYLE_EXTENSIONS = {
-	css: {
-		label: 'CSS',
-		detail: 'import "./style.css;',
-		value: 'css',
-		ext: '.css',
-	},
-	scss: {
-		label: 'SCSS',
-		detail: 'import "./style.scss;',
-		value: 'scss',
-		ext: '.scss',
-	},
-	sass: {
-		label: 'SASS',
-		detail: 'import "./style.sass;',
-		value: 'sass',
-		ext: '.sass',
-	},
-};
