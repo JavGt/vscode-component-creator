@@ -1,5 +1,12 @@
 
 
+## [1.5.0](https://github.com/JavGt/vscode-component-creator/compare/v1.4.2...v1.5.0) (2023-11-24)
+
+
+### Features
+
+* agregacion de alias para las sugerencias rapidas ([a456217](https://github.com/JavGt/vscode-component-creator/commit/a4562175efeeda8fd46b4f2ee723a1977d829ff4))
+
 ## [1.4.2](https://github.com/JavGt/vscode-component-creator/compare/v1.4.1...v1.4.2) (2023-11-24)
 
 
