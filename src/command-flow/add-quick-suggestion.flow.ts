@@ -7,6 +7,7 @@ import { window, workspace } from 'vscode';
 import { relative } from 'path';
 import { getWorkspaceSettings } from '../helpers';
 import { WORKSPACE_NAME } from '../constants';
+import { getAliasSuggestion } from '../inputs/getAliasSuggestion';
 
 export const addQuickSuggestionFlow: FunctionFlow = async (ctx, arg) => {
 	const quickSuggestions = getWorkspaceSettings('root', 'quickSuggestions');
@@ -20,7 +21,12 @@ export const addQuickSuggestionFlow: FunctionFlow = async (ctx, arg) => {
 		'/',
 	);
 
-	if (quickSuggestions.includes(folder)) {
+	if (
+		quickSuggestions.some((item) => {
+			if (typeof item === 'string') return item === folder;
+			return item[0] === folder;
+		})
+	) {
 		window.showInformationMessage(
 			`The folder ${folder} is already in the quick suggestions list`,
 		);
@@ -28,11 +34,18 @@ export const addQuickSuggestionFlow: FunctionFlow = async (ctx, arg) => {
 		return;
 	}
 
+	const alias = await getAliasSuggestion(folder);
+
+	const suggestion = alias === folder ? folder : [folder, alias];
+
 	/**
 	 *  agregar ese folder a la lista de quickSuggestions de la configuración de vscode
 	 *  add that folder to the quickSuggestions list of the vscode configuration
 	 */
+
+	// insertar el suggestion en la lista de quickSuggestions del workspace seleccionado
+
 	workspace
 		.getConfiguration(WORKSPACE_NAME)
-		.update(`quickSuggestions`, [...quickSuggestions, folder]);
+		.update(`quickSuggestions`, [...quickSuggestions, suggestion]);
 };

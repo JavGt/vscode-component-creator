@@ -60,7 +60,7 @@ export type SettingsProperties = {
 		defaultRoute: string;
 		createTypes: boolean;
 		interfaceType: TypeInterface;
-		quickSuggestions: string[];
+		quickSuggestions: Array<string | [string, string]>;
 		platform: Platform | NotConfigured;
 	};
 	native: NativeProperties;

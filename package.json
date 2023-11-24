@@ -236,7 +236,10 @@
 					],
 					"markdownDescription": "Controls the list of folders to show in the quick suggestions.",
 					"items": {
-						"type": "string"
+						"type": [
+							"string",
+							"array"
+						]
 					}
 				},
 				"reactCreateComponent.settings.web.styledComponentsLibrary": {
