@@ -1,5 +1,13 @@
 
 
+## [1.4.2](https://github.com/JavGt/vscode-component-creator/compare/v1.4.1...v1.4.2) (2023-11-24)
+
+
+### Bug Fixes
+
+* :ambulance: Correcion de path al crear un componente en el menuContext ([2d89b78](https://github.com/JavGt/vscode-component-creator/commit/2d89b783b5a609a01277f2c162c8cd3f0b77ea38))
+* :pushpin: correcion de dependencias de vscode y node ([c8722f1](https://github.com/JavGt/vscode-component-creator/commit/c8722f15c9aceea1c6c7a5d0444a1e9566f4e5ff))
+
 ## [1.4.1](https://github.com/JavGt/vscode-component-creator/compare/v1.4.0...v1.4.1) (2023-11-20)
 
 
