@@ -63,7 +63,7 @@ export class Route {
 
 		this.setHistory(folder);
 
-		this.path = this.args.path;
+		this.path = join(this.args.fsPath);
 	}
 
 	/**
