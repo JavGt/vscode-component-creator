@@ -63,7 +63,7 @@ export class Route {
 
 		this.setHistory(folder);
 
-		this.path = this.args.path;
+		this.path = join(this.args.fsPath);
 	}
 
 	/**
@@ -106,7 +106,11 @@ export class Route {
 			});
 
 			pick.onDidAccept(async () => {
-				let value = pick.selectedItems[0].label;
+				const option = pick.selectedItems[0] as QuickPickItem & {
+					value?: string;
+				};
+
+				let value = option.value ?? option.label;
 
 				if (value === 'New folder') {
 					value = await getPath();
@@ -261,9 +265,19 @@ export class Route {
 				description: 'folder',
 				kind: QuickPickItemKind.Separator,
 			},
-			...quickSuggestions.map((label) => ({
-				label,
-			})),
+			...quickSuggestions.map((label) => {
+				if (typeof label === 'string') {
+					return {
+						label,
+						value: label,
+					};
+				}
+
+				return {
+					label: label[1],
+					value: label[0],
+				};
+			}),
 		];
 	}
 }
