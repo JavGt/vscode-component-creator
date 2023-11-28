@@ -46,26 +46,23 @@ Generate your components quickly, with multiple easily customizable templates
 
 ### Use from a specific path
 
-<video width="100%" height="600" controls>
-  <source src="https://firebasestorage.googleapis.com/v0/b/recursos-ae4c5.appspot.com/o/menu.mp4?alt=media&token=1b4c971c-d572-4ccc-baa3-d862b7559559" type="video/mp4">
-</video>
+https://github.com/JavGt/vscode-component-creator/assets/82567321/5043597c-17ea-4b66-9d5d-72c48691cb4a
+
 
 You can use it by clicking on the folder where you want your component to be and clicking on the "Create Component" option.
 
 ### Use by entering the path
 
-<video width="100%" height="600" controls>
-  <source src="https://firebasestorage.googleapis.com/v0/b/recursos-ae4c5.appspot.com/o/palete.mp4?alt=media&token=0961a2ba-30ac-47f0-97eb-c27591f74d12" type="video/mp4">
-</video>
+
+https://github.com/JavGt/vscode-component-creator/assets/82567321/20b7775c-bd6c-4d9f-9a8b-5990f4508770
+
 
 You can also use it by giving it by executing the "Create Component" command from the command palette
 To create a component it can also be executed with the following keys (ctrl + shift + l)
 
 ### Quick suggestions
 
-<video width="100%" height="600" controls>
-  <source src="https://firebasestorage.googleapis.com/v0/b/recursos-ae4c5.appspot.com/o/su.mp4?alt=media&token=b5ed3a31-26f6-4a6c-bffc-314165c89750" type="video/mp4">
-</video>
+https://github.com/JavGt/vscode-component-creator/assets/82567321/6adf1fdd-3e8d-429a-9428-db1634b1ea3f
 
 ## Settings
 
