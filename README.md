@@ -47,7 +47,7 @@ Generate your components quickly, with multiple easily customizable templates
 ### Use from a specific path
 
 <video width="100%" height="600" controls>
-  <source src="./assets/images/examples/menu.mp4" type="video/mp4">
+  <source src="https://raw.githubusercontent.com/JavGt/vscode-component-creator/Javier/assets/images/examples/menu.mp4" type="video/mp4">
 </video>
 
 You can use it by clicking on the folder where you want your component to be and clicking on the "Create Component" option.
@@ -55,7 +55,7 @@ You can use it by clicking on the folder where you want your component to be and
 ### Use by entering the path
 
 <video width="100%" height="600" controls>
-  <source src="./assets/images/examples/palete.mp4" type="video/mp4">
+  <source src="https://raw.githubusercontent.com/JavGt/vscode-component-creator/Javier/assets/images/examples/palete.mp4" type="video/mp4">
 </video>
 
 You can also use it by giving it by executing the "Create Component" command from the command palette
@@ -64,12 +64,12 @@ To create a component it can also be executed with the following keys (ctrl + sh
 ### Quick suggestions
 
 <video width="100%" height="600" controls>
-  <source src="./assets/images/examples/su.mp4" type="video/mp4">
+  <source src="https://raw.githubusercontent.com/JavGt/vscode-component-creator/Javier/assets/images/examples/su.mp4" type="video/mp4">
 </video>
 
 ## Settings
 
-![Ejemplo de resultado en Typescript](./assets/images/examples/settings.png)
+![Ejemplo de resultado en Typescript](https://raw.githubusercontent.com/JavGt/vscode-component-creator/Javier/assets/images/examples/settings.png)
 
 You can change the configurations of the templates to make the creation more customizable and faster, for more information go to the [configuration documentation](./docs/settings.md)
 
@@ -93,24 +93,24 @@ ComponentFolder
 
 ### Typescript
 
-![Ejemplo de resultado en Typescript](/assets/images/examples/component.png)
+![Ejemplo de resultado en Typescript](https://raw.githubusercontent.com/JavGt/vscode-component-creator/Javier/assets/images/examples/component.png)
 
 ### CSS
 
-![Ejemplo de resultado de CSS](/assets/images/examples/css.png)
+![Ejemplo de resultado de CSS](https://raw.githubusercontent.com/JavGt/vscode-component-creator/Javier/assets/images/examples/css.png)
 
 ### Barrel
 
-![Ejemplo de resultado de Barrel](/assets/images/examples/barrel.png)
+![Ejemplo de resultado de Barrel](https://raw.githubusercontent.com/JavGt/vscode-component-creator/Javier/assets/images/examples/barrel.png)
 
 ### Testing
 
-![Ejemplo de resultado de test](/assets/images/examples/test.png)
+![Ejemplo de resultado de test](https://raw.githubusercontent.com/JavGt/vscode-component-creator/Javier/assets/images/examples/test.png)
 
 ### Storybook
 
-![Ejemplo de resultado de storybook](/assets/images/examples/story.png)
+![Ejemplo de resultado de storybook](https://raw.githubusercontent.com/JavGt/vscode-component-creator/Javier/assets/images/examples/story.png)
 
 ### License
 
-React Create Component is [MIT licensed](/LICENSE).
+React Create Component is [MIT licensed](./LICENSE).
