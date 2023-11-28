@@ -47,7 +47,7 @@ Generate your components quickly, with multiple easily customizable templates
 ### Use from a specific path
 
 <video width="100%" height="600" controls>
-  <source src="https://raw.githubusercontent.com/JavGt/vscode-component-creator/Javier/assets/images/examples/menu.mp4" type="video/mp4">
+  <source src="https://firebasestorage.googleapis.com/v0/b/recursos-ae4c5.appspot.com/o/menu.mp4?alt=media&token=1b4c971c-d572-4ccc-baa3-d862b7559559" type="video/mp4">
 </video>
 
 You can use it by clicking on the folder where you want your component to be and clicking on the "Create Component" option.
@@ -55,7 +55,7 @@ You can use it by clicking on the folder where you want your component to be and
 ### Use by entering the path
 
 <video width="100%" height="600" controls>
-  <source src="https://raw.githubusercontent.com/JavGt/vscode-component-creator/Javier/assets/images/examples/palete.mp4" type="video/mp4">
+  <source src="https://firebasestorage.googleapis.com/v0/b/recursos-ae4c5.appspot.com/o/palete.mp4?alt=media&token=0961a2ba-30ac-47f0-97eb-c27591f74d12" type="video/mp4">
 </video>
 
 You can also use it by giving it by executing the "Create Component" command from the command palette
@@ -64,7 +64,7 @@ To create a component it can also be executed with the following keys (ctrl + sh
 ### Quick suggestions
 
 <video width="100%" height="600" controls>
-  <source src="https://raw.githubusercontent.com/JavGt/vscode-component-creator/Javier/assets/images/examples/su.mp4" type="video/mp4">
+  <source src="https://firebasestorage.googleapis.com/v0/b/recursos-ae4c5.appspot.com/o/su.mp4?alt=media&token=b5ed3a31-26f6-4a6c-bffc-314165c89750" type="video/mp4">
 </video>
 
 ## Settings
