@@ -69,7 +69,7 @@ To create a component it can also be executed with the following keys (ctrl + sh
 
 ## Settings
 
-<img alt="Ejemplo de resultado en Typescript" src="./assets/images/examples/settings.png">
+![Ejemplo de resultado en Typescript](./assets/images/examples/settings.png)
 
 You can change the configurations of the templates to make the creation more customizable and faster, for more information go to the [configuration documentation](./docs/settings.md)
 
@@ -93,24 +93,24 @@ ComponentFolder
 
 ### Typescript
 
-<img alt="Ejemplo de resultado en Typescript" src="./assets/images/examples/component.png">
+![Ejemplo de resultado en Typescript](/assets/images/examples/component.png)
 
 ### CSS
 
-<img alt="Ejemplo de resultado de CSS" height="200" src="./assets/images/examples/css.png">
+![Ejemplo de resultado de CSS](/assets/images/examples/css.png)
 
 ### Barrel
 
-<img alt="Ejemplo de resultado de Barrel" height="200" src="./assets/images/examples/barrel.png">
+![Ejemplo de resultado de Barrel](/assets/images/examples/barrel.png)
 
 ### Testing
 
-<img alt="Ejemplo de resultado de test" src="./assets/images/examples/test.png">
+![Ejemplo de resultado de test](/assets/images/examples/test.png)
 
 ### Storybook
 
-<img alt="Ejemplo de resultado de storybook" src="./assets/images/examples/story.png">
+![Ejemplo de resultado de storybook](/assets/images/examples/story.png)
 
 ### License
 
-React Create Component is [MIT licensed](./LICENSE).
+React Create Component is [MIT licensed](/LICENSE).
